@@ -1,0 +1,304 @@
+DEBUG 2018-11-12 22:27:23,966 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-11-12 22:27:23,983 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-11-12 22:27:23,995 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.Web.Startup.AeDashboardWebMvcModule, AeDashboard.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,997 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardWebCoreModule, AeDashboard.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,997 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardApplicationModule, AeDashboard.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,998 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardCoreModule, AeDashboard.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,998 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,998 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,998 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,999 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,999 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.EntityFrameworkCore.AeDashboardEntityFrameworkModule, AeDashboard.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,999 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,999 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,999 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:23,999 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:24,000 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:24,000 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:24,002 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-11-12 22:27:24,044 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:27:24,044 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:27:24,044 [1    ] o.Configuration.LanguageManagementConfig - Converted AeDashboard (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:27:24,044 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:27:24,237 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: AeDashboard.EntityFrameworkCore.AeDashboardDbContext, AeDashboard.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:27:24,527 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-11-12 22:27:24,552 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-11-12 22:27:24,561 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-11-12 22:27:24,581 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AeDashboard
+DEBUG 2018-11-12 22:27:24,585 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-11-12 22:27:24,612 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-11-12 22:27:24,657 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2018-11-12 22:27:24,657 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-11-12 22:27:24,662 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Users.Dto.CreateUserDto
+DEBUG 2018-11-12 22:27:24,662 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Users.Dto.UserDto
+DEBUG 2018-11-12 22:27:24,662 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-11-12 22:27:24,662 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-11-12 22:27:24,662 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.CreateRoleDto
+DEBUG 2018-11-12 22:27:24,663 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.PermissionDto
+DEBUG 2018-11-12 22:27:24,663 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.RoleDto
+DEBUG 2018-11-12 22:27:24,663 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-11-12 22:27:24,663 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.MultiTenancy.Dto.TenantDto
+DEBUG 2018-11-12 22:27:24,663 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2018-11-12 22:27:24,663 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Web.Models.Roles.EditRoleModalViewModel
+INFO  2018-11-12 22:27:28,424 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-11-12 22:27:28,538 [10   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:27:29,557 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc)
+WARN  2018-11-12 22:27:29,890 [10   ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 103
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 103
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2018-11-12 22:27:29,894 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-11-12 22:27:29,911 [10   ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2018-11-12 22:27:29,943 [10   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2018-11-12 22:27:29,945 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc) in 385.0862ms
+INFO  2018-11-12 22:27:29,998 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1577.8688ms 302 
+INFO  2018-11-12 22:27:30,005 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-11-12 22:27:30,009 [10   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:27:30,034 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc)
+INFO  2018-11-12 22:27:30,930 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-11-12 22:27:30,941 [10   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 8.8565ms.
+INFO  2018-11-12 22:27:31,048 [13   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-11-12 22:27:31,511 [13   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 502.9595ms.
+INFO  2018-11-12 22:27:31,516 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc) in 1481.8158ms
+INFO  2018-11-12 22:27:31,533 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1527.2378ms 200 text/html; charset=utf-8
+INFO  2018-11-12 22:27:31,550 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/robots.txt  
+INFO  2018-11-12 22:27:31,554 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 3.666ms 404 
+INFO  2018-11-12 22:27:31,986 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636776584446142410  
+INFO  2018-11-12 22:27:31,988 [13   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:27:31,992 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=636776584446142410  
+INFO  2018-11-12 22:27:31,993 [15   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:27:31,996 [10   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/js/main.js?v=7kehC_9i1Y8vKwKfQqyzVPOzTzIQer4YT3mprdvol5M  
+INFO  2018-11-12 22:27:32,008 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2018-11-12 22:27:32,012 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments () - Validation state: Valid
+INFO  2018-11-12 22:27:32,022 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-11-12 22:27:32,024 [11   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/main.js'. Physical path: 'D:\DMT\NguyenLAPTOP\AeDashboard\4.2.0\aspnet-core\src\AeDashboard.Web.Mvc\wwwroot\js\main.js'
+INFO  2018-11-12 22:27:32,025 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.7569ms 200 application/javascript
+INFO  2018-11-12 22:27:32,029 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Shared/Components/TenantChange/Default.js?v=636776584514949685  
+INFO  2018-11-12 22:27:32,031 [16   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Shared/Components/TenantChange/Default.js'. Physical path: 'D:\DMT\NguyenLAPTOP\AeDashboard\4.2.0\aspnet-core\src\AeDashboard.Web.Mvc\wwwroot\view-resources\Views\Shared\Components\TenantChange\Default.js'
+INFO  2018-11-12 22:27:32,031 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1.2122ms 200 application/javascript
+INFO  2018-11-12 22:27:32,049 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-11-12 22:27:32,122 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 109.9512ms.
+INFO  2018-11-12 22:27:32,126 [15   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2018-11-12 22:27:32,126 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 117.826ms
+INFO  2018-11-12 22:27:32,126 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 134.4062ms 200 application/x-javascript; charset=utf-8
+INFO  2018-11-12 22:27:32,147 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 97.1808ms.
+INFO  2018-11-12 22:27:32,147 [13   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-11-12 22:27:32,148 [13   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 125.9113ms
+INFO  2018-11-12 22:27:32,148 [13   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 161.6187ms 200 application/x-javascript
+DEBUG 2018-11-12 22:30:21,054 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-11-12 22:30:21,070 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-11-12 22:30:21,083 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.Web.Startup.AeDashboardWebMvcModule, AeDashboard.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,085 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardWebCoreModule, AeDashboard.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,085 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardApplicationModule, AeDashboard.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,085 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardCoreModule, AeDashboard.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,085 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,086 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,086 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,086 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,086 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.EntityFrameworkCore.AeDashboardEntityFrameworkModule, AeDashboard.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,086 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,087 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,087 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,087 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,087 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,087 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,089 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-11-12 22:30:21,129 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:30:21,129 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:30:21,129 [1    ] o.Configuration.LanguageManagementConfig - Converted AeDashboard (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:30:21,129 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:30:21,308 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: AeDashboard.EntityFrameworkCore.AeDashboardDbContext, AeDashboard.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:30:21,583 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-11-12 22:30:21,606 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-11-12 22:30:21,613 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-11-12 22:30:21,617 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AeDashboard
+DEBUG 2018-11-12 22:30:21,620 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-11-12 22:30:21,646 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-11-12 22:30:21,680 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2018-11-12 22:30:21,680 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-11-12 22:30:21,686 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Users.Dto.CreateUserDto
+DEBUG 2018-11-12 22:30:21,686 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Users.Dto.UserDto
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.CreateRoleDto
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.PermissionDto
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.RoleDto
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.MultiTenancy.Dto.TenantDto
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2018-11-12 22:30:21,687 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Web.Models.Roles.EditRoleModalViewModel
+INFO  2018-11-12 22:30:25,557 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-11-12 22:30:25,669 [11   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:30:26,477 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc)
+WARN  2018-11-12 22:30:26,612 [11   ] Mvc.Authorization.AbpAuthorizationFilter - Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 103
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+Abp.Authorization.AbpAuthorizationException: Current user did not login to the application!
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(IEnumerable`1 authorizeAttributes) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 43
+   at Abp.Authorization.AuthorizationHelper.CheckPermissions(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 103
+   at Abp.Authorization.AuthorizationHelper.AuthorizeAsync(MethodInfo methodInfo, Type type) in D:\Github\aspnetboilerplate\src\Abp\Authorization\AuthorizationHelper.cs:line 57
+   at Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter.OnAuthorizationAsync(AuthorizationFilterContext context) in D:\Github\aspnetboilerplate\src\Abp.AspNetCore\AspNetCore\Mvc\Authorization\AbpAuthorizationFilter.cs:line 53
+INFO  2018-11-12 22:30:26,617 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Authorization failed for the request at filter 'Abp.AspNetCore.Mvc.Authorization.AbpAuthorizationFilter'.
+INFO  2018-11-12 22:30:26,625 [11   ] Microsoft.AspNetCore.Mvc.ChallengeResult - Executing ChallengeResult with authentication schemes ().
+INFO  2018-11-12 22:30:26,642 [11   ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application was challenged.
+INFO  2018-11-12 22:30:26,644 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc) in 164.0837ms
+INFO  2018-11-12 22:30:26,698 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1144.168ms 302 
+INFO  2018-11-12 22:30:26,701 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/Account/Login?ReturnUrl=%2F  
+INFO  2018-11-12 22:30:26,704 [11   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:30:26,728 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc)
+INFO  2018-11-12 22:30:27,585 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc) with arguments (, /, ) - Validation state: Valid
+INFO  2018-11-12 22:30:27,591 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 4.8602ms.
+INFO  2018-11-12 22:30:27,850 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Login.
+INFO  2018-11-12 22:30:28,259 [14   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Login executed in 443.7362ms.
+INFO  2018-11-12 22:30:28,263 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc) in 1535.6241ms
+INFO  2018-11-12 22:30:28,277 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1576.2637ms 200 text/html; charset=utf-8
+INFO  2018-11-12 22:30:28,359 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636776586216479634  
+INFO  2018-11-12 22:30:28,360 [14   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:30:28,368 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=636776586216479634  
+INFO  2018-11-12 22:30:28,370 [15   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:30:28,376 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-11-12 22:30:28,376 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/view-resources/Views/Shared/Components/TenantChange/Default.js?v=636776586282446771  
+INFO  2018-11-12 22:30:28,382 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2018-11-12 22:30:28,386 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments () - Validation state: Valid
+INFO  2018-11-12 22:30:28,423 [18   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/view-resources/Views/Shared/Components/TenantChange/Default.js'. Physical path: 'D:\DMT\NguyenLAPTOP\AeDashboard\4.2.0\aspnet-core\src\AeDashboard.Web.Mvc\wwwroot\view-resources\Views\Shared\Components\TenantChange\Default.js'
+INFO  2018-11-12 22:30:28,424 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 47.2863ms 200 application/javascript
+INFO  2018-11-12 22:30:28,424 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-11-12 22:30:28,541 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 155.1654ms.
+INFO  2018-11-12 22:30:28,546 [15   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2018-11-12 22:30:28,548 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 165.5993ms
+INFO  2018-11-12 22:30:28,548 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 180.0489ms 200 application/x-javascript; charset=utf-8
+INFO  2018-11-12 22:30:28,575 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 150.172ms.
+INFO  2018-11-12 22:30:28,576 [14   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-11-12 22:30:28,576 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 199.7387ms
+INFO  2018-11-12 22:30:28,576 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 216.9361ms 200 application/x-javascript
+INFO  2018-11-12 22:30:30,498 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/Account/Login application/x-www-form-urlencoded 256
+INFO  2018-11-12 22:30:30,499 [15   ] tion.Cookies.CookieAuthenticationHandler - Identity.Application was not authenticated. Failure message: Unprotect ticket failed
+INFO  2018-11-12 22:30:30,506 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Login", controller = "Account", area = ""}. Executing action AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc)
+INFO  2018-11-12 22:30:30,610 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc) with arguments (AeDashboard.Web.Models.Account.LoginViewModel, /, ) - Validation state: Valid
+INFO  2018-11-12 22:30:31,459 [7    ] tion.Cookies.CookieAuthenticationHandler - AuthenticationScheme: Identity.Application signed in.
+INFO  2018-11-12 22:30:31,462 [7    ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.JsonResult in 852.4111ms.
+INFO  2018-11-12 22:30:31,669 [11   ] matters.Json.Internal.JsonResultExecutor - Executing JsonResult, writing value of type 'Abp.Web.Models.AjaxResponse'.
+INFO  2018-11-12 22:30:31,676 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action AeDashboard.Web.Controllers.AccountController.Login (AeDashboard.Web.Mvc) in 1169.5478ms
+INFO  2018-11-12 22:30:31,676 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 1178.0524ms 200 application/json; charset=utf-8
+INFO  2018-11-12 22:30:31,685 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-11-12 22:30:31,720 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc)
+INFO  2018-11-12 22:30:31,755 [15   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-11-12 22:30:31,758 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc) - Validation state: Valid
+INFO  2018-11-12 22:30:31,758 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 0.3366ms.
+INFO  2018-11-12 22:30:31,791 [19   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-11-12 22:30:32,229 [15   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 462.2837ms.
+INFO  2018-11-12 22:30:32,233 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc) in 513.212ms
+INFO  2018-11-12 22:30:32,234 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 548.6899ms 200 text/html; charset=utf-8
+INFO  2018-11-12 22:30:32,357 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636776586216479634  
+INFO  2018-11-12 22:30:32,361 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=636776586216479634  
+INFO  2018-11-12 22:30:32,367 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2018-11-12 22:30:32,367 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-11-12 22:30:32,368 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments () - Validation state: Valid
+INFO  2018-11-12 22:30:32,368 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-11-12 22:30:32,374 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 4.9651ms.
+INFO  2018-11-12 22:30:32,374 [15   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-11-12 22:30:32,374 [15   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 6.8698ms
+INFO  2018-11-12 22:30:32,374 [15   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 16.9646ms 200 application/x-javascript
+INFO  2018-11-12 22:30:32,411 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 42.6936ms.
+INFO  2018-11-12 22:30:32,411 [14   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2018-11-12 22:30:32,412 [14   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 44.2676ms
+INFO  2018-11-12 22:30:32,412 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 51.1796ms 200 application/x-javascript; charset=utf-8
+INFO  2018-11-12 22:30:32,474 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2018-11-12 22:30:32,502 [14   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 27.4708ms 200 application/json
+INFO  2018-11-12 22:30:32,528 [18   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/signalr?id=zkfRI86FGAB9z4PM-PF6lQ  
+INFO  2018-11-12 22:30:32,733 [18   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2018-11-12 22:30:32,755 [18   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"zkfRI86FGAB9z4PM-PF6lQ","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2018-11-12T22:30:32.7491129+07:00","Properties":{}}
+DEBUG 2018-11-12 22:30:32,801 [18   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: zkfRI86FGAB9z4PM-PF6lQ
+DEBUG 2018-11-12 22:32:07,442 [18   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is disconnected: zkfRI86FGAB9z4PM-PF6lQ
+INFO  2018-11-12 22:32:07,450 [16   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 94921.4677ms 101 
+DEBUG 2018-11-12 22:32:37,421 [1    ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2018-11-12 22:32:37,438 [1    ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2018-11-12 22:32:37,451 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.Web.Startup.AeDashboardWebMvcModule, AeDashboard.Web.Mvc, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,453 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardWebCoreModule, AeDashboard.Web.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardApplicationModule, AeDashboard.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.AeDashboardCoreModule, AeDashboard.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.ZeroCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCommonModule, Abp.Zero.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,454 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: AeDashboard.EntityFrameworkCore.AeDashboardEntityFrameworkModule, AeDashboard.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFrameworkCore.AbpZeroCoreEntityFrameworkCoreModule, Abp.ZeroCore.EntityFrameworkCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,455 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFrameworkCore.AbpEntityFrameworkCoreModule, Abp.EntityFrameworkCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,456 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkCommonModule, Abp.EntityFramework.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,456 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.AbpAspNetCoreModule, Abp.AspNetCore, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,456 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,456 [1    ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AspNetCore.SignalR.AbpAspNetCoreSignalRModule, Abp.AspNetCore.SignalR, Version=3.9.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,458 [1    ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2018-11-12 22:32:37,501 [1    ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:32:37,501 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:32:37,501 [1    ] o.Configuration.LanguageManagementConfig - Converted AeDashboard (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:32:37,501 [1    ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2018-11-12 22:32:37,687 [1    ] ameworkCore.AbpEntityFrameworkCoreModule - Registering DbContext: AeDashboard.EntityFrameworkCore.AeDashboardDbContext, AeDashboard.EntityFrameworkCore, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2018-11-12 22:32:37,975 [1    ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2018-11-12 22:32:37,998 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2018-11-12 22:32:38,006 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2018-11-12 22:32:38,009 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AeDashboard
+DEBUG 2018-11-12 22:32:38,013 [1    ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2018-11-12 22:32:38,041 [1    ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2018-11-12 22:32:38,075 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - Found 12 classes define auto mapping attributes
+DEBUG 2018-11-12 22:32:38,075 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Models.TokenAuth.ExternalLoginProviderInfoModel
+DEBUG 2018-11-12 22:32:38,081 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Users.Dto.CreateUserDto
+DEBUG 2018-11-12 22:32:38,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Users.Dto.UserDto
+DEBUG 2018-11-12 22:32:38,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2018-11-12 22:32:38,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Sessions.Dto.UserLoginInfoDto
+DEBUG 2018-11-12 22:32:38,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.CreateRoleDto
+DEBUG 2018-11-12 22:32:38,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.PermissionDto
+DEBUG 2018-11-12 22:32:38,082 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Roles.Dto.RoleDto
+DEBUG 2018-11-12 22:32:38,083 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.MultiTenancy.Dto.CreateTenantDto
+DEBUG 2018-11-12 22:32:38,083 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.MultiTenancy.Dto.TenantDto
+DEBUG 2018-11-12 22:32:38,083 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Web.Views.Shared.Components.TenantChange.TenantChangeViewModel
+DEBUG 2018-11-12 22:32:38,083 [1    ] Abp.AutoMapper.AbpAutoMapperModule       - AeDashboard.Web.Models.Roles.EditRoleModalViewModel
+INFO  2018-11-12 22:32:41,859 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/  
+INFO  2018-11-12 22:32:42,845 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "Index", controller = "Home", area = ""}. Executing action AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc)
+INFO  2018-11-12 22:32:42,888 [12   ] uthorization.DefaultAuthorizationService - Authorization was successful.
+INFO  2018-11-12 22:32:42,933 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc) - Validation state: Valid
+INFO  2018-11-12 22:32:42,938 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc), returned result Microsoft.AspNetCore.Mvc.ViewResult in 3.6795ms.
+INFO  2018-11-12 22:32:43,191 [6    ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executing ViewResult, running view Index.
+INFO  2018-11-12 22:32:44,422 [12   ] Core.Mvc.ViewFeatures.ViewResultExecutor - Executed ViewResult - view Index executed in 1263.9581ms.
+INFO  2018-11-12 22:32:44,431 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action AeDashboard.Web.Controllers.HomeController.Index (AeDashboard.Web.Mvc) in 1584.1543ms
+INFO  2018-11-12 22:32:44,456 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 2600.6116ms 200 text/html; charset=utf-8
+INFO  2018-11-12 22:32:44,706 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/css/jquery.dataTables.min.css?v=YY1izqyhIj4W3iyJOaGWOpXDSwrHWFL4Nfk-W0LyCHE  
+INFO  2018-11-12 22:32:44,728 [17   ] NetCore.StaticFiles.StaticFileMiddleware - The file /css/jquery.dataTables.min.css was not modified
+INFO  2018-11-12 22:32:44,734 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.0937ms 304 text/css
+INFO  2018-11-12 22:32:44,797 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/angular/app/app.js?v=RUHIk0RJ5vn2Mzki2IEMaPI3zE5NLob9AnIT3kig57g  
+INFO  2018-11-12 22:32:44,798 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /angular/app/app.js was not modified
+INFO  2018-11-12 22:32:44,798 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.7499ms 304 application/javascript
+INFO  2018-11-12 22:32:44,806 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/js/lib/jquery.dataTables.min.js?v=t5ZQTZsbQi8NxszC10CseKjJ5QeMw5NINtOXQrESGSU  
+INFO  2018-11-12 22:32:44,807 [12   ] NetCore.StaticFiles.StaticFileMiddleware - The file /js/lib/jquery.dataTables.min.js was not modified
+INFO  2018-11-12 22:32:44,807 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 0.9465ms 304 application/javascript
+INFO  2018-11-12 22:32:44,814 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/js/js.cookie.js?v=CIv73Uqd4WdZiaI-7HNLTEFnYMaivnVNGbuG_iagQFU  
+INFO  2018-11-12 22:32:44,818 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpServiceProxies/GetAll?v=636776587580423853  
+INFO  2018-11-12 22:32:44,824 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/AbpScripts/GetScripts?v=636776587580423853  
+INFO  2018-11-12 22:32:44,831 [17   ] NetCore.StaticFiles.StaticFileMiddleware - Sending file. Request path: '/js/js.cookie.js'. Physical path: 'D:\DMT\NguyenLAPTOP\AeDashboard\4.2.0\aspnet-core\src\AeDashboard.Web.Mvc\wwwroot\js\js.cookie.js'
+INFO  2018-11-12 22:32:44,832 [17   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 17.2749ms 200 application/javascript
+INFO  2018-11-12 22:32:44,844 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetScripts", controller = "AbpScripts", area = ""}. Executing action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore)
+INFO  2018-11-12 22:32:44,850 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Route matched with {action = "GetAll", controller = "AbpServiceProxies", area = ""}. Executing action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore)
+INFO  2018-11-12 22:32:44,882 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) with arguments () - Validation state: Valid
+INFO  2018-11-12 22:32:44,907 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executing action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) with arguments (Abp.AspNetCore.Mvc.Proxying.ApiProxyGenerationModel) - Validation state: Valid
+INFO  2018-11-12 22:32:45,016 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 133.5482ms.
+INFO  2018-11-12 22:32:45,020 [12   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript; charset=utf-8
+INFO  2018-11-12 22:32:45,020 [12   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Controllers.AbpScriptsController.GetScripts (Abp.AspNetCore) in 176.1709ms
+INFO  2018-11-12 22:32:45,020 [12   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 196.3889ms 200 application/x-javascript; charset=utf-8
+INFO  2018-11-12 22:32:45,023 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action method Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore), returned result Microsoft.AspNetCore.Mvc.ContentResult in 115.4728ms.
+INFO  2018-11-12 22:32:45,024 [11   ] Mvc.Infrastructure.ContentResultExecutor - Executing ContentResult with HTTP Response ContentType of application/x-javascript
+INFO  2018-11-12 22:32:45,025 [11   ] ore.Mvc.Internal.ControllerActionInvoker - Executed action Abp.AspNetCore.Mvc.Proxying.AbpServiceProxiesController.GetAll (Abp.AspNetCore) in 174.3877ms
+INFO  2018-11-12 22:32:45,025 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 207.7447ms 200 application/x-javascript
+INFO  2018-11-12 22:32:45,039 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 POST http://localhost:62114/signalr/negotiate text/plain;charset=UTF-8 0
+INFO  2018-11-12 22:32:45,067 [11   ] soft.AspNetCore.Hosting.Internal.WebHost - Request finished in 28.2402ms 200 application/json
+INFO  2018-11-12 22:32:45,155 [6    ] soft.AspNetCore.Hosting.Internal.WebHost - Request starting HTTP/1.1 GET http://localhost:62114/signalr?id=sQO8K5WHaEzR1PTEm1mG5A  
+INFO  2018-11-12 22:32:45,287 [11   ] .AspNetCore.SignalR.HubConnectionContext - Completed connection handshake. Using HubProtocol 'json'.
+DEBUG 2018-11-12 22:32:45,311 [11   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is connected: {"ConnectionId":"sQO8K5WHaEzR1PTEm1mG5A","IpAddress":"::1","TenantId":null,"UserId":1,"ConnectTime":"2018-11-12T22:32:45.3035271+07:00","Properties":{}}
+DEBUG 2018-11-12 22:32:45,351 [11   ] Abp.AspNetCore.SignalR.Hubs.AbpCommonHub - A client is registered: sQO8K5WHaEzR1PTEm1mG5A
