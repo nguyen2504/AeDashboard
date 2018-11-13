@@ -4,7 +4,8 @@
     "inputFiles": [
       "wwwroot/fonts/roboto/roboto.css",
       "wwwroot/fonts/material-icons/materialicons.css",
-      "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      //"wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      "wwwroot/css/bs4/bootstrap.min.css",
       "wwwroot/lib/toastr/toastr.css",
       "wwwroot/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css",
       "wwwroot/lib/font-awesome/css/font-awesome.css",
@@ -12,6 +13,7 @@
       "wwwroot/lib/animate.css/animate.css",
       "wwwroot/css/materialize.css",
       "wwwroot/css/style.css",
+      "wwwroot/css/ae.css",
       "wwwroot/view-resources/Views/Account/_Layout.css"
     ]
   },
@@ -62,7 +64,8 @@
     "inputFiles": [
       "wwwroot/lib/json2/json2.js",
       "wwwroot/lib/jquery/dist/jquery.js",
-      "wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      //"wwwroot/lib/bootstrap/dist/js/bootstrap.js",
+      "wwwroot/js/bs4/bootstrap.min.js",
       "wwwroot/lib/moment/min/moment-with-locales.js",
       "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
       "wwwroot/lib/blockUI/jquery.blockUI.js",

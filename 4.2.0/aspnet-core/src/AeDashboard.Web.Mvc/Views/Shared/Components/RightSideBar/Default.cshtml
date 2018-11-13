@@ -1,12 +1,12 @@
 @using AeDashboard.Configuration.Ui
 @model AeDashboard.Web.Views.Shared.Components.RightSideBar.RightSideBarViewModel
-<aside id="rightsidebar" class="right-sidebar">
+<aside id="rightsidebar" class="right-sidebar" >
     <ul class="nav nav-tabs tab-nav-right" role="tablist">
         <li role="presentation" class="active"><a href="#skins" data-toggle="tab">@L("Skins")</a></li>
         <li role="presentation"><a href="#settings" data-toggle="tab">@L("Settings")</a></li>
     </ul>
     <div class="tab-content">
-        <div role="tabpanel" class="tab-pane fade in active in active" id="skins">
+        <div role="tabpanel" class="tab-pane fade ae in active in active" id="skins">
             <ul class="demo-choose-skin">
                 @foreach (var theme in UiThemes.All)
                 {
@@ -17,7 +17,7 @@
                 }
             </ul>
         </div>
-        <div role="tabpanel" class="tab-pane fade" id="settings">
+        <div role="tabpanel" class="tab-pane fade " id="settings">
             <div class="demo-settings">
                 <p>GENERAL SETTINGS</p>
                 <ul class="setting-list">

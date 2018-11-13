@@ -30,6 +30,32 @@ namespace AeDashboard.Web.Startup
                     )
                 ).AddItem(
                     new MenuItemDefinition(
+                        PageNames.Calendar,
+                        L("Calendar"),
+                        url: "Calendar",
+                        icon: "view_day"
+                        //requiredPermissionName: PermissionNames.Pages_Calendar
+                    )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Document,
+                        L("Document"),
+                        url: "Document",
+                        icon: "work"
+                        //requiredPermissionName: PermissionNames.Pages_Calendar
+                    )
+                )
+                .AddItem(
+                    new MenuItemDefinition(
+                        PageNames.Personal,
+                        L("Personal"),
+                        url: "Personal",
+                        icon: "person"
+                    //requiredPermissionName: PermissionNames.Pages_Calendar
+                    )
+                ).AddItem(
+                    new MenuItemDefinition(
                         PageNames.Users,
                         L("Users"),
                         url: "Users",

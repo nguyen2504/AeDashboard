@@ -1,0 +1,20 @@
+﻿.fade.ae {
+    -ms-opacity: 1!important;
+    opacity: 1!important;
+}
+
+
+@media (max-width: 768px) {
+    .right-sidebar {
+        margin-top: 31px!important
+    }
+    .list-inline.list-ae-none {
+        list-style:none!important;
+        padding:0!important;
+        margin:0!important;
+    }
+    .list-inline.list-ae-none > li {
+        display:inline!important;
+        padding:2px 8px!important;
+    }
+}

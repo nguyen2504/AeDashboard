@@ -1,6 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="en">
   <texts>
+    <text name="Calendar" value="Calendar" />  
+    <text name="Document" value="Document" />
+    <text name="Personal" value="Personal " />
+    
     <text name="HomePage" value="Home page" />
     <text name="About" value="About" />
     <text name="WellcomeMessage" value="Welcome to AeDashboard!" />
