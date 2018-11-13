@@ -2,7 +2,9 @@
     -ms-opacity: 1!important;
     opacity: 1!important;
 }
-
+.margin {
+    margin-left: -200px!important
+}
 
 @media (max-width: 768px) {
     .right-sidebar {
