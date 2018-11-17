@@ -57,7 +57,9 @@
       "wwwroot/css/style.css",
       "wwwroot/css/ae.css",
       "wwwroot/css/themes/all-themes.css",
-      "wwwroot/view-resources/Views/Shared/_Layout.css"
+      "wwwroot/view-resources/Views/Shared/_Layout.css",
+      "wwwroot/css/theme.css",
+      "wwwroot/css/aedashboard.css"
     ]
   },
   {

@@ -1,7 +1,10 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Data;
+using System.Globalization;
+using Microsoft.EntityFrameworkCore;
 using Abp.Zero.EntityFrameworkCore;
 using AeDashboard.Authorization.Roles;
 using AeDashboard.Authorization.Users;
+using AeDashboard.Calendar;
 using AeDashboard.MultiTenancy;
 
 namespace AeDashboard.EntityFrameworkCore
@@ -14,5 +17,6 @@ namespace AeDashboard.EntityFrameworkCore
             : base(options)
         {
         }
+        public DbSet<CalendarView> CalendarView { get; set; }
     }
 }

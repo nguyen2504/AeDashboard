@@ -20,6 +20,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.1.4" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AeDashboard.Application\AeDashboard.Application.csproj" />
     <ProjectReference Include="..\AeDashboard.Core\AeDashboard.Core.csproj" />
   </ItemGroup>
   <ItemGroup>

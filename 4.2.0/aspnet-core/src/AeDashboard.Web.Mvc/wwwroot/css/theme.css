@@ -1,0 +1,10 @@
+:root {
+  --color-bg:#333;
+  --bg:#FAFAFA;
+  --tabble-bg:#17a2b8;
+}
+
+body {
+  color:var(--gray);
+}
+

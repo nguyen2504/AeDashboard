@@ -53,7 +53,8 @@
         <link href="~/css/angular-datatables.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true" />
-       
+        <link href="~/css/theme.css"  rel="stylesheet"/>
+        <link href="~/css/aedashboard.css" rel="stylesheet"/>
     </environment>
 
     <environment names="Staging,Production">
@@ -269,5 +270,11 @@
             $('.dropdown-menu').removeClass('show');
             $('.dropdown').removeClass('show');
         });
+        $('.ae-tb-body').hover(function() {
+            $('.ae-update').removeClass('show');
+            $(this).find('.ae-update').addClass('show');
+        });
+        //$('#BeginDate').val(new Date());
+        //console.log( $('#BeginDate').val())
     })
 </script>
