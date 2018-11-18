@@ -13,7 +13,7 @@ namespace AeDashboard.Calendar
 {
  public   interface ICalendarViewService : IDomainService
  {
-     Task<List<CalendarView>> GetAll();
+     List<CalendarView> GetAll();
      Task<CalendarView> GetCalendarView(long id);
      bool Create(CalendarViewDto entity);
      Task<string> Update(CalendarViewDto entity);

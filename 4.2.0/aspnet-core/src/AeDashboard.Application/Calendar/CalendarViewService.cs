@@ -21,9 +21,9 @@ namespace AeDashboard.Calendar
           _getUserService = getUserService;
           _repository = repository;
       }
-        public Task<List<CalendarView>> GetAll()
+        public List<CalendarView> GetAll()
         {
-            var dt = _repository.GetAllListAsync();
+            var dt = _repository.GetAllList();
             return dt;
         }
 

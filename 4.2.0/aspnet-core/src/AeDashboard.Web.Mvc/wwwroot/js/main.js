@@ -1,4 +1,5 @@
-﻿(function ($) {
+﻿
+(function ($) {
 
     //Notification handler
     abp.event.on('abp.notifications.received', function (userNotification) {

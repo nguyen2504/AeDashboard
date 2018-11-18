@@ -3,15 +3,17 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<script src="~/js/aeDashboard.js"></script>
+
+@ViewBag.mes
+
 <div class="main-ae">
     <div class="justify-content-end align-items-center align-content-stretch main-head-1 box-flex">
         <div role="group" class="btn-group btn-gr-calendar">
             <button class="btn btn-primary waves-effect  waves-float pull-right" type="button"><i class="material-icons">chevron_left</i></button>
             <button class="btn btn-primary waves-effect  waves-float " type="button">Tuần Này</button>
             <button class="btn btn-primary  waves-effect waves-float pull-right" type="button"><i class="material-icons">chevron_right</i></button>
-        </div><input
-                  type="date" class="form-control ae-input-date" /><button class="btn btn-primary  waves-effect waves-float  btn-print" type="button"><i class="material-icons">local_printshop</i></button></div>
+        </div><input type="date" class="form-control ae-input-date" /><button class="btn btn-primary  waves-effect waves-float  btn-print" type="button"><i class="material-icons">local_printshop</i></button>
+    </div>
     <div class="align-items-center main-head-1 box-flex bg-cyan">Ngay</div>
     <div class="ae-calendar-table">
         <div class="ae-tb-head">
@@ -24,76 +26,41 @@
         <div class="ae-tb-body border-left border-top border-right" style="padding: 5px">
             <div class="tb-head-cell"><span>Nội Dung Công Việc</span></div>
         </div>
-        <div class="ae-tb-body border-left border-top border-right">
+  
+       
+        <div class="ae-tb-body border-left border-top border-right"  ng-repeat="q in getAll"  ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
             <div class="tb-head-cell style-time">
-                <div class="ae-flex-tb style-time"><span class="ae-fl-title style-time">Giờ</span><span class="ae-fl-grow style-time">08:40</span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Nội Dung Công Việc</span><span class="ae-fl-grow">nội dung cong viec noi dung cong viec noi dung cong toi la iai jhgajdhj noi dung cong viec<br/></span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Chủ Trì</span><span class="ae-fl-grow">Chủ trì</span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Thực Hiện</span><span class="ae-fl-grow">08:40</span>
+                <div class="ae-flex-tb style-time">
+                    <span class="ae-fl-title style-time">Giờ</span>
+                    <span class="ae-fl-grow style-time">{{q.beginDate}}</span>
                 </div>
             </div>
             <div class="tb-head-cell">
                 <div class="ae-flex-tb">
-                    <div class="d-flex flex-row align-items-center ae-update"><i class="material-icons item-body-icon">delete</i><i class="material-icons item-body-icon">edit</i><i class="material-icons item-body-icon">add</i>
-                    </div><span class="ae-fl-title">Địa Điểm</span><span class="ae-fl-grow">08:40</span>
-                </div>
-            </div>
-        </div>
-        <div class="ae-tb-body border-left border-top border-right">
-            <div class="tb-head-cell style-time">
-                <div class="ae-flex-tb style-time"><span class="ae-fl-title style-time">Giờ</span><span class="ae-fl-grow style-time">08:40</span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Nội Dung Công Việc</span><span class="ae-fl-grow">nội dung cong viec noi dung cong viec noi dung cong toi la iai jhgajdhj noi dung cong viec<br/></span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Chủ Trì</span><span class="ae-fl-grow">Chủ trì</span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Thực Hiện</span><span class="ae-fl-grow">08:40</span>
+                    <span class="ae-fl-title">Nội Dung Công Việc</span><span class="ae-fl-grow">{{q.work}}</span>
                 </div>
             </div>
             <div class="tb-head-cell">
                 <div class="ae-flex-tb">
-                    <div class="d-flex flex-row align-items-center ae-update">
+                    <span class="ae-fl-title">Chủ Trì</span>
+                    <span class="ae-fl-grow">{{q.admin}}</span>
+                </div>
+            </div>
+            <div class="tb-head-cell">
+                <div class="ae-flex-tb">
+                    <span class="ae-fl-title">Thực Hiện</span>
+                    <span class="ae-fl-grow">{{q.users}}</span>
+                </div>
+            </div>
+            <div class="tb-head-cell">
+                <div class="ae-flex-tb " >
+                    <div class="d-flex flex-row align-items-center ae-update " ng-class="hoverEdit" >
                         <i class="material-icons item-body-icon">delete</i>
-                        <i class="material-icons item-body-icon"  data-toggle="modal" data-target="#myModal1">edit</i>
+                        <i class="material-icons item-body-icon" data-toggle="modal" data-target="#myModal1">edit</i>
                         <i class="material-icons item-body-icon" data-toggle="modal" data-target="#myModal">add</i>
-                    </div><span class="ae-fl-title">Địa Điểm</span><span class="ae-fl-grow">08:40</span>
-                </div>
-            </div>
-        </div>
-        <div class="ae-tb-body border-left border-top border-right">
-            <div class="tb-head-cell style-time">
-                <div class="ae-flex-tb style-time"><span class="ae-fl-title style-time">Giờ</span><span class="ae-fl-grow style-time">08:40</span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Nội Dung Công Việc</span><span class="ae-fl-grow">nội dung cong viec noi dung cong viec noi dung cong toi la iai jhgajdhj noi dung cong viec<br/></span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Chủ Trì</span><span class="ae-fl-grow">Chủ trì</span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Thực Hiện</span><span class="ae-fl-grow">08:40</span>
-                </div>
-            </div>
-            <div class="tb-head-cell">
-                <div class="ae-flex-tb"><span class="ae-fl-title">Địa Điểm</span><span class="ae-fl-grow">08:40</span>
+                    </div>
+                    <span class="ae-fl-title">Địa Điểm</span>
+                    <span class="ae-fl-grow">{{q.place}}</span>
                 </div>
             </div>
         </div>
@@ -116,7 +83,7 @@
                 @await Html.PartialAsync("Create")
             </div>
 
-           
+
         </div>
     </div>
 </div>
@@ -144,3 +111,6 @@
         </div>
     </div>
 </div>
+
+<script src="~/angular/calendar_view_ctrl.js"></script>
+<script src="~/js/aeDashboard.js" language="javascript"></script>

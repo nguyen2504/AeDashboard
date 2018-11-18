@@ -42,8 +42,14 @@ namespace AeDashboard.Web.Controllers
                 var entity = model.MapTo<CalendarViewDto>();
                 _calendarViewService.Create(entity);
             }
-          
-            return View("Create",model);
+            ViewBag.mes = "Thanh cong";
+            return View("Index");
+        }
+        [HttpGet]
+        public JsonResult GetAll()
+        {
+            var list = _calendarViewService.GetAll();
+            return Json(list);
         }
         public IActionResult Edit()
         {

@@ -69,6 +69,53 @@
         var abp = abp || {};
         abp.appPath = '@ApplicationPath';
     </script>
+    <environment names="Development">
+        <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
+        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>*@
+        <script src="~/js/bs4/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
+        <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
+        <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
+        <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
+        <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
+        <script src="~/lib/jquery-slimscroll/jquery.slimscroll.js" asp-append-version="true"></script>
+        <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
+        <script src="~/lib/push.js/push.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
+        <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
+        <script src="~/js/admin.js" asp-append-version="true"></script>
+        <script src="~/js/main.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
+        <!--angularjs-->
+        <script src="~/js/angular-1.7.5/angular.js" asp-append-version="true"></script>
+        <script src="~/js/angular-1.7.5/angular-cookies.js" asp-append-version="true"></script>
+        <script src="~/js/angular-1.7.5/angular-route.js" asp-append-version="true"></script>
+        <script src="~/js/angular-1.7.5/angular-sanitize.js" asp-append-version="true"></script>
+        <script src="~/angular/app/app.js" asp-append-version="true"></script>
+        <script src="~/angular/home/home.js" asp-append-version="true"></script>
+        <script src="~/angular/factory/factory.js" asp-append-version="true"></script>
+        <script src="~/angular/directives/directive.js" asp-append-version="true"></script>
+        <!--end-->
+        <script src="~/js/lib/jquery.dataTables.min.js" asp-append-version="true"></script>
+        <script src="~/js/lib/angular-datatables.js" asp-append-version="true"></script>
+        <script src="~/js/js.cookie.js" asp-append-version="true"></script>
+        @if (CultureInfo.CurrentUICulture.Name != "en")
+        {
+            <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
+        }
+    </environment>
+
+    <environment names="Staging,Production">
+        <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
+    </environment>
 
 </head>
 <body class="@("theme-" + uiTheme)">
@@ -197,53 +244,6 @@
     </div>
 </section>
 
-<environment names="Development">
-    <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-    @*<script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>*@
-    <script src="~/js/bs4/bootstrap.min.js" asp-append-version="true"></script>
-    <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
-    <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
-    <script src="~/lib/toastr/toastr.js" asp-append-version="true"></script>
-    <script src="~/lib/sweetalert/dist/sweetalert.min.js" asp-append-version="true"></script>
-    <script src="~/lib/spin.js/spin.js" asp-append-version="true"></script>
-    <script src="~/lib/spin.js/jquery.spin.js" asp-append-version="true"></script>
-    <script src="~/lib/bootstrap-select/dist/js/bootstrap-select.js" asp-append-version="true"></script>
-    <script src="~/lib/jquery-slimscroll/jquery.slimscroll.js" asp-append-version="true"></script>
-    <script src="~/lib/Waves/dist/waves.js" asp-append-version="true"></script>
-    <script src="~/lib/push.js/push.js" asp-append-version="true"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/abp.js" asp-append-version="true"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.jquery.js" asp-append-version="true"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.toastr.js" asp-append-version="true"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.blockUI.js" asp-append-version="true"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.spin.js" asp-append-version="true"></script>
-    <script src="~/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js" asp-append-version="true"></script>
-    <script src="~/js/admin.js" asp-append-version="true"></script>
-    <script src="~/js/main.js" asp-append-version="true"></script>
-    <script src="~/view-resources/Views/Shared/_Layout.js" asp-append-version="true"></script>
-    <!--angularjs-->
-    <script src="~/js/angular-1.7.5/angular.js" asp-append-version="true"></script>
-    <script src="~/js/angular-1.7.5/angular-cookies.js" asp-append-version="true"></script>
-    <script src="~/js/angular-1.7.5/angular-route.js" asp-append-version="true"></script>
-    <script src="~/js/angular-1.7.5/angular-sanitize.js" asp-append-version="true"></script>
-    <script src="~/angular/app/app.js" asp-append-version="true"></script>
-    <script src="~/angular/home/home.js" asp-append-version="true"></script>
-    <script src="~/angular/factory/factory.js" asp-append-version="true"></script>
-    <script src="~/angular/directives/directive.js" asp-append-version="true"></script>
-    <!--end-->
-    <script src="~/js/lib/jquery.dataTables.min.js" asp-append-version="true"></script>
-    <script src="~/js/lib/angular-datatables.js" asp-append-version="true"></script>
-    <script src="~/js/js.cookie.js" asp-append-version="true"></script>
-    @if (CultureInfo.CurrentUICulture.Name != "en")
-    {
-        <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
-    }
-</environment>
-
-<environment names="Staging,Production">
-    <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
-</environment>
 
 <script>
     // Localizing momentjs
@@ -270,10 +270,10 @@
             $('.dropdown-menu').removeClass('show');
             $('.dropdown').removeClass('show');
         });
-        $('.ae-tb-body').hover(function() {
-            $('.ae-update').removeClass('show');
-            $(this).find('.ae-update').addClass('show');
-        });
+        $('.ae-tb-body').click(function() {
+            console.log('ae-tb-body');
+        })
+       
         //$('#BeginDate').val(new Date());
         //console.log( $('#BeginDate').val())
     })

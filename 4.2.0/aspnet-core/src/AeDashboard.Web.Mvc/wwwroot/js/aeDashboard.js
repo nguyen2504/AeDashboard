@@ -1,5 +1,7 @@
-//$(document).ready(function(){
-// var l=   $('.ae-flex-tb >span:first-child').length;
-//    console.log('l '+l);
-  
-//})
+(function ($) {
+    $('.ae-tb-body').hover(function () {
+        console.log('toiday');
+        $('.ae-update').removeClass('show');
+        $(this).find('.ae-update').addClass('show');
+    });
+})(jQuery);
