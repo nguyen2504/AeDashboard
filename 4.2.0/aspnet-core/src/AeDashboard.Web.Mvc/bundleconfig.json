@@ -147,5 +147,11 @@
     "inputFiles": [
       "wwwroot/view-resources/Views/Shared/Components/TenantChange/Default.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/CalendarView/calendar_view_ctrl.min.js",
+    "inputFiles": [
+      "wwwroot/angular/calendar_view_ctrl.js"
+    ]
   }
 ]

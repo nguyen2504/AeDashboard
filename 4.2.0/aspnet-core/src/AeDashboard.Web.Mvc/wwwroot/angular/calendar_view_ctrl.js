@@ -30,7 +30,18 @@
             //$('.ae-update').removeClass('show');
             //$(this).find('.ae-update').addClass('show');
         };
+        $scope.edit_caladarView = function (id) {
+            var url = "/Calendar/EditCalendarViewModal?id=" + id;
+            $http.get(url).then(function(e) {
+                //alert(e.data);
+                $('#editCalendarView div.modal-body').html(e.data);
+            });
+        }
 //-------------------------------------------//
+
+        //function edit_calendarView(parameters) {
+        //    var l = $('.edit-calendarview').
+        //}
         function getAll(parameters) {
             var url = "/Calendar/GetAll";
             $http.get(url).then(function(e) {

@@ -1,13 +1,10 @@
 ﻿@model AeDashboard.Web.Models.Calendar.CalendarViewModel
-@{ var now = DateTime.Today.ToString("yyyy-MM-dd") + "T" + DateTime.Now.ToString("s");}
+
 <form asp-action="Create" asp-controller="Calendar">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group form-float">
         <div class="form-line">
             <label asp-for="BeginDate" class="form-label"></label>
-            @*<input type="datetime" id="BeginDate" 
-             value="2018-06-12T19:33"
-                   min="2018-06-07T00:00" max="2018-06-14T00:00" name="BeginDate" required class="form-control">*@
             <input asp-for="BeginDate" value="@DateTime.Now.ToString("s")"  required class="form-control" type="datetime-local" />
             <span asp-validation-for="BeginDate" class="text-danger"></span>
         </div>

@@ -27,9 +27,10 @@ namespace AeDashboard.Calendar
             return dt;
         }
 
-        public Task<CalendarView> GetCalendarView(long id)
+        public async Task<CalendarView> GetCalendarView(long id)
         {
-            throw new NotImplementedException();
+            var dt = await _repository.FirstOrDefaultAsync((int) id);
+            return dt;
         }
 
         public bool Create(CalendarViewDto entity)
