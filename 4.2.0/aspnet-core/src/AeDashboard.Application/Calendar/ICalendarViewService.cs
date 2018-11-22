@@ -16,7 +16,7 @@ namespace AeDashboard.Calendar
      List<CalendarView> GetAll();
      Task<CalendarView> GetCalendarView(long id);
      bool Create(CalendarViewDto entity);
-     Task<string> Update(CalendarViewDto entity);
-     void Delete(CalendarViewDto entity);
+     Task<bool> Update(CalendarView entity);
+     void Delete(int id);
  }
 }

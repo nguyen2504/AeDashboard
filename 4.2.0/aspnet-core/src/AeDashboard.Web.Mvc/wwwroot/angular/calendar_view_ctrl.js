@@ -12,7 +12,7 @@
         activate();
 
         function activate() {
-
+            moment().locale("vi");
             getAll();
         }
         //============================
@@ -46,6 +46,11 @@
             var url = "/Calendar/GetAll";
             $http.get(url).then(function(e) {
                 $scope.getAll = e.data.result;
+                for (var i = 0; i < $scope.getAll.length; i++) {
+                    var day = $scope.getAll[i].day;
+                    $scope.getAll[i].day =' '+ moment().locale("vi").subtract(day, 'days').calendar().split('lúc')[0].split('at')[0];
+                }
+                console.log('now ' + moment().locale("vi").subtract(-1, 'days').calendar());
             });
 
         }

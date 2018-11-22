@@ -23,7 +23,7 @@ namespace AeDashboard.Calendar
       }
         public List<CalendarView> GetAll()
         {
-            var dt = _repository.GetAllList();
+            var dt = _repository.GetAllList().OrderByDescending(j =>j.EndDate).ToList();
             return dt;
         }
 
@@ -42,14 +42,22 @@ namespace AeDashboard.Calendar
             return true;
         }
 
-        public Task<string> Update(CalendarViewDto entity)
+        public async Task<bool> Update(CalendarView entity)
         {
-            throw new NotImplementedException();
+            try
+            {
+                await _repository.InsertOrUpdateAsync(entity);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
         }
 
-        public void Delete(CalendarViewDto entity)
+        public void Delete(int id)
         {
-            throw new NotImplementedException();
+          _repository.Delete(id);
         }
     }
 }

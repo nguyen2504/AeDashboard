@@ -19,6 +19,6 @@ namespace AeDashboard.Calendar.Dto
         [Required]
         public string Users { get; set; }
         public  string Place { get; set; }
-      
+        public  int Day { get; set; }
     }
 }

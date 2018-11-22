@@ -20,5 +20,6 @@ namespace AeDashboard.Calendar
         public string Place { get; set; }
         [Required]
         public long UserId { get; set; }
+        public int Day { get; set; }
     }
 }

@@ -33,13 +33,14 @@ namespace AeDashboard.Web.Controllers
             return View(m);
         }
         [HttpPost]
-        public IActionResult Create(CalendarViewModel model)
+        public IActionResult Create(CalendarViewDto model)
         {
             if(model.BeginDate== new DateTime())
             model.BeginDate = DateTime.Now;
             if (ModelState.IsValid)
             {
                 var entity = model.MapTo<CalendarViewDto>();
+
                 _calendarViewService.Create(entity);
             }
             ViewBag.mes = "Thanh cong";
@@ -48,7 +49,11 @@ namespace AeDashboard.Web.Controllers
         [HttpGet]
         public JsonResult GetAll()
         {
-            var list = _calendarViewService.GetAll();
+           var list = _calendarViewService.GetAll();
+            foreach (var q in list)
+            {
+                q.Day = (DateTime.Now - q.BeginDate).Days;
+            }
             return Json(list);
         }
         public IActionResult Edit()
@@ -56,9 +61,10 @@ namespace AeDashboard.Web.Controllers
             return View();
         }
         [HttpPost]
-        public IActionResult Edit(CalendarViewModel model, string id)
+        public IActionResult Edit(CalendarView entity)
         {
-            return View();
+            _calendarViewService.Update(entity);
+            return View("Index");
         }
 
     
