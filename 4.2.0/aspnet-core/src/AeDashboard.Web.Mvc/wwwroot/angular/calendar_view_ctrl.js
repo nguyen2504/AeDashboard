@@ -13,7 +13,8 @@
 
         function activate() {
             moment().locale("vi");
-            getAll();
+            getAll(0,0);
+            loadScroll();
         }
         //============================
         $scope.hoverIn = function () {
@@ -40,7 +41,7 @@
         $scope.delete_item = function (id) {
            var url = "/Calendar/Delete?id=" + id;
             $http.get(url).then(function (e) {
-                $window.location.reload();
+                reloadHome();
             });
         };
 
@@ -48,18 +49,41 @@
             $window.location.reload();
         }
 //-------------------------------------------//
-
+        function loadScroll() {
+            var take = 10;
+            var skip = 0;
+            try {
+                skip = $scope.getAll.length + 1;
+            } catch (e) {
+                skip = 0;
+            } 
+            $(window).scroll(function () {
+                if ($(window).scrollTop() == $(document).height() - $(window).height()) {
+                    // ajax call get data from server and append to the div
+                    console.log(skip + ' ' + take);
+                    getAll(skip, take);
+                }
+            });
+        }
         //function edit_calendarView(parameters) {
         //    var l = $('.edit-calendarview').
         //}
-        function getAll(parameters) {
+        function getAll(skip,take) {
             var url = "/Calendar/GetLoads";
             var loads = {
-                skip:0,
-                load :0
-            }
-            $http.get(url, loads).then(function(e) {
-                $scope.getAll = e.data.result;
+                Skip: skip,
+                Take: take
+            };
+            $http.get(url, loads).then(function (e) {
+                if (take == 0) {
+                    $scope.getAll = e.data.result;
+                } else {
+                    //console.log('toi o day');
+                    for (var j = 0; j < e.data.result.length; j++) {
+                        $scope.getAll.push(e.data.result[j]);
+                       
+                    }
+                }
                 if ($scope.getAll.length > 0) {
                     for (var i = 0; i < $scope.getAll.length; i++) {
                         var day = $scope.getAll[i].day;
