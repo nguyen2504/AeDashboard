@@ -4,23 +4,21 @@ using System.ComponentModel.DataAnnotations;
 using System.Text;
 using Abp.Domain.Entities;
 
-namespace AeDashboard.Calendar
+namespace AeDashboard.Document
 {
-   public class CalendarView:Entity<int>
+  public  class Document:Entity<int>
     {
         [Required]
         public DateTime BeginDate { get; set; }
         [DataType(DataType.Date)]
         public DateTime EndDate { get; set; }
         [Required]
-        public string Work { get; set; }
-        public string Admin { get; set; }
+        public string Content { get; set; }
         [Required]
-        public string Users { get; set; }
-        public string Place { get; set; }
-        [Required]
-        public long UserId { get; set; }
+        public string Url { get; set; }
         public int Day { get; set; }
-        public  int Weekend { get; set; }
+        public int Weekend { get; set; }
+        public long UserId { get; set; }
+
     }
 }

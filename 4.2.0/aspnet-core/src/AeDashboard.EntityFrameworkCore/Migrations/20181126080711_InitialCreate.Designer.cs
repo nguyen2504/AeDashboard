@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AeDashboard.Migrations
 {
     [DbContext(typeof(AeDashboardDbContext))]
-    [Migration("20181117122424_InitialCreate")]
+    [Migration("20181126080711_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1020,6 +1020,8 @@ namespace AeDashboard.Migrations
 
                     b.Property<DateTime>("BeginDate");
 
+                    b.Property<int>("Day");
+
                     b.Property<DateTime>("EndDate");
 
                     b.Property<string>("Place");
@@ -1029,12 +1031,41 @@ namespace AeDashboard.Migrations
                     b.Property<string>("Users")
                         .IsRequired();
 
+                    b.Property<int>("Weekend");
+
                     b.Property<string>("Work")
                         .IsRequired();
 
                     b.HasKey("Id");
 
                     b.ToTable("CalendarView");
+                });
+
+            modelBuilder.Entity("AeDashboard.Document.Document", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<DateTime>("BeginDate");
+
+                    b.Property<string>("Content")
+                        .IsRequired();
+
+                    b.Property<int>("Day");
+
+                    b.Property<DateTime>("EndDate");
+
+                    b.Property<string>("Url")
+                        .IsRequired();
+
+                    b.Property<long>("UserId");
+
+                    b.Property<int>("Weekend");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("AeDashboard.MultiTenancy.Tenant", b =>

@@ -7,6 +7,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using AeDashboard.Calendar.Dto;
+using AeDashboard.Fn;
 using AeDashboard.GetUser;
 using AutoMapper;
 
@@ -16,18 +17,34 @@ namespace AeDashboard.Calendar
   {
       private readonly IGetUserService _getUserService;
       private readonly IRepository<CalendarView> _repository;
-        public CalendarViewService(IGetUserService getUserService, IRepository<CalendarView> repository)
+      private readonly IFn _fn;
+
+      
+        public CalendarViewService(IGetUserService getUserService, IRepository<CalendarView> repository, IFn fn)
       {
           _getUserService = getUserService;
           _repository = repository;
+          _fn = fn;
       }
         public List<CalendarView> GetAll()
         {
-            var dt = _repository.GetAllList().OrderByDescending(j =>j.EndDate).ToList();
+            var dt = _repository.GetAllList().OrderByDescending(j =>j.BeginDate).ToList();
             return dt;
         }
 
-        public async Task<CalendarView> GetCalendarView(long id)
+      public List<CalendarView> GetDays()
+      {
+          var dt = _repository.GetAllList().Where(j=>j.BeginDate>= DateTime.Today && j.EndDate<= DateTime.Today).OrderByDescending(j => j.BeginDate).ToList();
+          return dt;
+        }
+
+      public List<CalendarView> GetLoad(int skip, int take)
+      {
+          var dt = _repository.GetAllList().Skip(skip).Take(take).OrderByDescending(j => j.BeginDate).ToList();
+          return dt;
+      }
+
+      public async Task<CalendarView> GetCalendarView(long id)
         {
             var dt = await _repository.FirstOrDefaultAsync((int) id);
             return dt;
@@ -38,6 +55,7 @@ namespace AeDashboard.Calendar
             
             var dt = entity.MapTo<CalendarView>();
             dt.UserId = _getUserService.GetIdUser();
+            dt.Weekend = _fn.GetWeekOrderInYear(entity.BeginDate);
             _repository.Insert(dt);
             return true;
         }
@@ -46,6 +64,8 @@ namespace AeDashboard.Calendar
         {
             try
             {
+                entity.Weekend = _fn.GetWeekOrderInYear(entity.BeginDate);
+                entity.UserId = _getUserService.GetIdUser();
                 await _repository.InsertOrUpdateAsync(entity);
                 return true;
             }

@@ -14,7 +14,9 @@ namespace AeDashboard.Calendar
  public   interface ICalendarViewService : IDomainService
  {
      List<CalendarView> GetAll();
-     Task<CalendarView> GetCalendarView(long id);
+     List<CalendarView> GetDays();
+        List<CalendarView> GetLoad(int skip, int take);
+        Task<CalendarView> GetCalendarView(long id);
      bool Create(CalendarViewDto entity);
      Task<bool> Update(CalendarView entity);
      void Delete(int id);

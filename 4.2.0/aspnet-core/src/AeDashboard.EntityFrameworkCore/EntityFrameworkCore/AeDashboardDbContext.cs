@@ -18,5 +18,6 @@ namespace AeDashboard.EntityFrameworkCore
         {
         }
         public DbSet<CalendarView> CalendarView { get; set; }
+        public DbSet<Document.Document> Documents { get; set; }
     }
 }

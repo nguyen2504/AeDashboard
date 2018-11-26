@@ -7,6 +7,7 @@ using AeDashboard.Calendar;
 using AeDashboard.Calendar.Dto;
 using AeDashboard.Controllers;
 using AeDashboard.Web.Models.Calendar;
+using AeDashboard.Web.Models.Loads;
 using Microsoft.AspNetCore.Mvc;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -29,7 +30,7 @@ namespace AeDashboard.Web.Controllers
 
         public IActionResult Create()
         {
-            var m = new CalendarViewModel() {BeginDate = DateTime.Now};
+            var m = new CalendarViewDto() {BeginDate = DateTime.Now};
             return View(m);
         }
         [HttpPost]
@@ -39,12 +40,17 @@ namespace AeDashboard.Web.Controllers
             model.BeginDate = DateTime.Now;
             if (ModelState.IsValid)
             {
-                var entity = model.MapTo<CalendarViewDto>();
+              var entity = model.MapTo<CalendarViewDto>();
 
                 _calendarViewService.Create(entity);
+                ViewBag.mes = "Thanh cong";
+                return RedirectToAction("Index", "Calendar");
             }
-            ViewBag.mes = "Thanh cong";
-            return View("Index");
+            else
+            {
+                return RedirectToAction("Index", "Calendar");
+            }
+           
         }
         [HttpGet]
         public JsonResult GetAll()
@@ -52,9 +58,15 @@ namespace AeDashboard.Web.Controllers
            var list = _calendarViewService.GetAll();
             foreach (var q in list)
             {
-                q.Day = (DateTime.Now - q.BeginDate).Days;
+                q.Day = (int)(DateTime.Now - q.BeginDate).TotalHours;
             }
             return Json(list);
+        }
+
+        [HttpGet]
+        public JsonResult GetLoads(Loads t)
+        {
+            return Json(t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take));
         }
         public IActionResult Edit()
         {
@@ -63,10 +75,18 @@ namespace AeDashboard.Web.Controllers
         [HttpPost]
         public IActionResult Edit(CalendarView entity)
         {
+            entity.EndDate = DateTime.Now;
             _calendarViewService.Update(entity);
-            return View("Index");
+            ViewBag.mes = "Cập Nhật Thành Công";
+            return RedirectToAction("Index","Calendar");
         }
 
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            _calendarViewService.Delete(id);
+            return Json("Index");
+        }
     
         public async Task<ActionResult> EditCalendarViewModal(long id)
         {
