@@ -22,29 +22,36 @@
     </div>
     <div class="ae-calendar-table">
         <div class="ae-tb-head">
-            <div class="tb-head-cell" ><span>#</span></div>
-            <div class="tb-head-cell"><span>Giờ</span>
+            <div class="tb-head-cell"><span>#</span></div>
+            <div class="tb-head-cell">
+                <span>Giờ</span>
             </div>
-            <div class="tb-head-cell"><span>Nội Dung Công Việc</span>
+            <div class="tb-head-cell">
+                <span>Nội Dung Công Việc</span>
             </div>
-            <div class="tb-head-cell"><span>Chủ Trì</span>
+            <div class="tb-head-cell">
+                <span>Chủ Trì</span>
             </div>
-            <div class="tb-head-cell"><span>Thực Hiện</span>
+            <div class="tb-head-cell">
+                <span>Thực Hiện</span>
             </div>
-            <div class="tb-head-cell"><span>Địa Diểm</span>
+            <div class="tb-head-cell">
+                <span>Địa Diểm</span>
             </div>
         </div>
         <div class="ae-tb-body border-left border-top border-right" style="padding: 5px">
             <div class="tb-head-cell"><span></span></div>
-            <div class="tb-head-cell"><span>Nội Dung Công Việc</span>
+            <div class="tb-head-cell">
+                <span>Nội Dung Công Việc</span>
             </div>
         </div>
+        @*{{getAll[0].calendarViews}}*@
 
-
-        <div ng-if ="getAll.length>0" class="ae-tb-body border-left border-top border-right" ng-repeat="q in getAll" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-            <div class="tb-head-cell" style="width: 50px!important">
-                <div class="ae-flex-tb style-time" >
-                    <span class="ae-fl-grow style-time d-sm-ae-none" >{{$index}}</span>
+        <div ng-if="getAll.length>0" class="ae-tb-body border-left border-top border-right" ng-repeat="q in getAll" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
+            {{q.calendarViews}}
+            <div class="tb-head-cell" style="width: 50px !important">
+                <div class="ae-flex-tb style-time">
+                    <span class="ae-fl-grow style-time d-sm-ae-none">{{$index}}</span>
                 </div>
             </div>
             <div class="tb-head-cell style-time">
@@ -85,7 +92,7 @@
         <div ng-if="getAll.length <= 0" style="margin: auto;text-align: center">
             Không Có Dữ Liệu Hôm Nay
         </div>
-    
+
         <div class="ae-body-main-edit"></div>
     </div>
 </div>

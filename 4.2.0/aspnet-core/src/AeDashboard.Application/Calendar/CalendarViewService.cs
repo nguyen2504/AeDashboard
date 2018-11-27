@@ -83,5 +83,44 @@ namespace AeDashboard.Calendar
         {
           _repository.Delete(id);
         }
-    }
+
+      public int MinWeekend()
+      {
+          try
+          {
+              var min = _repository.GetAllList().Min(q => q.Weekend);
+              return min;
+          }
+          catch (Exception e)
+          {
+              return 0;
+          }
+      }
+
+      public int MaxWeekend()
+      {
+          try
+          {
+              var min = _repository.GetAllList().Max(q => q.Weekend);
+              return min;
+          }
+          catch (Exception e)
+          {
+              return 0;
+          }
+        }
+
+      public List<GroupByWeek> LoadsGroupByWeeks(int skip, int take)
+      {
+          var load = GetLoad(skip, take);
+            var ws = new List<GroupByWeek>();
+          for (int i = load.Max(j=>j.Weekend); i >= load.Min(j => j.Weekend); i--)
+          {
+              var items = _repository.GetAllList().Where(j => j.Weekend.Equals(i)).ToList();
+                var  obj = new GroupByWeek(){Week = i,CalendarViews =  items};
+                ws.Add(obj);
+          }
+          return ws;
+      }
+  }
 }

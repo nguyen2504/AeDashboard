@@ -86,8 +86,9 @@ namespace AeDashboard.Web.Controllers
         [HttpGet]
         public JsonResult GetLoads(Loads t)
         {
-            var kt = t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take);
-            return Json(kt);
+            var ch = _calendarViewService.LoadsGroupByWeeks(t.Skip, t.Take);
+            //var kt = t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take);
+            return Json(ch);
         }
         public IActionResult Edit()
         {

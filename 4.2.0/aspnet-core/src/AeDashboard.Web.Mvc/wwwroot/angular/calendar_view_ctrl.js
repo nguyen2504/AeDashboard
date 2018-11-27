@@ -85,7 +85,7 @@
                     $scope.getAll = e.data.result;
                     localStorage.setItem("count", $scope.getAll.length);
                 } else {
-                  for (var j = 0; j < e.data.result.length; j++) {
+                    for (var j = 0; j < e.data.result.length; j++) {
                         $scope.getAll.push(e.data.result[j]);
                     }
                     localStorage.setItem("count", $scope.getAll.length);

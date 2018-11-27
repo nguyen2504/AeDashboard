@@ -20,5 +20,8 @@ namespace AeDashboard.Calendar
      bool Create(CalendarViewDto entity);
      Task<bool> Update(CalendarView entity);
      void Delete(int id);
- }
+     int MinWeekend();
+     int MaxWeekend();
+        List<GroupByWeek> LoadsGroupByWeeks(int skip, int take);
+    }
 }
