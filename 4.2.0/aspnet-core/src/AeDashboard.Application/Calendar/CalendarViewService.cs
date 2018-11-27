@@ -34,13 +34,17 @@ namespace AeDashboard.Calendar
 
       public List<CalendarView> GetDays()
       {
-          var dt = _repository.GetAllList().Where(j=>j.BeginDate>= DateTime.Today && j.EndDate<= DateTime.Today).OrderByDescending(j => j.BeginDate).ToList();
+          var dt = _repository.GetAllList().Where(j=>j.BeginDate>= DateTime.Today && j.EndDate<= DateTime.Today).OrderByDescending(j => j.Weekend).ToList();
           return dt;
         }
 
       public List<CalendarView> GetLoad(int skip, int take)
       {
-          var dt = _repository.GetAllList().Skip(skip).Take(take).OrderByDescending(j => j.BeginDate).ToList();
+          var dt = _repository.GetAllList().OrderByDescending(j => j.Weekend).Skip(skip).Take(take).ToList();
+          foreach (var q in dt)
+          {
+              q.Day = (int)(DateTime.Today.Date.Subtract(q.BeginDate.Date)).Days;
+          }
           return dt;
       }
 

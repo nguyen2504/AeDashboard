@@ -5,7 +5,7 @@
 }
 
 @ViewBag.mes
-
+<input type="hidden" class="alls-calendar-view"/>
 <div class="main-ae">
     <div class="justify-content-end align-items-center align-content-stretch main-head-1 box-flex">
         <div role="group" class="btn-group btn-gr-calendar">
@@ -50,7 +50,7 @@
             <div class="tb-head-cell style-time">
                 <div class="ae-flex-tb style-time">
                     <span class="ae-fl-title style-time">Giờ</span>
-                    <span class="ae-fl-grow style-time">{{q.beginDate|date:'hh:mm a'}}({{q.day}})</span>
+                    <span class="ae-fl-grow style-time">{{q.beginDate|date:'hh:mm a'}}({{q.weekend}})</span>
                 </div>
             </div>
             <div class="tb-head-cell">
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-        <div ng-if="getAll.length <= 0" style="margin: auto">
+        <div ng-if="getAll.length <= 0" style="margin: auto;text-align: center">
             Không Có Dữ Liệu Hôm Nay
         </div>
     

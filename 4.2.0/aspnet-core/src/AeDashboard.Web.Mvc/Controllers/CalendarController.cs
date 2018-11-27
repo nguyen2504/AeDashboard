@@ -25,6 +25,26 @@ namespace AeDashboard.Web.Controllers
         // GET: /<controller>/
         public IActionResult Index()
         {
+
+            if(_calendarViewService.GetAll().Count<5)
+            {
+                Random r = new Random(12);
+                for (int i = 0; i < 100; i++)
+                {
+                    var t = DateTime.Today.AddDays(-i).AddHours(r.Next(0,23));
+                    var item = new CalendarViewDto()
+                    {
+                        Admin = "admin " + i,
+                        BeginDate = t,
+                        Day = 0,
+                        EndDate = DateTime.Today,
+                        Users = "user " + i,
+                        Work = "work " + i,
+                        Place = "Quan " + i
+                    };
+                    _calendarViewService.Create(item);
+                }
+            }
             return View();
         }
 
@@ -66,7 +86,8 @@ namespace AeDashboard.Web.Controllers
         [HttpGet]
         public JsonResult GetLoads(Loads t)
         {
-            return Json(t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take));
+            var kt = t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take);
+            return Json(kt);
         }
         public IActionResult Edit()
         {
