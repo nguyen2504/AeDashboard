@@ -15,13 +15,16 @@ namespace AeDashboard.Calendar
  {
      List<CalendarView> GetAll();
      List<CalendarView> GetDays();
-        List<CalendarView> GetLoad(int skip, int take);
-        Task<CalendarView> GetCalendarView(long id);
+     List<CalendarView> GetLoad(int skip, int take);
+     Task<CalendarView> GetCalendarView(long id);
      bool Create(CalendarViewDto entity);
      Task<bool> Update(CalendarView entity);
      void Delete(int id);
      int MinWeekend();
      int MaxWeekend();
-        List<GroupByWeek> LoadsGroupByWeeks(int skip, int take);
+      //List<GroupByWeek> LoadsGroupByWeeks(int skip, int take);
+     Task<List<GroupByDate>> GetGroupByDates(int skip, int take);
+        Task<List<GroupByDate>> GetGroupByDates(int skip, int take,DateTime date);
+        Task<List<GroupByDate>> GetGroupByDates(int skip, int take,int week);
     }
 }

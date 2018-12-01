@@ -7,6 +7,6 @@ namespace AeDashboard.Calendar.Dto
   public  class GroupByWeek
     {
         public  int Week { get; set; }
-        public List<CalendarView> CalendarViews { get; set; }
+        public List<GroupByDate> CalendarViews { get; set; }
     }
 }

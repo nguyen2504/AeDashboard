@@ -110,17 +110,44 @@ namespace AeDashboard.Calendar
           }
         }
 
-      public List<GroupByWeek> LoadsGroupByWeeks(int skip, int take)
-      {
-          var load = GetLoad(skip, take);
-            var ws = new List<GroupByWeek>();
-          for (int i = load.Max(j=>j.Weekend); i >= load.Min(j => j.Weekend); i--)
-          {
-              var items = _repository.GetAllList().Where(j => j.Weekend.Equals(i)).ToList();
-                var  obj = new GroupByWeek(){Week = i,CalendarViews =  items};
-                ws.Add(obj);
-          }
-          return ws;
-      }
-  }
+        public  Task<List<GroupByDate>> GetGroupByDates(int skip, int take)
+        {
+            var l =  _repository.GetAllListAsync().Result.OrderByDescending(j => j.Weekend).Skip(skip).Take(take).ToList();
+            foreach (var q in l)
+            {
+                q.Day = (int)(DateTime.Today.Date.Subtract(q.BeginDate.Date)).Days;
+            }
+            var result = new List<GroupByDate>();
+            var dates = l.Select(j => j.BeginDate.Date).Distinct();
+            foreach (var q in dates)
+            {
+                
+            }
+          
+            return l;
+        }
+
+        public Task<List<GroupByDate>> GetGroupByDates(int skip, int take, DateTime date)
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<List<GroupByDate>> GetGroupByDates(int skip, int take, int week)
+        {
+            throw new NotImplementedException();
+        }
+
+        //public List<GroupByWeek> LoadsGroupByWeeks(int skip, int take)
+        //{
+        //    var load = GetLoad(skip, take);
+        //     var ws = new List<GroupByWeek>();
+        //    for (int i = load.Max(j=>j.Weekend); i >= load.Min(j => j.Weekend); i--)
+        //    {
+        //        var items = _repository.GetAllList().Where(j => j.Weekend.Equals(i)).ToList();
+        //          var  obj = new GroupByWeek(){Week = i,CalendarViews =  items};
+        //          ws.Add(obj);
+        //    }
+        //    return ws;
+        //}
+    }
 }
