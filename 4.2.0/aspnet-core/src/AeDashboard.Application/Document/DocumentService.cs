@@ -62,5 +62,18 @@ namespace AeDashboard.Document
            await _repository.DeleteAsync(id);
             return true;
         }
+
+        public IList<Document> Search(string name)
+        {
+            try
+            {
+                var orderByDescending = _repository.GetAllList().FindAll(j=>j.Author.StartsWith(name) || j.Content.StartsWith(name)).OrderByDescending(j => j.BeginDate).ToList();
+                return orderByDescending;
+            }
+            catch (Exception e)
+            {
+                return new List<Document>();
+            }
+        }
     }
 }

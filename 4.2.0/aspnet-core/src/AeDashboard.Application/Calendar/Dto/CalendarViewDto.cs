@@ -21,5 +21,8 @@ namespace AeDashboard.Calendar.Dto
         public  string Place { get; set; }
         public  int Day { get; set; }
         public int Weekend { get; set; }
+        public bool IsAcive { get; set; }
+        public string Author { get; set; }
+
     }
 }

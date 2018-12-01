@@ -29,7 +29,7 @@ namespace AeDashboard.Web.Controllers
             if(_calendarViewService.GetAll().Count<5)
             {
                 Random r = new Random(12);
-                for (int i = 0; i < 100; i++)
+                for (int i = 1; i <= 1000; i++)
                 {
                     var t = DateTime.Today.AddDays(-i).AddHours(r.Next(0,23));
                     var item = new CalendarViewDto()
@@ -37,7 +37,7 @@ namespace AeDashboard.Web.Controllers
                         Admin = "admin " + i,
                         BeginDate = t,
                         Day = 0,
-                        EndDate = DateTime.Today,
+                        EndDate =t,
                         Users = "user " + i,
                         Work = "work " + i,
                         Place = "Quan " + i
@@ -86,9 +86,16 @@ namespace AeDashboard.Web.Controllers
         [HttpGet]
         public JsonResult GetLoads(Loads t)
         {
-            //var ch = _calendarViewService.LoadsGroupByWeeks(t.Skip, t.Take);
+            var skip = t.Skip;
+            var take = t.Take;
+             //var ch = _calendarViewService.LoadsGroupByWeeks(t.Skip, t.Take);
+             var dates = _calendarViewService.GetGroupByDates(skip, take);
+            var dates1 = _calendarViewService.GetGroupByDates(skip, take,DateTime.Today);
+            var weeks = _calendarViewService.GetGroupByDates(skip, take, 44);
+            var weeks1 = _calendarViewService.GetGroupByDates(skip, take, 43);
+
             var kt = t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take);
-            return Json(kt);
+            return Json(dates);
         }
         public IActionResult Edit()
         {

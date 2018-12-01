@@ -22,5 +22,8 @@ namespace AeDashboard.Calendar
         public long UserId { get; set; }
         public int Day { get; set; }
         public  int Weekend { get; set; }
+        public bool IsAcive { get; set; }
+        public string Author { get; set; }
+
     }
 }

@@ -20,5 +20,7 @@ namespace AeDashboard.Document.Dto
         public string Url { get; set; }
         public int Day { get; set; }
         public int Weekend { get; set; }
+        public bool IsActive { get; set; }
+        public string Author { get; set; }
     }
 }

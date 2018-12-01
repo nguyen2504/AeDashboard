@@ -22,9 +22,10 @@ namespace AeDashboard.Calendar
      void Delete(int id);
      int MinWeekend();
      int MaxWeekend();
-      //List<GroupByWeek> LoadsGroupByWeeks(int skip, int take);
-     Task<List<GroupByDate>> GetGroupByDates(int skip, int take);
-        Task<List<GroupByDate>> GetGroupByDates(int skip, int take,DateTime date);
-        Task<List<GroupByDate>> GetGroupByDates(int skip, int take,int week);
+        //List<GroupByWeek> LoadsGroupByWeeks(int skip, int take);
+     List<GroupByDate> GetGroupByDates(int skip, int take);
+     List<GroupByDate> GetGroupByDates(int skip, int take,DateTime date);
+     List<GroupByDate> GetGroupByDates(int skip, int take,int week);
+     List<GroupByDate> SearchGroupByDates(int skip, int take, string name);
     }
 }

@@ -110,7 +110,7 @@ namespace AeDashboard.Calendar
           }
         }
 
-        public  Task<List<GroupByDate>> GetGroupByDates(int skip, int take)
+        public List<GroupByDate> GetGroupByDates(int skip, int take)
         {
             var l =  _repository.GetAllListAsync().Result.OrderByDescending(j => j.Weekend).Skip(skip).Take(take).ToList();
             foreach (var q in l)
@@ -121,23 +121,75 @@ namespace AeDashboard.Calendar
             var dates = l.Select(j => j.BeginDate.Date).Distinct();
             foreach (var q in dates)
             {
-                
+                result.Add(new GroupByDate()
+                {
+                    Date = q.Date.Date,
+                    CalendarViews = l.FindAll(j=>j.BeginDate.Date.Equals(q.Date.Date))
+                });
             }
           
-            return l;
+            return result;
         }
 
-        public Task<List<GroupByDate>> GetGroupByDates(int skip, int take, DateTime date)
+        public List<GroupByDate> GetGroupByDates(int skip, int take, DateTime date)
         {
-            throw new NotImplementedException();
+            var l = _repository.GetAllListAsync().Result.Where(j=>j.BeginDate.Date <= date.Date).OrderByDescending(j => j.Weekend).Skip(skip).Take(take).ToList();
+            foreach (var q in l)
+            {
+                q.Day = (int)(DateTime.Today.Date.Subtract(q.BeginDate.Date)).Days;
+            }
+            var result = new List<GroupByDate>();
+            var dates = l.Select(j => j.BeginDate.Date).Distinct();
+            foreach (var q in dates)
+            {
+                result.Add(new GroupByDate()
+                {
+                    Date = q.Date.Date,
+                    CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
+                });
+            }
+         
+            return result;
         }
 
-        public Task<List<GroupByDate>> GetGroupByDates(int skip, int take, int week)
+        public List<GroupByDate> GetGroupByDates(int skip, int take, int week)
         {
-            throw new NotImplementedException();
+          
+            var result = new List<GroupByDate>();
+            var l = _repository.GetAllList().Where(j => j.Weekend <= week).OrderByDescending(j=>j.Weekend).Skip(skip).Take(take).ToList();
+            var dates = l.Select(j => j.BeginDate.Date).OrderByDescending(j=>j.Date).Distinct();
+            foreach (var q in dates)
+            {
+                result.Add(new GroupByDate()
+                {
+                    Date = q.Date.Date,
+                    CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
+                });
+            }
+            return result;
         }
 
-        //public List<GroupByWeek> LoadsGroupByWeeks(int skip, int take)
+      public List<GroupByDate> SearchGroupByDates(int skip, int take, string name)
+      {
+          var result = new List<GroupByDate>();
+          var l = _repository.GetAllList().Where(j => 
+          j.Author.StartsWith(name) 
+          || j.Admin.StartsWith(name)
+          ||j.Work.StartsWith(name)
+          || j.Place.StartsWith(name)).OrderByDescending(j => j.Weekend).Skip(skip).Take(take).ToList();
+          var dates = l.Select(j => j.BeginDate.Date).OrderByDescending(j => j.Date).Distinct();
+          foreach (var q in dates)
+          {
+              result.Add(new GroupByDate()
+              {
+                  Date = q.Date.Date,
+                  CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
+              });
+          }
+          return result;
+        }
+
+      //public List<GroupByWeek> LoadsGroupByWeeks(int skip, int take)
         //{
         //    var load = GetLoad(skip, take);
         //     var ws = new List<GroupByWeek>();
