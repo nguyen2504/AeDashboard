@@ -1,0 +1,18 @@
+@keyframes btns {
+  0% {
+    border:5px solid red;
+  }
+  25% {
+    width:25%;
+    border:10px solid red;
+  }
+  50% {
+    border:3px solid green;
+    width:0;
+  }
+  100% {
+    border:1px solid blue;
+    width:100%;
+  }
+}
+

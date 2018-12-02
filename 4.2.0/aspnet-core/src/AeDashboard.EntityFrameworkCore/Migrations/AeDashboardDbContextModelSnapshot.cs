@@ -1016,11 +1016,15 @@ namespace AeDashboard.Migrations
 
                     b.Property<string>("Admin");
 
+                    b.Property<string>("Author");
+
                     b.Property<DateTime>("BeginDate");
 
                     b.Property<int>("Day");
 
                     b.Property<DateTime>("EndDate");
+
+                    b.Property<bool>("IsAcive");
 
                     b.Property<string>("Place");
 
@@ -1045,6 +1049,8 @@ namespace AeDashboard.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Author");
+
                     b.Property<DateTime>("BeginDate");
 
                     b.Property<string>("Content")
@@ -1053,6 +1059,8 @@ namespace AeDashboard.Migrations
                     b.Property<int>("Day");
 
                     b.Property<DateTime>("EndDate");
+
+                    b.Property<bool>("IsActive");
 
                     b.Property<string>("Url")
                         .IsRequired();

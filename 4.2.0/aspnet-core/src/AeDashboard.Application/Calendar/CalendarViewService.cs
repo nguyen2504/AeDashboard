@@ -112,51 +112,43 @@ namespace AeDashboard.Calendar
 
         public List<GroupByDate> GetGroupByDates(int skip, int take)
         {
-            var l =  _repository.GetAllListAsync().Result.OrderByDescending(j => j.Weekend).Skip(skip).Take(take).ToList();
+            var l =  _repository.GetAllListAsync().Result.OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
             foreach (var q in l)
             {
                 q.Day = (int)(DateTime.Today.Date.Subtract(q.BeginDate.Date)).Days;
             }
-            var result = new List<GroupByDate>();
             var dates = l.Select(j => j.BeginDate.Date).Distinct();
-            foreach (var q in dates)
-            {
-                result.Add(new GroupByDate()
+
+            return dates.Select(q => new GroupByDate()
                 {
                     Date = q.Date.Date,
-                    CalendarViews = l.FindAll(j=>j.BeginDate.Date.Equals(q.Date.Date))
-                });
-            }
-          
-            return result;
+                    CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
+                })
+                .ToList();
         }
 
         public List<GroupByDate> GetGroupByDates(int skip, int take, DateTime date)
         {
-            var l = _repository.GetAllListAsync().Result.Where(j=>j.BeginDate.Date <= date.Date).OrderByDescending(j => j.Weekend).Skip(skip).Take(take).ToList();
+            var l = _repository.GetAllListAsync().Result.Where(j=>j.BeginDate.Date <= date.Date).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
             foreach (var q in l)
             {
                 q.Day = (int)(DateTime.Today.Date.Subtract(q.BeginDate.Date)).Days;
             }
-            var result = new List<GroupByDate>();
             var dates = l.Select(j => j.BeginDate.Date).Distinct();
-            foreach (var q in dates)
-            {
-                result.Add(new GroupByDate()
+
+            return dates.Select(q => new GroupByDate()
                 {
                     Date = q.Date.Date,
                     CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
-                });
-            }
-         
-            return result;
+                })
+                .ToList();
         }
 
         public List<GroupByDate> GetGroupByDates(int skip, int take, int week)
         {
           
             var result = new List<GroupByDate>();
-            var l = _repository.GetAllList().Where(j => j.Weekend <= week).OrderByDescending(j=>j.Weekend).Skip(skip).Take(take).ToList();
+            var l = _repository.GetAllList().Where(j => j.Weekend <= week && j.BeginDate.Date.Year==DateTime.Today.Year).OrderByDescending(j=>j.BeginDate).Skip(skip).Take(take).ToList();
             var dates = l.Select(j => j.BeginDate.Date).OrderByDescending(j=>j.Date).Distinct();
             foreach (var q in dates)
             {
@@ -176,7 +168,7 @@ namespace AeDashboard.Calendar
           j.Author.StartsWith(name) 
           || j.Admin.StartsWith(name)
           ||j.Work.StartsWith(name)
-          || j.Place.StartsWith(name)).OrderByDescending(j => j.Weekend).Skip(skip).Take(take).ToList();
+          || j.Place.StartsWith(name)).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
           var dates = l.Select(j => j.BeginDate.Date).OrderByDescending(j => j.Date).Distinct();
           foreach (var q in dates)
           {

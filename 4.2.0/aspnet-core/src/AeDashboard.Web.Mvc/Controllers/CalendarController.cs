@@ -88,13 +88,14 @@ namespace AeDashboard.Web.Controllers
         {
             var skip = t.Skip;
             var take = t.Take;
+        var tw =    DateTime.Today.DayOfWeek.ToString();
              //var ch = _calendarViewService.LoadsGroupByWeeks(t.Skip, t.Take);
              var dates = _calendarViewService.GetGroupByDates(skip, take);
-            var dates1 = _calendarViewService.GetGroupByDates(skip, take,DateTime.Today);
-            var weeks = _calendarViewService.GetGroupByDates(skip, take, 44);
-            var weeks1 = _calendarViewService.GetGroupByDates(skip, take, 43);
+            //var dates1 = _calendarViewService.GetGroupByDates(skip, take,DateTime.Today);
+            //var weeks = _calendarViewService.GetGroupByDates(skip, take, 44);
+            //var weeks1 = _calendarViewService.GetGroupByDates(skip, take, 43);
 
-            var kt = t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take);
+            //var kt = t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take);
             return Json(dates);
         }
         public IActionResult Edit()

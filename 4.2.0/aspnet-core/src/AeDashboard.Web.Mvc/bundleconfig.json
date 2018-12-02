@@ -1,5 +1,11 @@
 [
   {
+    "outputFileName": "wwwroot/view-resources/Views/_Bundles/calendar.css",
+    "inputFiles": [
+      "wwwroot/css/calendar/*.css"
+    ]
+  },
+  {
     "outputFileName": "wwwroot/view-resources/Views/_Bundles/account-layout.min.css",
     "inputFiles": [
       "wwwroot/fonts/roboto/roboto.css",

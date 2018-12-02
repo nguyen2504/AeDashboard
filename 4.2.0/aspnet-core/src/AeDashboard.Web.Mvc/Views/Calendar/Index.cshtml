@@ -3,9 +3,12 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-{{getAll}}
-@ViewBag.mes
+<link  href="~/view-resources/Views/_Bundles/calendar.css" type="text/css" rel="stylesheet"/>
 
+@ViewBag.mes
+<div style="background: white">
+    @await Html.PartialAsync("_List")
+</div>
 @*<input type="hidden" class="alls-calendar-view"/>*@
 @*<div class="main-ae">
         <div class="justify-content-end align-items-center align-content-stretch main-head-1 box-flex">
@@ -151,3 +154,4 @@
 
 
 <script src="~/js/aeDashboard.js" language="javascript"></script>
+<script type="text/javascript" src="~/js/calendar-view.js" language="javascript"></script>

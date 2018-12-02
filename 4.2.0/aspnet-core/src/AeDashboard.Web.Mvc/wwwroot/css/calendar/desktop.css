@@ -1,0 +1,126 @@
+@media (min-width: 768px) {
+  .table-Or-list {
+    display:table;
+    width:100%;
+    table-layout:fixed;
+    border-collapse:collapse;
+    padding:5px;
+    align-items:center;
+  }
+}
+
+@media (min-width: 768px) {
+  .table-head {
+    display:table-header-group;
+    border-collapse:collapse;
+    font-weight:600;
+    font-size:18px;
+  }
+}
+
+@media (min-width: 768px) {
+  .table-cell-or-item {
+    display:table-cell;
+    padding:5px;
+    margin:auto;
+    align-items:center;
+  }
+}
+
+@media (min-width: 768px) {
+  .table-cell-or-item.time {
+    width:60px;
+  }
+}
+
+@media (min-width: 768px) {
+  .table-row {
+    display:table-row;
+    padding:5px;
+    /*border-collapse:collapse;*/
+    transition:0.4s;
+    border:1px solid rgba(222,222,222,0.6);
+  }
+}
+
+@media (min-width: 768px) {
+  .table-cell-or-item.colspan {
+    display:none;
+    margin-top:-1px;
+    margin-bottom:-1px;
+    background:rgba(240,237,237,0.78);
+    text-transform:uppercase;
+    color:var(--indigo);
+    font-weight:600;
+  }
+}
+
+@media (min-width: 768px) {
+  .table-row:hover {
+    background:white;
+    box-shadow:0px 1px 7px 0px rgba(215,213,213,0.6);
+    /*cursor:pointer;*/
+  }
+}
+
+@media (min-width: 768px) {
+  .table-row > .table-cell-or-item:not(:last-child) {
+    /*border-right:1px solid rgba(222,222,222,0.6);*/
+  }
+}
+
+@media (min-width: 768px) {
+  .ae-work-time {
+    height:40px;
+    display:block;
+    font-weight:600;
+    font-size:20px;
+    color:var(--red);
+  }
+}
+
+@media (min-width: 768px) {
+  .table-row.content:hover > .table-cell-or-item > .ae-work-time {
+    color:var(--primary);
+  }
+}
+
+@media (min-width: 768px) {
+  .box-flex {
+    display:block;
+    position:relative;
+    transition:0.5s;
+  }
+}
+
+@media (min-width: 768px) {
+  .ae-list-btn.active {
+    display:block;
+    /*min-height:40px;*/
+    background:rgba(32,30,169,0.00);
+    position:absolute;
+    z-index:1;
+    width:100%;
+    /*animation:btns 0.5s;*/
+    /*animation-duration:4s;*/
+    /*transition:all 2s ease;*/
+  }
+}
+
+.ae-list-btn {
+  display:none;
+  transition:0.4s;
+  /*animation:btns 0.5s;*/
+  margin:auto;
+  text-align:right;
+}
+
+.ae-delete {
+  background-color:var(--danger);
+  width:80px;
+}
+
+.ae-add {
+  background:var(--cyan);
+}
+
