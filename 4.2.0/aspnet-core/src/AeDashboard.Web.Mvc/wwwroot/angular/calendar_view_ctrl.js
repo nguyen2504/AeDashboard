@@ -2,9 +2,9 @@
     'use strict';
  app.controller('ctrl', calendarViewCtrl);
 
-    calendarViewCtrl.$inject = ['$location', '$http', '$scope','$window'];
+    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window', 'factory'];
 
-    function calendarViewCtrl($location, $http, $scope, $window) {
+    function calendarViewCtrl($location, $http, $scope, $window, factory) {
         /* jshint validthis:true */
         var vm = this;
         $scope.getAll = [];
@@ -15,14 +15,19 @@
         function activate() {
             localStorage.removeItem('count');
             moment().locale("vi");
-            getAll(0,22);
+            getAll(0,32);
             loadScroll();
+          
+         
         }
         //============================
         $scope.hoverIn = function () {
             this.hoverEdit = 'show';
         };
-
+        $scope.formatDate = function (a) {
+            //console.log('f ' + factory.formatDate(a, 1));
+            return factory.formatDate(a, 1);
+        }
         $scope.hoverOut = function () {
             this.hoverEdit = 'hide';
         };
@@ -46,7 +51,14 @@
                 reloadHome();
             });
         };
-
+        $scope.showBtns = function ($event) {
+         
+            //console.log(angular.element($event.currentTarget).prop('offsetWidth'));
+            //var top = angular.element($event.currentTarget).prop('offsetTop')+1 ;        
+            //$('.ae-btns').addClass('active').css({ "top": top });
+            //var top = angular.element($event.target).prop('offsetTop');
+            //$('.ae-btns').css({ "top": top });
+        };
         function reloadHome() {
             $window.location.reload();
         }
@@ -54,11 +66,21 @@
         function loadScroll() {
           
             $(window).scroll(function () {
-                if ($(window).scrollTop() ==( $(document).height() - $(window).height())) {
-                    var take = 10;
+                var h = (($(document).height() - $(window).height())) - $(window).scrollTop();
+                //console.log('kk ' + h);
+                var check = false;
+                if (h >= 0 && h <= 9) check = true;
+                if (h >= 400 && h <= 410) check = true;
+                if (h >= 300 && h <= 310) check = true;
+                if (h >= 50 && h <= 60) check = true;
+                if (h >= 100 && h <= 110) check = true;
+                if (h >= 150 && h <= 160) check = true;
+                if (h >= 200 && h <= 210) check = true;
+                if (check) {
+                    var take = 5;
                     var skip = 0;
-                    var count = localStorage.getItem("count");
-                    console.log('count ' + localStorage.getItem("count"));
+                    //var count = localStorage.getItem("count");
+                    //console.log('count ' + localStorage.getItem("count"));
                     try {
                         skip = localStorage.getItem("count");
                     } catch (e) {
@@ -80,7 +102,7 @@
             };
 
             $http.get(url, { params: data}).then(function (e) {
-                console.log(JSON.stringify(e.data.result.length));
+                //console.log(JSON.stringify(e.data.result.length));
                 if (take == 0) {
                     $scope.getAll = e.data.result;
                     localStorage.setItem("count", $scope.getAll.length);
@@ -91,20 +113,11 @@
                     localStorage.setItem("count", $scope.getAll.length);
                     
                 }
-                if ($scope.getAll.length > 0) {
-                    for (var i = 0; i < $scope.getAll.length; i++) {
-                        var day = $scope.getAll[i].day;
-                        console.log('day ' + day);
-                        $scope.getAll[i].day = ' ' + moment().locale("vi").subtract(day, 'days').calendar().split('lúc')[0].split('at')[0];
-                      
-                    }
-                   
-                } else {
-                    localStorage.setItem('count',0);
-                    $('#myModal').modal();
-                }
               
-                //console.log('now ' + moment().locale("vi").subtract(-1, 'days').calendar());
+                setTimeout(function() {
+                    factory.setColspan();
+                }, 100);
+
             });
 
         }

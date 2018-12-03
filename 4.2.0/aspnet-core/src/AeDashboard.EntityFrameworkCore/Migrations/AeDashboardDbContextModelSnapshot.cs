@@ -1028,10 +1028,14 @@ namespace AeDashboard.Migrations
 
                     b.Property<string>("Place");
 
+                    b.Property<DateTime>("Time");
+
                     b.Property<long>("UserId");
 
                     b.Property<string>("Users")
                         .IsRequired();
+
+                    b.Property<string>("Weekdays");
 
                     b.Property<int>("Weekend");
 

@@ -139,6 +139,7 @@
     display:block;
     padding:5px 15px;
     text-transform:uppercase;
+    margin: auto
   }
 }
 
@@ -181,13 +182,14 @@
 
 @media (max-width: 575px) {
   .color-indigo {
-    color:rgba(240,15,164,0.38);
+      color:#f00fa4;
+    
   }
 }
 
 @media (max-width: 575px) {
   .box-flex_row > span {
-    color:rgb(145,145,145);
+    color:rgb(232, 231, 231);
   }
 }
 

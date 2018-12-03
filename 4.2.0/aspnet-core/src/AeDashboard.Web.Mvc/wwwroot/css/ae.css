@@ -23,3 +23,8 @@
         padding:2px 8px!important;
     }
 }
+.box-flex_row {
+    margin-bottom: auto !important;
+    display: block;
+    position: relative
+}

@@ -6,7 +6,8 @@ namespace AeDashboard.Calendar.Dto
 {
    public class GroupByDate
     {
-        public  DateTime Date { get; set; }
+        public  string Date { get; set; }
+        public string Weekdays { get; set; }
         public List<CalendarView> CalendarViews { get; set; }
     }
 }

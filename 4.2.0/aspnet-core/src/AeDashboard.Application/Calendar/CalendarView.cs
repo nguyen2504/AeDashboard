@@ -24,6 +24,8 @@ namespace AeDashboard.Calendar
         public  int Weekend { get; set; }
         public bool IsAcive { get; set; }
         public string Author { get; set; }
-
+        public string Weekdays { get; set; }
+        [DataType(DataType.Time)]
+        public DateTime Time { get; set; }
     }
 }

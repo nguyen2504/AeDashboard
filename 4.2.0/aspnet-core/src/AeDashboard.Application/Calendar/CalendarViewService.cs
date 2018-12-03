@@ -121,8 +121,9 @@ namespace AeDashboard.Calendar
 
             return dates.Select(q => new GroupByDate()
                 {
-                    Date = q.Date.Date,
-                    CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
+                    Date = q.Date.Date.ToShortDateString(),
+                    Weekdays = q.Date.Date.DayOfWeek.ToString(),
+                CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
                 })
                 .ToList();
         }
@@ -138,7 +139,8 @@ namespace AeDashboard.Calendar
 
             return dates.Select(q => new GroupByDate()
                 {
-                    Date = q.Date.Date,
+                    Date = q.Date.Date.ToShortDateString(),
+                    Weekdays = q.Date.Date.DayOfWeek.ToString(),
                     CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
                 })
                 .ToList();
@@ -154,7 +156,8 @@ namespace AeDashboard.Calendar
             {
                 result.Add(new GroupByDate()
                 {
-                    Date = q.Date.Date,
+                    Date = q.Date.Date.ToShortDateString(),
+                    Weekdays = q.Date.Date.DayOfWeek.ToString(),
                     CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
                 });
             }
@@ -174,7 +177,8 @@ namespace AeDashboard.Calendar
           {
               result.Add(new GroupByDate()
               {
-                  Date = q.Date.Date,
+                  Date = q.Date.Date.ToShortDateString(),
+                  Weekdays = q.Date.Date.DayOfWeek.ToString(),
                   CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
               });
           }

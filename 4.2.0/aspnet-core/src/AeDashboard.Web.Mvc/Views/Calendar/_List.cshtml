@@ -1,77 +1,113 @@
-﻿{{getAll[0].calendarViews}}
-
-<div class="table-Or-list" ng-repeat="x in getAll">
-    <div class="table-head" ng-if="$index==0">
+﻿@*{{getAll[0]}}*@
+@*<div class="ae-list-btn active">
+    <div>
+        <div class="btn-group" role="group"><button class="btn btn-primary ae-add" type="button">Thêm</button><button class="btn btn-primary ae-edit" type="button">Cập Nhật</button><button class="btn btn-primary ae-delete" type="button">Xóa</button></div>
+    </div>
+</div>*@
+<div class="ae-btns">
+    <div style="display: flex;align-items: center">
+        <div class="btn-group" role="group">
+            <button class="btn btn-primary ae-add  waves-effect" type="button">Thêm</button>
+            <button class="btn btn-primary ae-edit  waves-effect" type="button">Cập Nhật</button>
+            <button class="btn btn-primary ae-delete  waves-effect" type="button">Xóa</button>
+        </div>
+    </div>
+</div>
+<div class="table-Or-list">
+    <div class="table-head">
         <div class="table-cell-or-item time"><span>Giờ</span></div>
         <div class="table-cell-or-item"><span>Nội Dung</span></div>
         <div class="table-cell-or-item"><span>Chủ Trì</span></div>
         <div class="table-cell-or-item"><span>Thành Viên</span></div>
         <div class="table-cell-or-item"><span>Địa Điểm</span></div>
     </div>
-    <div class="table-row date">
-        <div class="table-cell-or-item colspan"><span class="time-show-mb">{{x["date"]}}</span></div>
-    </div>
-    @*{{x.calendarViews}}*@
-    <div class="table-row content" ng-repeat="q in x.calendarViews">
-        <div class="table-cell-or-item">
-            <span class="ae-work-time"> {{q["beginDate"]}}</span>
+
+    <div class="table-body" ng-repeat="x in getAll" >
+        <div class="table-row date">
+            <div class="table-cell-or-item colspan"><span class="time-show-mb">{{x["weekdays"]}}&nbsp;&nbsp;({{x.date}})</span></div>
         </div>
-        <div class="table-cell-or-item right1">
-            <div class="box-flex">
-                <div class="basic-item"><span>Giờ</span></div>
-                <div class="grow-1">
-                    {{x.calendarViews.beginDate|date:'hh:mm a'}}
+        <div class="table-row content" ng-repeat="q in x.calendarViews" ng-click="showBtns($event)">
+            <div class="table-cell-or-item">
+                <span class="ae-work-time"> {{formatDate(q["beginDate"])}}</span>
+            </div>
+            @*<div class="table-cell-or-item right1">
+                    <div class="box-flex">
+                        <div class="basic-item"><span class="d-none_sm">Giờ</span></div>
+                        <div class="grow-1">
+                            {{formatDate(q["beginDate"])}}
+                        </div>
+                    </div>
+                </div>*@
+            <div class="table-cell-or-item right1">
+                <div class="box-flex">
+                    <div class="basic-item">
+                        <span class="d-none_sm">Công Việc</span>
+                    </div>
+                    <div class="grow-1">
+                        <p class="box-flex_row">
+                            <i class="material-icons icon-show-mb color-indigo">work</i>
+                            <span class="ae-content_a">{{q.work}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="table-cell-or-item right2">
+                <div class="box-flex">
+                    <div class="basic-item">
+                        <span class="d-none_sm">Chủ Trì</span>
+                    </div>
+                    <div class="grow-1">
+                        <p class="box-flex_row">
+                            <i class="material-icons icon-show-mb color-indigo">perm_identity</i>
+                            <span class="ae-content_a">{{q.admin}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="table-cell-or-item right3">
+                <div class="box-flex">
+                    <div class="basic-item">
+                        <span class="d-none_sm">Thành Viên</span>
+                    </div>
+                    <div class="grow-1">
+                        <p class="box-flex_row">
+                            <i class="material-icons icon-show-mb color-indigo">people_outline</i>
+                            <span class="ae-content_a">{{q.users}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="table-cell-or-item right4">
+                <div class="box-flex">
+                    <div class="basic-item">
+                        <span class="d-none_sm">Địa Điểm</span>
+                    </div>
+                    <div class="grow-1">
+                        <div class="box-flex_row">
+                            <i class="material-icons icon-show-mb color-indigo">place</i>
+                            <span>{{q.place}}</span>
+                            <div style="position: absolute; top: -5px;right: 0">
+                                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float" >
+                                    <i class="material-icons">add</i>
+                                </button>
+                                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float" >
+                                    <i class="material-icons">add</i>
+                                </button>
+                            </div>
+
+                            @*<div class="ae-btns">
+                                <div style="display: flex;align-items: center">
+                                    <div class="btn-group" role="group">
+                                        <button class="btn btn-primary ae-add  waves-effect" type="button">Thêm</button>
+                                        <button class="btn btn-primary ae-edit  waves-effect" type="button">Cập Nhật</button>
+                                        <button class="btn btn-primary ae-delete  waves-effect" type="button">Xóa</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>*@
+                    </div>
                 </div>
             </div>
         </div>
-        <div class="table-cell-or-item right2">
-            <div class="box-flex">
-                <div class="basic-item"><span class="d-none_sm">Công Việc</span></div>
-                <div class="grow-1">
-                    <p class="box-flex_row">
-                        <i class="material-icons icon-show-mb color-indigo">work</i>
-                        <span class="ae-content_a">{{x.calendarViews.work}}</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="table-cell-or-item right2">
-            <div class="box-flex">
-                <div class="basic-item"><span class="d-none_sm">Chủ Trì</span></div>
-                <div class="grow-1">
-                    <p class="box-flex_row">
-                        <i class="material-icons icon-show-mb color-indigo">perm_identity</i>
-                        <span class="ae-content_a">{{x.calendarViews.work}}</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="table-cell-or-item right3">
-            <div class="box-flex">
-                <div class="basic-item"><span class="d-none_sm">Thành Viên</span></div>
-                <div class="grow-1">
-                    <p class="box-flex_row">
-                        <i class="material-icons icon-show-mb color-indigo">people_outline</i>
-                        <span class="ae-content_a">{{x.calendarViews.beginDate}}</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="table-cell-or-item right4">
-            <div class="box-flex">
-                <div class="basic-item"><span class="d-none_sm">Địa Điểm</span></div>
-                <div class="grow-1">
-                    <p class="box-flex_row">
-                        <i class="material-icons icon-show-mb color-indigo">place</i>
-                        <span>{{x.calendarViews.beginDate}}</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="ae-list-btn active">
-    <div>
-        <div class="btn-group" role="group"><button class="btn btn-primary ae-add" type="button">Thêm</button><button class="btn btn-primary ae-edit" type="button">Cập Nhật</button><button class="btn btn-primary ae-delete" type="button">Xóa</button></div>
     </div>
 </div>

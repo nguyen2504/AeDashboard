@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AeDashboard.Migrations
 {
     [DbContext(typeof(AeDashboardDbContext))]
-    [Migration("20181202002823_InitialCreate")]
+    [Migration("20181203065117_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -1030,10 +1030,14 @@ namespace AeDashboard.Migrations
 
                     b.Property<string>("Place");
 
+                    b.Property<DateTime>("Time");
+
                     b.Property<long>("UserId");
 
                     b.Property<string>("Users")
                         .IsRequired();
+
+                    b.Property<string>("Weekdays");
 
                     b.Property<int>("Weekend");
 

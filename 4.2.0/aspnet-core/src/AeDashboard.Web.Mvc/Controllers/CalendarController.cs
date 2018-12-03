@@ -31,18 +31,23 @@ namespace AeDashboard.Web.Controllers
                 Random r = new Random(12);
                 for (int i = 1; i <= 1000; i++)
                 {
-                    var t = DateTime.Today.AddDays(-i).AddHours(r.Next(0,23));
-                    var item = new CalendarViewDto()
+                    for (int j = 0; j < r.Next(0,23); j++)
                     {
-                        Admin = "admin " + i,
-                        BeginDate = t,
-                        Day = 0,
-                        EndDate =t,
-                        Users = "user " + i,
-                        Work = "work " + i,
-                        Place = "Quan " + i
-                    };
-                    _calendarViewService.Create(item);
+                        var t = DateTime.Today.AddDays(-i).AddHours(j);
+                        var item = new CalendarViewDto()
+                        {
+                            Admin = "admin " + i,
+                            BeginDate = t,
+                            Day = 0,
+                            EndDate = t,
+                            Users = "user " + i,
+                            Work = "work " + i,
+                            Place = "Quan " + i,
+                            Time = DateTime.Now,
+                            Weekdays = t.DayOfWeek.ToString()
+                        };
+                        _calendarViewService.Create(item);
+                    }
                 }
             }
             return View();
@@ -96,6 +101,7 @@ namespace AeDashboard.Web.Controllers
             //var weeks1 = _calendarViewService.GetGroupByDates(skip, take, 43);
 
             //var kt = t.Take.Equals(0) ? _calendarViewService.GetDays() : _calendarViewService.GetLoad(t.Skip, t.Take);
+         
             return Json(dates);
         }
         public IActionResult Edit()
