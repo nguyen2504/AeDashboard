@@ -62,8 +62,9 @@
 
 @media (min-width: 768px) {
   .table-row:hover {
-    background:white;
+    background:rgb(241, 236, 236);
     box-shadow:0px 1px 7px 0px rgba(215,213,213,0.6);
+    cursor: pointer
     /*cursor:pointer;*/
   }
 }

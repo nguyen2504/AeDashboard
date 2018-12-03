@@ -63,11 +63,11 @@ namespace AeDashboard.Document
             return true;
         }
 
-        public IList<Document> Search(string name)
+        public IList<Document> Search(int skip, int take,string name)
         {
             try
             {
-                var orderByDescending = _repository.GetAllList().FindAll(j=>j.Author.StartsWith(name) || j.Content.StartsWith(name)).OrderByDescending(j => j.BeginDate).ToList();
+                var orderByDescending = _repository.GetAllList().FindAll(j=>j.Author.StartsWith(name) || j.Content.StartsWith(name)).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
                 return orderByDescending;
             }
             catch (Exception e)

@@ -4,7 +4,8 @@
         <div class="btn-group" role="group"><button class="btn btn-primary ae-add" type="button">Thêm</button><button class="btn btn-primary ae-edit" type="button">Cập Nhật</button><button class="btn btn-primary ae-delete" type="button">Xóa</button></div>
     </div>
 </div>*@
-<div class="ae-btns">
+<link href="~/css/style.css" rel="stylesheet" >
+@*<div class="ae-btns">
     <div style="display: flex;align-items: center">
         <div class="btn-group" role="group">
             <button class="btn btn-primary ae-add  waves-effect" type="button">Thêm</button>
@@ -12,6 +13,11 @@
             <button class="btn btn-primary ae-delete  waves-effect" type="button">Xóa</button>
         </div>
     </div>
+</div>*@
+<div style="position: fixed; bottom: 15px; right: 15px;z-index: 1000000">
+    <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#modalCreate">
+        <i class="material-icons">add</i>
+    </button>
 </div>
 <div class="table-Or-list">
     <div class="table-head">
@@ -22,11 +28,11 @@
         <div class="table-cell-or-item"><span>Địa Điểm</span></div>
     </div>
 
-    <div class="table-body" ng-repeat="x in getAll" >
+    <div class="table-body over-expand-effect" ng-repeat="x in getAll">
         <div class="table-row date">
             <div class="table-cell-or-item colspan"><span class="time-show-mb">{{x["weekdays"]}}&nbsp;&nbsp;({{x.date}})</span></div>
         </div>
-        <div class="table-row content" ng-repeat="q in x.calendarViews" ng-click="showBtns($event)">
+        <div class="table-row content" ng-repeat="q in x.calendarViews" ng-click="edit_caladarView(q.id)"  data-toggle="modal" data-target="#editCalendarView">
             <div class="table-cell-or-item">
                 <span class="ae-work-time"> {{formatDate(q["beginDate"])}}</span>
             </div>
@@ -86,25 +92,8 @@
                         <div class="box-flex_row">
                             <i class="material-icons icon-show-mb color-indigo">place</i>
                             <span>{{q.place}}</span>
-                            <div style="position: absolute; top: -5px;right: 0">
-                                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float" >
-                                    <i class="material-icons">add</i>
-                                </button>
-                                <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float" >
-                                    <i class="material-icons">add</i>
-                                </button>
-                            </div>
-
-                            @*<div class="ae-btns">
-                                <div style="display: flex;align-items: center">
-                                    <div class="btn-group" role="group">
-                                        <button class="btn btn-primary ae-add  waves-effect" type="button">Thêm</button>
-                                        <button class="btn btn-primary ae-edit  waves-effect" type="button">Cập Nhật</button>
-                                        <button class="btn btn-primary ae-delete  waves-effect" type="button">Xóa</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>*@
+                         
+                        </div>
                     </div>
                 </div>
             </div>

@@ -38,7 +38,8 @@
             //$('.ae-update').removeClass('show');
             //$(this).find('.ae-update').addClass('show');
         };
-        $scope.edit_caladarView = function(id) {
+        $scope.edit_caladarView = function (id) {
+            
             var url = "/Calendar/EditCalendarViewModal?id=" + id;
             $http.get(url).then(function(e) {
                 //alert(e.data);
@@ -46,6 +47,7 @@
             });
         };
         $scope.delete_item = function (id) {
+            alert('delet')
            var url = "/Calendar/Delete?id=" + id;
             $http.get(url).then(function (e) {
                 reloadHome();
@@ -59,10 +61,11 @@
             //var top = angular.element($event.target).prop('offsetTop');
             //$('.ae-btns').css({ "top": top });
         };
+      
+//-------------------------------------------//
         function reloadHome() {
             $window.location.reload();
         }
-//-------------------------------------------//
         function loadScroll() {
           
             $(window).scroll(function () {

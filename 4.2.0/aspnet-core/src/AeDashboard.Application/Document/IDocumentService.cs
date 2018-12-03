@@ -13,7 +13,7 @@ namespace AeDashboard.Document
       Task<Document> GetId(int id);
       Task<bool> CreateOrUpdate(DocumentDto entity);
       Task<bool> Delete(int id);
-      IList<Document> Search(string name);
+      IList<Document> Search(int skip, int take,string name);
 
   }
 }

@@ -117,17 +117,19 @@ namespace AeDashboard.Web.Controllers
             return RedirectToAction("Index","Calendar");
         }
 
-        [HttpGet]
+        //[HttpGet]
         public IActionResult Delete(int id)
         {
             _calendarViewService.Delete(id);
-            return Json("Index");
+            //return Json("Index");
+            return RedirectToAction("Index", "Calendar");
         }
     
         public async Task<ActionResult> EditCalendarViewModal(long id)
         {
             var model = await _calendarViewService.GetCalendarView(id);
-            return View("Edit", model.MapTo<CalendarViewModel>());
+          //  model.MapTo<CalendarViewModel>()
+            return View("Edit", model);
 
         }
         //public async Task<ActionResult> EditUserModal(long userId)
