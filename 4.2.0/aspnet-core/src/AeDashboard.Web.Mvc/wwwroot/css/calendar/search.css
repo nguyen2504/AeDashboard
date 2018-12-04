@@ -1,0 +1,44 @@
+.select-years, .select-weeks {
+  margin:0 5px;
+}
+
+.search-calendar {
+  display:flex;
+  flex-direction:row;
+}
+
+.box-search {
+  flex-grow:2;
+  margin-left:5px;
+}
+
+.margin-05px {
+  margin:0 5px;
+}
+
+.search-form {
+  margin:0;
+}
+
+.input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+  padding:4px 4px;
+}
+
+.input-group-prepend {
+}
+
+.search-form {
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+}
+
+.input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+  border:0;
+}
+
+.input-group.serch {
+    margin-bottom: 0
+}
+.border0 {
+    border: 0
+}

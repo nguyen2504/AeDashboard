@@ -4,7 +4,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <link  href="~/view-resources/Views/_Bundles/calendar.css" type="text/css" rel="stylesheet"/>
-
+<div class="container" style="margin-bottom: 15px">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="search-form">
+                <div class="input-group serch">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text border0">
+                            <i class="fa fa-search"></i>
+                        </span>
+                    </div>
+                <input type="text" ng-model="searchName" placeholder="I am looking for.." autofocus class="form-control" /></div>
+            </form>
+        </div>
+        <div class="col-md-3">
+            <input type="week" value="{{week| date: 'yyyy-Www'}}" class="form-control-sm form-control" ng-model="week"  />
+            @*<span style="display: none" class="get-weeks"> {{week| date: "yyyy-Www"}}</span>*@
+        </div>
+        <div class="col-md-3">
+            <input type="date" class="form-control-sm form-control" ng-model="searchDate"/>
+        </div>
+    </div>
+</div>
 @ViewBag.mes
 <div style="background: white">
     @await Html.PartialAsync("_List")

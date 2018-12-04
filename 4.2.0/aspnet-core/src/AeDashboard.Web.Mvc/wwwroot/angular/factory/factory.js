@@ -9,7 +9,8 @@
         var service = {
             getData: getData,
             formatDate: formatDate,
-            setColspan: setColspan
+            setColspan: setColspan,
+            getWeek: getWeek
         };
 
         return service;
@@ -42,4 +43,11 @@ if (a == 0) {
         }
 
     };
+
+    function getWeek(a) {
+        var day = new Date(a);
+        var onejan = new Date(day.getFullYear(), 0, 1);
+        //console.log('da ' + onejan);
+        return Math.ceil((((day - onejan) / 86400000) + onejan.getDay() + 1) / 7);
+    }
 })();

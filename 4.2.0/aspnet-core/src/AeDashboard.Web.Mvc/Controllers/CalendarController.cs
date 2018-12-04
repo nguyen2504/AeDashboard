@@ -104,6 +104,32 @@ namespace AeDashboard.Web.Controllers
          
             return Json(dates);
         }
+        public IActionResult SearchWeek(Loads t)
+        {
+            var skip = t.Skip;
+            var take = t.Take;
+            var week = int.Parse(t.Week.Split("W")[1]);
+            var year= int.Parse(t.Week.Split("W")[0].Split("-")[0]);
+            var weeks = _calendarViewService.GetGroupByDates(skip, take, week,year);
+            return Json(weeks);
+        }
+
+        public IActionResult SearchDate(Loads t)
+        {
+            var skip = t.Skip;
+            var take = t.Take;
+            var date = t.Date;
+            var dates = _calendarViewService.GetGroupByDates(skip, take,date);
+            return Json(dates);
+        }
+        public IActionResult SearchName(Loads t)
+        {
+            var skip = t.Skip;
+            var take = t.Take;
+            var name = t.Search;
+            var dates = _calendarViewService.SearchGroupByDates(skip, take, name);
+            return Json(dates);
+        }
         public IActionResult Edit()
         {
             return View();
@@ -117,6 +143,7 @@ namespace AeDashboard.Web.Controllers
             return RedirectToAction("Index","Calendar");
         }
 
+       
         //[HttpGet]
         public IActionResult Delete(int id)
         {

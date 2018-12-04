@@ -25,7 +25,7 @@ namespace AeDashboard.Calendar
         //List<GroupByWeek> LoadsGroupByWeeks(int skip, int take);
      List<GroupByDate> GetGroupByDates(int skip, int take);
      List<GroupByDate> GetGroupByDates(int skip, int take,DateTime date);
-     List<GroupByDate> GetGroupByDates(int skip, int take,int week);
+     List<GroupByDate> GetGroupByDates(int skip, int take,int week,int year);
      List<GroupByDate> SearchGroupByDates(int skip, int take, string name);
     }
 }

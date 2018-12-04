@@ -510,6 +510,97 @@
 }
 
 
+.search-form {
+  margin:40px 5px;
+  font:normal 12px sans-serif;
+  box-shadow:1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+}
+
+.search-form div.input-group-addon {
+  background:#fff;
+  color:#80A3BD;
+  border-bottom-left-radius:2px;
+  border-top-left-radius:2px;
+  border:1px solid #b6c3cd;
+  border-right:0;
+}
+
+.search-form .input-group input {
+  background-color:#ffffff;
+  box-shadow:none;
+  color:#4E565C;
+  outline:none;
+  border:1px solid #b6c3cd;
+  border-right:0;
+  border-left:0;
+}
+
+.search-form div.input-group-btn button {
+  border-bottom-right-radius:2px;
+  border-top-right-radius:2px;
+  background:#6caee0;
+  box-shadow:1px 2px 4px 0 rgba(0, 0, 0, 0.08);
+  color:#ffffff;
+  border-color:#6caee0;
+  outline:none;
+  opacity:0.9;
+}
+
+.search-form div.input-group-btn button:hover {
+  opacity:1;
+}
+
+.search-form div.input-group-btn button:focus:active {
+  background-color:#6caee0;
+  color:#ffffff;
+  outline:none;
+}
+
+
+.select-years, .select-weeks {
+  margin:0 5px;
+}
+
+.search-calendar {
+  display:flex;
+  flex-direction:row;
+}
+
+.box-search {
+  flex-grow:2;
+  margin-left:5px;
+}
+
+.margin-05px {
+  margin:0 5px;
+}
+
+.search-form {
+  margin:0;
+}
+
+.input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+  padding:4px 4px;
+}
+
+.input-group-prepend {
+}
+
+.search-form {
+    border: 1px solid #ced4da;
+    border-radius: 2px;
+}
+
+.input-group > .custom-select:not(:first-child), .input-group > .form-control:not(:first-child) {
+  border:0;
+}
+
+.input-group.serch {
+    margin-bottom: 0
+}
+.border0 {
+    border: 0
+}
 
 @media (min-width: 576px) and (max-width:767px) {
   .table-head {

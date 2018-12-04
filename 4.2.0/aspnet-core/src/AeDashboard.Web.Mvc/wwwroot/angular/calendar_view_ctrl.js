@@ -2,9 +2,9 @@
     'use strict';
  app.controller('ctrl', calendarViewCtrl);
 
-    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window', 'factory'];
+    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window','$filter', 'factory'];
 
-    function calendarViewCtrl($location, $http, $scope, $window, factory) {
+    function calendarViewCtrl($location, $http, $scope, $window, $filter, factory) {
         /* jshint validthis:true */
         var vm = this;
         $scope.getAll = [];
@@ -13,14 +13,56 @@
         activate();
 
         function activate() {
+            $scope.load = 0;
             localStorage.removeItem('count');
             moment().locale("vi");
             getAll(0,32);
             loadScroll();
-          
-         
+            try {
+                $scope.week = new Date().getFullYear() + "-W" + factory.getWeek(new Date());
+            } catch (w) {
+                
+            }
+
         }
+      
         //============================
+        $scope.$watch('week',
+            function() {
+                //console.log('week ' + $filter('date')($scope.week, "yyyyWww") + '  ' + $scope.load);
+                if ($scope.load == 2) {
+                    var week = $filter('date')($scope.week, "yyyyWww");
+                    getWeek(0, 0, week);
+                }
+                if ($scope.load != 2) {
+                    $scope.load = 2;
+                }
+            });
+        $scope.$watch('searchDate',
+            function () {
+             if ($scope.load == 1) {
+                    var date = $scope.searchDate;
+                    getDate(0, 0, date);
+                }
+                if ($scope.load !=1) {
+                    $scope.load = 1;
+                    //alert('toi day' + $scope.load);
+                }
+              
+            });
+        $scope.$watch('searchName',
+            function (e) {
+                console.log('serchNem' + sessionStorage.searchname + '     ' + $scope.load );
+                sessionStorage.searchname = null;
+                if ($scope.load == 3) {
+                    var name = $scope.searchName;
+                    getSearchName(0, 32, name);
+                }
+                if ($scope.load !=3) {
+                    $scope.load = 3;
+                    //alert('toi day' + $scope.load);
+                }
+            });
         $scope.hoverIn = function () {
             this.hoverEdit = 'show';
         };
@@ -47,7 +89,7 @@
             });
         };
         $scope.delete_item = function (id) {
-            alert('delet')
+
            var url = "/Calendar/Delete?id=" + id;
             $http.get(url).then(function (e) {
                 reloadHome();
@@ -88,14 +130,78 @@
                         skip = localStorage.getItem("count");
                     } catch (e) {
                         skip = 0;
-                    } 
-                    getAll(skip, take);
+                    }
+                    switch ($scope.load) {
+                        case 0:
+                        {
+                                getAll(skip, take);
+                            $scope.load = 0;
+                        }
+                            break;
+                        case 3:
+                        {
+                                getSearchName(skip, take, $scope.searchDate);
+                            } break;
+                        
+                    default:
+                    }
                 }
             });
         }
-        //function edit_calendarView(parameters) {
-        //    var l = $('.edit-calendarview').
-        //}
+
+        function getWeek(skip, take,week) {
+            var url = "/Calendar/SearchWeek";
+            var data = {
+                'Skip': skip,
+                'Take': take,
+                "Week": week
+            };
+            $http.get(url, { params: data }).then(function(e) {
+                $scope.getAll = e.data.result;
+                setTimeout(function () {
+                    factory.setColspan();
+                }, 100);
+            });
+        }
+
+        function getSearchName(skip,take,name) {
+            var url = "/Calendar/SearchName";
+            var data = {
+                'Skip': skip,
+                'Take': take,
+                "Search": name
+            };
+          
+            $http.get(url, { params: data }).then(function (e) {
+                if (sessionStorage.searchname == null) {
+                    $scope.getAll = e.data.result;
+                    sessionStorage.searchname = e.data.result.length;
+                } else {
+                    for (var j = 0; j < e.data.result.length; j++) {
+                        $scope.getAll.push(e.data.result[j]);
+                    }
+                    sessionStorage.searchname = e.data.result.length;
+                }
+              
+                setTimeout(function () {
+                    factory.setColspan();
+                }, 100);
+            }); 
+        }
+        function getDate(skip, take, date) {
+            var url = "/Calendar/SearchDate";
+            var data = {
+                'Skip': skip,
+                'Take': take,
+                "Date": date
+            };
+            $http.get(url, { params: data }).then(function (e) {
+                $scope.getAll = e.data.result;
+                setTimeout(function () {
+                    factory.setColspan();
+                }, 100);
+            });
+        }
         function getAll(skip, take) {
            
             var url = "/Calendar/GetLoads";

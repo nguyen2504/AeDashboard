@@ -9,5 +9,8 @@ namespace AeDashboard.Web.Models.Loads
     {
         public  int Skip { get; set; }
         public int Take { get; set; }
+        public string Week { get; set; }
+        public DateTime Date { get; set; }
+        public string Search { get; set; }
     }
 }

@@ -130,7 +130,15 @@ namespace AeDashboard.Calendar
 
         public List<GroupByDate> GetGroupByDates(int skip, int take, DateTime date)
         {
-            var l = _repository.GetAllListAsync().Result.Where(j=>j.BeginDate.Date <= date.Date).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
+            var l = new List<CalendarView>();
+            if (take.Equals(0))
+            {
+                l = _repository.GetAllListAsync().Result.Where(j => j.BeginDate.Date.Equals(date.Date)).OrderByDescending(j => j.BeginDate).ToList();
+            }
+            else
+            {
+                _repository.GetAllListAsync().Result.Where(j => j.BeginDate.Date.Equals(date.Date)).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
+            }
             foreach (var q in l)
             {
                 q.Day = (int)(DateTime.Today.Date.Subtract(q.BeginDate.Date)).Days;
@@ -146,22 +154,17 @@ namespace AeDashboard.Calendar
                 .ToList();
         }
 
-        public List<GroupByDate> GetGroupByDates(int skip, int take, int week)
+        public List<GroupByDate> GetGroupByDates(int skip, int take, int week,int year)
         {
-          
-            var result = new List<GroupByDate>();
-            var l = _repository.GetAllList().Where(j => j.Weekend <= week && j.BeginDate.Date.Year==DateTime.Today.Year).OrderByDescending(j=>j.BeginDate).Skip(skip).Take(take).ToList();
+            var l = take.Equals(0) ? _repository.GetAllList().Where(j => j.Weekend.Equals(week) && j.BeginDate.Date.Year.Equals(year)).OrderByDescending(j => j.BeginDate).ToList() : _repository.GetAllList().Where(j => j.Weekend.Equals(week) && j.BeginDate.Date.Year.Equals(year)).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
             var dates = l.Select(j => j.BeginDate.Date).OrderByDescending(j=>j.Date).Distinct();
-            foreach (var q in dates)
-            {
-                result.Add(new GroupByDate()
+            return dates.Select(q => new GroupByDate()
                 {
                     Date = q.Date.Date.ToShortDateString(),
                     Weekdays = q.Date.Date.DayOfWeek.ToString(),
                     CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
-                });
-            }
-            return result;
+                })
+                .ToList();
         }
 
       public List<GroupByDate> SearchGroupByDates(int skip, int take, string name)
