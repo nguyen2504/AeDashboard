@@ -50,12 +50,11 @@
                 }
               
             });
-        $scope.$watch('searchName',
+        $scope.$watch('search',
             function (e) {
-                console.log('serchNem' + sessionStorage.searchname + '     ' + $scope.load );
-                sessionStorage.searchname = null;
-                if ($scope.load == 3) {
-                    var name = $scope.searchName;
+                var name = $scope.search;
+            if ($scope.load == 3) {
+                  
                     getSearchName(0, 32, name);
                 }
                 if ($scope.load !=3) {
@@ -139,8 +138,9 @@
                         }
                             break;
                         case 3:
-                        {
-                                getSearchName(skip, take, $scope.searchDate);
+                            {
+                                $scope.load =3;
+                                getSearchName(skip, take, $scope.search);
                             } break;
                         
                     default:
@@ -173,16 +173,18 @@
             };
           
             $http.get(url, { params: data }).then(function (e) {
-                if (sessionStorage.searchname == null) {
+              
+                if (take == 0) {
                     $scope.getAll = e.data.result;
-                    sessionStorage.searchname = e.data.result.length;
+                    localStorage.setItem("count", $scope.getAll.length);
                 } else {
                     for (var j = 0; j < e.data.result.length; j++) {
                         $scope.getAll.push(e.data.result[j]);
                     }
-                    sessionStorage.searchname = e.data.result.length;
+                    localStorage.setItem("count", $scope.getAll.length);
+
                 }
-              
+
                 setTimeout(function () {
                     factory.setColspan();
                 }, 100);

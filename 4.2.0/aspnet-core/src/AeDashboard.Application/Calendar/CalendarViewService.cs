@@ -170,11 +170,11 @@ namespace AeDashboard.Calendar
       public List<GroupByDate> SearchGroupByDates(int skip, int take, string name)
       {
           var result = new List<GroupByDate>();
-          var l = _repository.GetAllList().Where(j => 
-          j.Author.StartsWith(name) 
-          || j.Admin.StartsWith(name)
-          ||j.Work.StartsWith(name)
-          || j.Place.StartsWith(name)).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
+          try
+          {
+                 var l = _repository.GetAllList().Where(j =>  j.Admin.StartsWith(name) 
+                 || j.Work.StartsWith(name)
+                 || j.Users.StartsWith(name)).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
           var dates = l.Select(j => j.BeginDate.Date).OrderByDescending(j => j.Date).Distinct();
           foreach (var q in dates)
           {
@@ -185,6 +185,15 @@ namespace AeDashboard.Calendar
                   CalendarViews = l.FindAll(j => j.BeginDate.Date.Equals(q.Date.Date))
               });
           }
+              if (name.Length.Equals(0))
+              {
+               return   GetGroupByDates(skip, take);
+              }
+          }
+          catch (Exception e)
+          {
+            return  GetGroupByDates(skip, take);
+            }
           return result;
         }
 
