@@ -12,7 +12,7 @@
     <link href="~/view-resources/Views/_Bundles/calendar.min.css" type="text/css" rel="stylesheet" asp-append-version="true" />
 </environment>
 <div class="block-btn-document">
-    <button class="btn btn-primary waves-effect btn-add-document-top">THÊM TÀI LIỆU</button> &nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary waves-effect btn-add-document-top"  ng-click="addOrUpdate()">THÊM TÀI LIỆU</button> &nbsp;&nbsp;&nbsp;
     <form class="search-form ">
         <div class="input-group serch">
             <div class="input-group-prepend">
@@ -60,8 +60,9 @@
     </div>
 </div>
 <button class="btn btn-add-circle waves-effect">
-    <i class="material-icons">add</i>
+    <i class="material-icons" ng-click="addOrUpdate()">add</i>
 </button>
+@await Html.PartialAsync("_Create")
 @section scripts
 {
     <environment names="Development">

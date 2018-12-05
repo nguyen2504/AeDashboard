@@ -16,6 +16,19 @@
                 $scope.data = [];
                 getSearch(0, 32, $scope.search);
             });
+        $scope.addOrUpdate = function (id) {
+            $('#modalCreateDocument').modal();
+            var url = "/Document/AddOrUpdate?id=" + id;
+            $http.get(url).then(function(e) {
+                var result = e.data;
+            });
+        };
+        $scope.onUpload = function() {
+            $('.upload-document').removeClass('hide').addClass('show');
+            if ($('.upload-document').hasClass('show')) {
+                //alert($('.upload-document').hasClass('show'));
+            }
+        };
         //---------------------------------//
         function activate() {
             $scope.data = [];

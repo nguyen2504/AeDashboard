@@ -87,3 +87,22 @@
         display: none
     }
 }
+.add-edit_doc {
+    position: relative;
+    width: 100%;
+    height: auto
+}
+.upload-document.hide {
+    display: none
+}
+.upload-document {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background: green;
+    top: 0;
+    left: 0
+}
+    .upload-document.show {
+        display: block
+    }

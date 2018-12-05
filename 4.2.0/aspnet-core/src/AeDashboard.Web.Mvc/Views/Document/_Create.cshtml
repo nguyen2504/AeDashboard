@@ -1,40 +1,58 @@
 ﻿@{
     Layout = null;
 }
-@*@model AeDashboard.Document.Dto.DocumentDto*@
+@model AeDashboard.Document.Dto.DocumentDto
+<!-- Modal -->
+<div class="modal fade" id="modalCreateDocument" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <form asp-action="Create" asp-controller="Document" target="Post">
+                <div class="modal-body add-edit_doc">
+                    <div class="add-edit">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label asp-for="Content" class="form-label"></label>
+                                <input asp-for="Content" required class="form-control" />
+                                <span asp-validation-for="Content" class="text-danger"></span>
+                            </div>
+                        </div>
 
-@*<form asp-action="Create" asp-controller="Document" target="Post">
-    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-    <div class="form-group form-float">
-        <div class="form-line">
-            <label asp-for="CreateDate" class="form-label"></label>
-            <input asp-for="CreateDate" value="@DateTime.Now.ToString("s")" required class="form-control" type="datetime-local" />
-            <span asp-validation-for="CreateDate" class="text-danger"></span>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label asp-for="Url" class="form-label"></label>
+                                <input asp-for="Url" required class="form-control" ng-click="onUpload()" />
+                                <span asp-validation-for="Url" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="form-group form-float">
+                            <div class="form-line">
+                                <label asp-for="CreateDate" class="form-label"></label>
+                                <input asp-for="CreateDate" value="@DateTime.Now.ToString("s")" required class="form-control" type="datetime-local" />
+                                <span asp-validation-for="CreateDate" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="upload-document hide">
+                        upload file
+                    </div>
+                </div>
+                <div class="modal-footer">
+
+                    <input type="submit" value="Create" class="btn btn-default waves-ripple" />
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                </div>
+                
+            </form>
         </div>
     </div>
+</div>
+
    
-    <div class="form-group form-float">
-        <div class="form-line">
-            <label asp-for="Content" class="form-label"></label>
-            <input asp-for="Content" required class="form-control" />
-            <span asp-validation-for="Content" class="text-danger"></span>
-        </div>
-    </div>
-
-    <div class="form-group form-float">
-        <div class="form-line">
-            <label asp-for="Url" class="form-label"></label>
-            <input asp-for="Url" required class="form-control" />
-            <span asp-validation-for="Url" class="text-danger"></span>
-        </div>
-    </div>
-  
-    <div class="modal-footer">
-
-        <input type="submit" value="Create" class="btn btn-default" />
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-    </div>
-
-</form>*@
-
-
+   
