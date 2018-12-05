@@ -44,7 +44,9 @@ namespace AeDashboard.Web.Controllers
                             Work = "work " + i,
                             Place = "Quan " + i,
                             Time = DateTime.Now,
-                            Weekdays = t.DayOfWeek.ToString()
+                            Weekdays = t.DayOfWeek.ToString(),
+                            CreateDate = t,
+                            IsAcive = true
                         };
                         _calendarViewService.Create(item);
                     }
@@ -124,10 +126,9 @@ namespace AeDashboard.Web.Controllers
         }
         public IActionResult SearchName(Loads t)
         {
-            var skip = t.Skip;
-            var take = t.Take;
-            var name = t.Search;
-            var dates = _calendarViewService.SearchGroupByDates(skip, take, name);
+            var count = t.Count;
+          var name = t.Search;
+            var dates = _calendarViewService.SearchGroupByDates(count, name);
             return Json(dates);
         }
         public IActionResult Edit()

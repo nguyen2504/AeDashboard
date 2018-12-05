@@ -197,7 +197,35 @@ namespace AeDashboard.Calendar
           return result;
         }
 
-      //public List<GroupByWeek> LoadsGroupByWeeks(int skip, int take)
+      public List<GroupByDate> SearchGroupByDates(int count, string name)
+      {
+          List<GroupByDate> result;
+            if (string.IsNullOrEmpty(name) || count.Equals(count))
+          {
+              var l = _repository.GetAll().Where(j => j.CreateDate.Date >= DateTime.Today.AddDays(-count) && j.IsAcive).ToList();
+              result = GroupDyDates(l);
+          }
+            else
+            {
+                var l = _repository.GetAll().Where(j => j.CreateDate.Date >= DateTime.Today.AddDays(-count)).ToList();
+                result = GroupDyDates(l);
+            }
+          return result;
+      }
+
+      private List<GroupByDate> GroupDyDates(List<CalendarView> l)
+      {
+          var dates = l.Select(j => j.CreateDate.Date).Distinct();
+          return dates.Select(q => new GroupByDate()
+              {
+                  Date = q.ToShortDateString(),
+                  Weekdays = q.Date.DayOfWeek.ToString(),
+                  CalendarViews = l.FindAll(j => j.IsAcive == true && j.CreateDate.Date.Equals(q.Date))
+              })
+              .ToList();
+
+      }
+        //public List<GroupByWeek> LoadsGroupByWeeks(int skip, int take)
         //{
         //    var load = GetLoad(skip, take);
         //     var ws = new List<GroupByWeek>();

@@ -27,5 +27,6 @@ namespace AeDashboard.Calendar
         public string Weekdays { get; set; }
         [DataType(DataType.Time)]
         public DateTime Time { get; set; }
+        public DateTime CreateDate { get; set; }
     }
 }

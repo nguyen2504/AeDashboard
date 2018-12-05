@@ -9,21 +9,16 @@
         var vm = this;
         $scope.getAll = [];
         vm.title = 'calendar_view_ctrl';
-
+        $scope.count = 15;
         activate();
 
         function activate() {
             $scope.load = 0;
             localStorage.removeItem('count');
             moment().locale("vi");
-            getAll(0,32);
+            //getAll(0,32);
             loadScroll();
-            try {
-                $scope.week = new Date().getFullYear() + "-W" + factory.getWeek(new Date());
-            } catch (w) {
-                
-            }
-
+            $scope.week = new Date().getFullYear() + "-W" + factory.getWeek(new Date());
         }
       
         //============================
@@ -52,15 +47,9 @@
             });
         $scope.$watch('search',
             function (e) {
+                $scope.count = 15;
                 var name = $scope.search;
-            if ($scope.load == 3) {
-                  
-                    getSearchName(0, 32, name);
-                }
-                if ($scope.load !=3) {
-                    $scope.load = 3;
-                    //alert('toi day' + $scope.load);
-                }
+                getSearchName($scope.count, name);
             });
         $scope.hoverIn = function () {
             this.hoverEdit = 'show';
@@ -108,7 +97,7 @@
             $window.location.reload();
         }
         function loadScroll() {
-          
+           
             $(window).scroll(function () {
                 var h = (($(document).height() - $(window).height())) - $(window).scrollTop();
                 //console.log('kk ' + h);
@@ -120,32 +109,11 @@
                 if (h >= 100 && h <= 110) check = true;
                 if (h >= 150 && h <= 160) check = true;
                 if (h >= 200 && h <= 210) check = true;
-                if (check) {
-                    var take = 5;
-                    var skip = 0;
-                    //var count = localStorage.getItem("count");
-                    //console.log('count ' + localStorage.getItem("count"));
-                    try {
-                        skip = localStorage.getItem("count");
-                    } catch (e) {
-                        skip = 0;
-                    }
-                    switch ($scope.load) {
-                        case 0:
-                        {
-                                getAll(skip, take);
-                            $scope.load = 0;
-                        }
-                            break;
-                        case 3:
-                            {
-                                $scope.load =3;
-                                getSearchName(skip, take, $scope.search);
-                            } break;
-                        
-                    default:
-                    }
-                }
+               if (check) {
+                   getSearchName($scope.count , $scope.search);
+                   $scope.count = $scope.count + 1;
+                   console.log("$scope.count " + $scope.count);
+               }
             });
         }
 
@@ -164,25 +132,16 @@
             });
         }
 
-        function getSearchName(skip,take,name) {
+        function getSearchName(count,name) {
             var url = "/Calendar/SearchName";
             var data = {
-                'Skip': skip,
-                'Take': take,
+                "Count":count,
                 "Search": name
             };
           
             $http.get(url, { params: data }).then(function (e) {
-              
-                if (take == 0) {
-                    $scope.getAll = e.data.result;
-                    localStorage.setItem("count", $scope.getAll.length);
-                } else {
-                    for (var j = 0; j < e.data.result.length; j++) {
-                        $scope.getAll.push(e.data.result[j]);
-                    }
-                    localStorage.setItem("count", $scope.getAll.length);
-
+                for (var j = 0; j < e.data.result.length; j++) {
+                    $scope.getAll.push(e.data.result[j]);
                 }
 
                 setTimeout(function () {

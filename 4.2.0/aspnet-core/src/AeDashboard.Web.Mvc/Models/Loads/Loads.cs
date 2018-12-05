@@ -12,5 +12,6 @@ namespace AeDashboard.Web.Models.Loads
         public string Week { get; set; }
         public DateTime Date { get; set; }
         public string Search { get; set; }
+        public int Count { get; set; }
     }
 }
