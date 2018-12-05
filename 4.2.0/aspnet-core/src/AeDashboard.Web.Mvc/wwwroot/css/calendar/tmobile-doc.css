@@ -1,0 +1,29 @@
+@media (max-width: 575px) {
+  .table-row.doc {
+    display:grid;
+    grid-template-areas:'header header' 'left right';
+    padding:5px;
+    padding-left:10px;
+    border-bottom:5px solid #24282B;
+  }
+}
+
+@media (max-width: 575px) {
+  .table-cell.doc.header {
+    grid-area:header;
+  }
+}
+
+@media (max-width: 575px) {
+  .table-cell.doc.left {
+    grid-area:left;
+  }
+}
+
+@media (max-width: 575px) {
+  .table-cell.doc.right {
+    grid-area:right;
+    padding-top:5px;
+  }
+}
+

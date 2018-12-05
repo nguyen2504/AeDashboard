@@ -1,2 +1,2 @@
 ﻿var app = angular.module("app", ['datatables']);
-console.log('app')
+console.log('toi la app app');

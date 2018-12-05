@@ -5,6 +5,7 @@ using Abp.Zero.EntityFrameworkCore;
 using AeDashboard.Authorization.Roles;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Calendar;
+using AeDashboard.Document;
 using AeDashboard.MultiTenancy;
 
 namespace AeDashboard.EntityFrameworkCore
@@ -18,6 +19,6 @@ namespace AeDashboard.EntityFrameworkCore
         {
         }
         public DbSet<CalendarView> CalendarView { get; set; }
-        public DbSet<Document.Document> Documents { get; set; }
+        //public DbSet<DocumentFile> DocumentFiles { get; set; }
     }
 }

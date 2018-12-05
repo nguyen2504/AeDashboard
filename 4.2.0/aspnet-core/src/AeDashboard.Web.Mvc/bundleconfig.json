@@ -93,7 +93,19 @@
       "wwwroot/lib/abp-web-resources/Abp/Framework/scripts/libs/abp.sweet-alert.js",
       "wwwroot/js/admin.js",
       "wwwroot/js/main.js",
-      "wwwroot/view-resources/Views/Shared/_Layout.js"
+      "wwwroot/view-resources/Views/Shared/_Layout.js",
+      "wwwroot/js/angular-1.7.5/angular.js",
+      "wwwroot/js/angular-1.7.5/angular-cookies.js",
+      "wwwroot/js/angular-1.7.5/angular-route.js",
+      "wwwroot/js/angular-1.7.5/angular-sanitize.js",
+      "wwwroot/angular/app/app.js",
+      "wwwroot/angular/home/home.js",
+      "wwwroot/angular/factory/factory.js",
+      "wwwroot/angular/directives/directive.js",
+      "wwwroot/js/lib/jquery.dataTables.min.js",
+      "wwwroot/js/lib/angular-datatables.js",
+      "wwwroot/js/js.cookie.js"
+
     ]
   },
   {
@@ -157,7 +169,9 @@
   {
     "outputFileName": "wwwroot/view-resources/Views/CalendarView/calendar_view_ctrl.min.js",
     "inputFiles": [
-      "wwwroot/angular/calendar_view_ctrl.js"
+      "wwwroot/angular/calendar_view_ctrl.js",
+      "wwwroot/js/calendar-view.js",
+      "wwwroot/js/aeDashboard.js"
     ]
   }
 ]

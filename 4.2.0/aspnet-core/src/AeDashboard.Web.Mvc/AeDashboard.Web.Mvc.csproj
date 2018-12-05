@@ -60,4 +60,10 @@
   <ItemGroup>
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Update="Views\Shared\_Layout.cshtml">
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
 </Project>

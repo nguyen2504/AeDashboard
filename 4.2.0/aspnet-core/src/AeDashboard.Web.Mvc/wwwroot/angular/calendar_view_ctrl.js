@@ -18,15 +18,17 @@
             moment().locale("vi");
             //getAll(0,32);
             loadScroll();
-            $scope.week = new Date().getFullYear() + "-W" + factory.getWeek(new Date());
+            var w = new Date().getFullYear() + "-W" + factory.getWeek(new Date());
+            $scope.week = moment(w).toDate();
         }
       
         //============================
         $scope.$watch('week',
             function() {
-                //console.log('week ' + $filter('date')($scope.week, "yyyyWww") + '  ' + $scope.load);
+                console.log('week ' + $scope.week + '  ' + $scope.load);
                 if ($scope.load == 2) {
-                    var week = $filter('date')($scope.week, "yyyyWww");
+
+                    var week = $filter('date')($scope.week, "yyyy-ww");
                     getWeek(0, 0, week);
                 }
                 if ($scope.load != 2) {
@@ -49,6 +51,7 @@
             function (e) {
                 $scope.count = 15;
                 var name = $scope.search;
+                $scope.getAll = [];
                 getSearchName($scope.count, name);
             });
         $scope.hoverIn = function () {
@@ -109,9 +112,10 @@
                 if (h >= 100 && h <= 110) check = true;
                 if (h >= 150 && h <= 160) check = true;
                 if (h >= 200 && h <= 210) check = true;
-               if (check) {
+                if (check) {
+                    $scope.count = $scope.count + 1;
                    getSearchName($scope.count , $scope.search);
-                   $scope.count = $scope.count + 1;
+                  
                    console.log("$scope.count " + $scope.count);
                }
             });
@@ -124,11 +128,14 @@
                 'Take': take,
                 "Week": week
             };
+            factory.loading(true);
             $http.get(url, { params: data }).then(function(e) {
                 $scope.getAll = e.data.result;
+
                 setTimeout(function () {
                     factory.setColspan();
                 }, 100);
+                factory.loading(false);
             });
         }
 
@@ -138,18 +145,19 @@
                 "Count":count,
                 "Search": name
             };
-          
+            factory.loading(true);
             $http.get(url, { params: data }).then(function (e) {
                 for (var j = 0; j < e.data.result.length; j++) {
                     $scope.getAll.push(e.data.result[j]);
                 }
-
+                factory.loading(false);
                 setTimeout(function () {
                     factory.setColspan();
                 }, 100);
             }); 
         }
         function getDate(skip, take, date) {
+            factory.loading(true);
             var url = "/Calendar/SearchDate";
             var data = {
                 'Skip': skip,
@@ -161,6 +169,7 @@
                 setTimeout(function () {
                     factory.setColspan();
                 }, 100);
+                factory.loading(false);
             });
         }
         function getAll(skip, take) {
@@ -191,5 +200,5 @@
             });
 
         }
-    }
+    };
 })();

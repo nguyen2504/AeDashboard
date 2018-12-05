@@ -1,3 +1,33 @@
+.star {
+    visibility: hidden;
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 10px;
+    color: rgb(28,2,14);
+    opacity: 1!important;
+    position: inherit!important;
+    left: 0!important;
+    transition: 0.5s
+    /*border-bottom:1px solid red;*/
+}
+
+.star:before {
+  content:"\2605";
+  position:absolute;
+  visibility:visible;
+  margin-top:-16px;
+  margin-left:-5px;
+}
+
+.star:checked:before {
+  content:"\2606";
+  position:absolute;
+  margin-top:-16px;
+  margin-left:-5px;
+  color:var(--primary);
+}
+
+
 @media (min-width: 768px) {
   .table-Or-list {
     display:table;
@@ -169,6 +199,79 @@
         display: none
     }
 }
+@media (min-width: 576px) {
+  .table-Or-list_doc {
+    display:table;
+    border-collapse:collapse;
+    width:100%;
+  }
+}
+
+@media (min-width: 576px) {
+  .table-body.doc {
+    display:table-row-group;
+  }
+}
+
+@media (min-width: 576px) {
+  .table-row.doc {
+    display:table-row;
+    /*padding:5px 15px;*/
+    border:1px solid rgba(222,222,222,0.6);
+  }
+}
+
+@media (min-width: 576px) {
+  .table-cell.doc {
+    display:table-cell;
+    padding:0px 15px;
+  }
+}
+
+.box-flex_doc_row {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  height:100%;
+  /*margin-left:15px;*/
+}
+
+.content-pdf-doc {
+  display:block;
+  width:100%;
+}
+
+.box-flex_column {
+  display:flex;
+  flex-direction:column;
+}
+
+.padding5px {
+  padding:5px;
+}
+
+.marginleft5px {
+  margin-left:15px;
+}
+
+.notification-doc {
+  display:flex;
+  align-items:center;
+}
+
+.file-name-upload {
+  margin-left:5px;
+  color:var(--cyan);
+}
+
+.material-icons.icon-pdf-upload {
+  color:var(--blue);
+  font-size: 18px
+}
+.box-flex_a-doc {
+    display: flex
+}
+
 @media (max-width: 575px) {
   .row-document {
     display:grid;
@@ -734,4 +837,34 @@
 .ae-content_a {
   /*margin-top:-10px;*/
   /*display:inline;*/
+}
+
+
+@media (max-width: 575px) {
+  .table-row.doc {
+    display:grid;
+    grid-template-areas:'header header' 'left right';
+    padding:5px;
+    padding-left:10px;
+    border-bottom:5px solid #24282B;
+  }
+}
+
+@media (max-width: 575px) {
+  .table-cell.doc.header {
+    grid-area:header;
+  }
+}
+
+@media (max-width: 575px) {
+  .table-cell.doc.left {
+    grid-area:left;
+  }
+}
+
+@media (max-width: 575px) {
+  .table-cell.doc.right {
+    grid-area:right;
+    padding-top:5px;
+  }
 }

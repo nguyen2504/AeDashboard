@@ -9,12 +9,12 @@ namespace AeDashboard.Web.Controllers
 {
     public class DocumentController : AeDashboardControllerBase
     {
-        private readonly IDocumentService _documentService;
+        //private readonly IDocumentService _documentService;
 
-        public DocumentController(IDocumentService documentService)
-        {
-            _documentService = documentService;
-        }
+        //public DocumentController(IDocumentService documentService)
+        //{
+        //    _documentService = documentService;
+        //}
         public IActionResult Index()
         {
             return View();
@@ -23,15 +23,15 @@ namespace AeDashboard.Web.Controllers
         [HttpGet]
         public  JsonResult GetAll()
         {
-            var dt = _documentService.GetAll();
-            return Json(dt);
+            //var dt = _documentService.GetAll();
+            return Json("");
         }
         [HttpPost]
-        public IActionResult Create(DocumentDto entity)
+        public IActionResult Create(DocumentFileDto entity)
         {
             try
             {
-                _documentService.CreateOrUpdate(entity);
+                //_documentService.CreateOrUpdate(entity);
                 return Json("1");
             }
             catch (Exception e)
@@ -42,15 +42,15 @@ namespace AeDashboard.Web.Controllers
 
         public IActionResult GetId(int id)
         {
-            var item = _documentService.GetId(id);
-            return View("_Create", item);
+            //var item = _documentService.GetId(id);
+            return View("_Create");
         }
         [HttpPost]
-        public IActionResult Update(DocumentDto entity)
+        public IActionResult Update(DocumentFileDto entity)
         {
             try
             {
-                _documentService.CreateOrUpdate(entity);
+                //_documentService.CreateOrUpdate(entity);
                 return Json("1");
             }
             catch (Exception e)
@@ -64,7 +64,7 @@ namespace AeDashboard.Web.Controllers
         {
             try
             {
-                _documentService.Delete(id);
+                //_documentService.Delete(id);
                 return Json(true);
             }
             catch (Exception e)

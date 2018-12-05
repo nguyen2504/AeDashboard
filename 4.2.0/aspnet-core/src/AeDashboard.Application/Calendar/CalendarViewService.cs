@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -60,6 +61,7 @@ namespace AeDashboard.Calendar
             var dt = entity.MapTo<CalendarView>();
             dt.UserId = _getUserService.GetIdUser();
             dt.Weekend = _fn.GetWeekOrderInYear(entity.BeginDate);
+            dt.Weekdays = dt.CreateDate.DayOfWeek.ToString();
             _repository.Insert(dt);
             return true;
         }
@@ -199,28 +201,62 @@ namespace AeDashboard.Calendar
 
       public List<GroupByDate> SearchGroupByDates(int count, string name)
       {
-          List<GroupByDate> result;
-            if (string.IsNullOrEmpty(name) || count.Equals(count))
+          var number = 15;
+            List<GroupByDate> result;
+            if (string.IsNullOrEmpty(name))
           {
-              var l = _repository.GetAll().Where(j => j.CreateDate.Date >= DateTime.Today.AddDays(-count) && j.IsAcive).ToList();
-              result = GroupDyDates(l);
+              List<CalendarView> l;
+              if (number.Equals(count))
+              {
+                l=  _repository.GetAll().OrderByDescending(j => j.CreateDate).Where(j => j.CreateDate.Date>= DateTime.Today.AddDays(-count).Date && j.IsAcive).ToList();
+                  result = GroupDyDates(l);
+                }
+              else
+              {
+                    l = _repository.GetAll().OrderByDescending(j => j.CreateDate).Where(j => j.CreateDate.Date == DateTime.Today.AddDays(-count).Date && j.IsAcive).ToList();
+                    result = GroupDyDates(l);
+                }
           }
             else
             {
-                var l = _repository.GetAll().Where(j => j.CreateDate.Date >= DateTime.Today.AddDays(-count)).ToList();
-                result = GroupDyDates(l);
+                List<CalendarView> l;
+              
+                if (number.Equals(count))
+                {
+                    l = _repository.GetAll().OrderByDescending(j => j.CreateDate)
+                  .Where(j => j.CreateDate.Date >= DateTime.Today.AddDays(-count).Date && j.IsAcive
+                  && (j.Admin.StartsWith(name)
+                  ||
+                  j.Work.StartsWith(name)
+                  ||
+                  j.Users.StartsWith(name))).ToList();
+                    result = GroupDyDates(l);
+                }
+                else
+                {
+                    l = _repository.GetAll().OrderByDescending(j => j.CreateDate)
+                  .Where(j => j.CreateDate.Date == DateTime.Today.AddDays(-count).Date && j.IsAcive
+                  && (j.Admin.StartsWith(name)
+                  ||
+                  j.Work.StartsWith(name)
+                  ||
+                  j.Users.StartsWith(name))).ToList();
+                    result = GroupDyDates(l);
+                }
+                  
+              
             }
           return result;
       }
 
       private List<GroupByDate> GroupDyDates(List<CalendarView> l)
       {
-          var dates = l.Select(j => j.CreateDate.Date).Distinct();
+          var dates = l.OrderByDescending(h=>h.CreateDate).Select(j => j.CreateDate.Date).Distinct();
           return dates.Select(q => new GroupByDate()
               {
                   Date = q.ToShortDateString(),
                   Weekdays = q.Date.DayOfWeek.ToString(),
-                  CalendarViews = l.FindAll(j => j.IsAcive == true && j.CreateDate.Date.Equals(q.Date))
+                  CalendarViews = l.FindAll(j => j.IsAcive == true && j.CreateDate.Date.Equals(q.Date.Date))
               })
               .ToList();
 

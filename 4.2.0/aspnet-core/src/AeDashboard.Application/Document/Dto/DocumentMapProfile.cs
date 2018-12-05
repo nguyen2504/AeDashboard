@@ -6,15 +6,15 @@ namespace AeDashboard.Document.Dto
 {
   public  class DocumentMapProfile: Profile
     {
-        public DocumentMapProfile()
-        {
-            CreateMap<DocumentDto, Document>();
-            CreateMap<CalendarViewDto, CalendarView>()
-                .ForMember(x => x.UserId, opt => opt.Ignore());
+        //public DocumentMapProfile()
+        //{
+        //    CreateMap<DocumentDto, Document>();
+        //    CreateMap<DocumentDto, Document>()
+        //        .ForMember(x => x.IdUser, opt => opt.Ignore());
 
 
-            CreateMap<CalendarViewDto, CalendarView>();
-            CreateMap<CalendarViewDto, CalendarView>().ForMember(x => x.UserId, opt => opt.Ignore());
-        }
+        //    CreateMap<DocumentDto, Document>();
+        //    CreateMap<DocumentDto, Document>().ForMember(x => x.IdUser, opt => opt.Ignore());
+        //}
     }
 }

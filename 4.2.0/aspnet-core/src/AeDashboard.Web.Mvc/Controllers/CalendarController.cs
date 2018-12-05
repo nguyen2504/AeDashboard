@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Abp.AutoMapper;
+using AeDashboard.Authorization.Users;
 using AeDashboard.Calendar;
 using AeDashboard.Calendar.Dto;
 using AeDashboard.Controllers;
@@ -17,41 +18,43 @@ namespace AeDashboard.Web.Controllers
     public class CalendarController : AeDashboardControllerBase
     {
         private readonly ICalendarViewService _calendarViewService;
+        private readonly UserManager _userManager;
 
-        public CalendarController(ICalendarViewService calendarViewService)
+        public CalendarController(ICalendarViewService calendarViewService, UserManager userManager)
         {
             _calendarViewService = calendarViewService;
+            _userManager = userManager;
         }
         // GET: /<controller>/
         public IActionResult Index()
         {
 
-            if(_calendarViewService.GetAll().Count<5)
-            {
-                Random r = new Random(12);
-                for (int i = 1; i <= 1000; i++)
-                {
-                    for (int j = 0; j < r.Next(0,23); j++)
-                    {
-                        var t = DateTime.Today.AddDays(-i).AddHours(j);
-                        var item = new CalendarViewDto()
-                        {
-                            Admin = "admin " + i,
-                            BeginDate = t,
-                            Day = 0,
-                            EndDate = t,
-                            Users = "user " + i,
-                            Work = "work " + i,
-                            Place = "Quan " + i,
-                            Time = DateTime.Now,
-                            Weekdays = t.DayOfWeek.ToString(),
-                            CreateDate = t,
-                            IsAcive = true
-                        };
-                        _calendarViewService.Create(item);
-                    }
-                }
-            }
+            //if(_calendarViewService.GetAll().Count<5)
+            //{
+            //    Random r = new Random(12);
+            //    for (int i = 1; i <= 1000; i++)
+            //    {
+            //        for (int j = 0; j < r.Next(0,23); j++)
+            //        {
+            //            var t = DateTime.Today.AddDays(-i).AddHours(j);
+            //            var item = new CalendarViewDto()
+            //            {
+            //                Admin = "admin " + i,
+            //                BeginDate = t,
+            //                Day = 0,
+            //                EndDate = t,
+            //                Users = "user " + i,
+            //                Work = "work " + i,
+            //                Place = "Quan " + i,
+            //                Time = DateTime.Now,
+            //                Weekdays = t.DayOfWeek.ToString(),
+            //                CreateDate = t,
+            //                IsAcive = true
+            //            };
+            //            _calendarViewService.Create(item);
+            //        }
+            //    }
+            //}
             return View();
         }
 
@@ -63,12 +66,16 @@ namespace AeDashboard.Web.Controllers
         [HttpPost]
         public IActionResult Create(CalendarViewDto model)
         {
-            if(model.BeginDate== new DateTime())
-            model.BeginDate = DateTime.Now;
+            //if(model.BeginDate== new DateTime())
+            //model.BeginDate = DateTime.Now;
             if (ModelState.IsValid)
             {
+                var iduser = _userManager.AbpSession.UserId;
               var entity = model.MapTo<CalendarViewDto>();
-
+                entity.IsAcive = true;
+                entity.CreateDate = DateTime.Now;
+                entity.Author = _userManager.Users.FirstOrDefault(j=>j.Id.Equals(iduser)).FullName;
+                entity.Weekdays = DateTime.Now.DayOfWeek.ToString();
                 _calendarViewService.Create(entity);
                 ViewBag.mes = "Thanh cong";
                 return RedirectToAction("Index", "Calendar");
@@ -110,8 +117,8 @@ namespace AeDashboard.Web.Controllers
         {
             var skip = t.Skip;
             var take = t.Take;
-            var week = int.Parse(t.Week.Split("W")[1]);
-            var year= int.Parse(t.Week.Split("W")[0].Split("-")[0]);
+            var week = int.Parse(t.Week.Split("-")[1]);
+            var year= int.Parse(t.Week.Split("-")[0]);
             var weeks = _calendarViewService.GetGroupByDates(skip, take, week,year);
             return Json(weeks);
         }
@@ -138,7 +145,7 @@ namespace AeDashboard.Web.Controllers
         [HttpPost]
         public IActionResult Edit(CalendarView entity)
         {
-            entity.EndDate = DateTime.Now;
+            //entity.EndDate = DateTime.Now;
             _calendarViewService.Update(entity);
             ViewBag.mes = "Cập Nhật Thành Công";
             return RedirectToAction("Index","Calendar");
@@ -160,6 +167,7 @@ namespace AeDashboard.Web.Controllers
             return View("Edit", model);
 
         }
+        
         //public async Task<ActionResult> EditUserModal(long userId)
         //{
         //    var user = await _userAppService.Get(new EntityDto<long>(userId));

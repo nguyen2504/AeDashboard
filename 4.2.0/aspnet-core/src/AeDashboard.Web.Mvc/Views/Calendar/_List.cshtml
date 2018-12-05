@@ -4,21 +4,7 @@
         <div class="btn-group" role="group"><button class="btn btn-primary ae-add" type="button">Thêm</button><button class="btn btn-primary ae-edit" type="button">Cập Nhật</button><button class="btn btn-primary ae-delete" type="button">Xóa</button></div>
     </div>
 </div>*@
-<link href="~/css/style.css" rel="stylesheet" >
-@*<div class="ae-btns">
-    <div style="display: flex;align-items: center">
-        <div class="btn-group" role="group">
-            <button class="btn btn-primary ae-add  waves-effect" type="button">Thêm</button>
-            <button class="btn btn-primary ae-edit  waves-effect" type="button">Cập Nhật</button>
-            <button class="btn btn-primary ae-delete  waves-effect" type="button">Xóa</button>
-        </div>
-    </div>
-</div>*@
-<div style="position: fixed; bottom: 15px; right: 15px;z-index: 1000000">
-    <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#modalCreate">
-        <i class="material-icons">add</i>
-    </button>
-</div>
+
 <div class="table-Or-list">
     <div class="table-head">
         <div class="table-cell-or-item time"><span>Giờ</span></div>
@@ -36,14 +22,7 @@
             <div class="table-cell-or-item">
                 <span class="ae-work-time"> {{formatDate(q["beginDate"])}}</span>
             </div>
-            @*<div class="table-cell-or-item right1">
-                    <div class="box-flex">
-                        <div class="basic-item"><span class="d-none_sm">Giờ</span></div>
-                        <div class="grow-1">
-                            {{formatDate(q["beginDate"])}}
-                        </div>
-                    </div>
-                </div>*@
+          
             <div class="table-cell-or-item right1">
                 <div class="box-flex">
                     <div class="basic-item">

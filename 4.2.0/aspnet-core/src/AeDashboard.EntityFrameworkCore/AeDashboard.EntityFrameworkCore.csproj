@@ -10,6 +10,12 @@
   <ItemGroup>
     <Compile Remove="Migrations\20180726102624_Upgrade_ABP_380.cs" />
     <Compile Remove="Migrations\20180927062408_test.cs" />
+    <Compile Remove="Migrations\20181205094517_InitialCreateFile.cs" />
+    <Compile Remove="Migrations\20181205094606_InitialCreateFile.cs" />
+    <Compile Remove="Migrations\20181205094828_InitialCreateFile.cs" />
+    <Compile Remove="Migrations\20181205095235_InitialCreateFile.cs" />
+    <Compile Remove="Migrations\20181205095527_InitialCreateFile1.cs" />
+    <Compile Remove="Migrations\20181205095832_InitialCreateFile1.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />

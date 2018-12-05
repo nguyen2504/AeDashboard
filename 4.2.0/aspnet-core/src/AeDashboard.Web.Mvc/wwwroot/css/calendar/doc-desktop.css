@@ -1,0 +1,72 @@
+@media (min-width: 576px) {
+  .table-Or-list_doc {
+    display:table;
+    border-collapse:collapse;
+    width:100%;
+  }
+}
+
+@media (min-width: 576px) {
+  .table-body.doc {
+    display:table-row-group;
+  }
+}
+
+@media (min-width: 576px) {
+  .table-row.doc {
+    display:table-row;
+    /*padding:5px 15px;*/
+    border:1px solid rgba(222,222,222,0.6);
+  }
+}
+
+@media (min-width: 576px) {
+  .table-cell.doc {
+    display:table-cell;
+    padding:0px 15px;
+  }
+}
+
+.box-flex_doc_row {
+  display:flex;
+  flex-direction:row;
+  align-items:center;
+  height:100%;
+  /*margin-left:15px;*/
+}
+
+.content-pdf-doc {
+  display:block;
+  width:100%;
+}
+
+.box-flex_column {
+  display:flex;
+  flex-direction:column;
+}
+
+.padding5px {
+  padding:5px;
+}
+
+.marginleft5px {
+  margin-left:15px;
+}
+
+.notification-doc {
+  display:flex;
+  align-items:center;
+}
+
+.file-name-upload {
+  margin-left:5px;
+  color:var(--cyan);
+}
+
+.material-icons.icon-pdf-upload {
+  color:var(--blue);
+  font-size: 18px
+}
+.box-flex_a-doc {
+    display: flex
+}

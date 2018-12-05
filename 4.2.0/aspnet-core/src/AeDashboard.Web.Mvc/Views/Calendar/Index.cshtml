@@ -1,10 +1,30 @@
-﻿
+﻿@using Abp.Extensions
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-<link  href="~/view-resources/Views/_Bundles/calendar.css" type="text/css" rel="stylesheet"/>
-<div class="container" style="margin-bottom: 15px">
+<environment names="Development">
+    <link href="~/view-resources/Views/_Bundles/calendar.css" type="text/css" rel="stylesheet" asp-append-version="true" />
+</environment>
+
+<environment names="Staging,Production">
+    <link href="~/view-resources/Views/_Bundles/calendar.min.css" type="text/css" rel="stylesheet" asp-append-version="true" />
+</environment>
+
+<link href="~/css/style.css" rel="stylesheet">
+<div style="display: block;text-align: center">
+    <button type="button" class="btn btn-primary waves-effect btn-add-calendar" data-toggle="modal" data-target="#modalCreate" style="">
+        Thêm Việc mới
+    </button>
+
+</div>
+<div style="position: fixed; bottom: 15px; right: 30px;z-index: 1000000" class="btn-show-mb">
+    <button type="button" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" data-toggle="modal" data-target="#modalCreate">
+        <i class="material-icons">add</i>
+    </button>
+</div>
+<div class="container-fluid" style="margin-bottom: 15px">
     <div class="row">
         <div class="col-md-6">
             <form class="search-form">
@@ -14,113 +34,24 @@
                             <i class="fa fa-search"></i>
                         </span>
                     </div>
-                <input type="text" ng-model="search" placeholder="I am looking for.." autofocus class="form-control" /></div>
+                    <input type="text" ng-model="search" placeholder="Tìm công việc, Chủ trì, Thành viên" autofocus class="form-control" />
+                </div>
             </form>
         </div>
         <div class="col-md-3">
-            <input type="week" value="{{week| date: 'yyyy-Www'}}" class="form-control-sm form-control" ng-model="week"  />
-            @*<span style="display: none" class="get-weeks"> {{week| date: "yyyy-Www"}}</span>*@
+            <input type="week" value="{{week}}" class="form-control-sm form-control" ng-model="week" />
         </div>
         <div class="col-md-3">
-            <input type="date" class="form-control-sm form-control" ng-model="searchDate"/>
+            <input type="date" class="form-control-sm form-control" ng-model="searchDate" />
         </div>
     </div>
 </div>
-@ViewBag.mes
+
 <div style="background: white">
     @await Html.PartialAsync("_List")
 </div>
-@*<input type="hidden" class="alls-calendar-view"/>*@
-@*<div class="main-ae">
-        <div class="justify-content-end align-items-center align-content-stretch main-head-1 box-flex">
-            <div role="group" class="btn-group btn-gr-calendar">
-                <button class="btn btn-primary waves-effect  waves-float pull-right" type="button"><i class="material-icons">chevron_left</i></button>
-                <button class="btn btn-primary waves-effect  waves-float " type="button">Tuần Này</button>
-                <button class="btn btn-primary  waves-effect waves-float pull-right" type="button"><i class="material-icons">chevron_right</i></button>
-            </div><input type="date" class="form-control ae-input-date" /><button class="btn btn-primary  waves-effect waves-float  btn-print" type="button"><i class="material-icons">local_printshop</i></button>
-        </div>
-        <div class="align-items-center main-head-1 box-flex bg-cyan" style="padding-left: 15px">
-            <span>
-                Ngày &nbsp; @DateTime.Today.ToShortDateString()
-            </span>
-            <span></span>
-        </div>
-        <div class="ae-calendar-table">
-            <div class="ae-tb-head">
-                <div class="tb-head-cell"><span>#</span></div>
-                <div class="tb-head-cell">
-                    <span>Giờ</span>
-                </div>
-                <div class="tb-head-cell">
-                    <span>Nội Dung Công Việc</span>
-                </div>
-                <div class="tb-head-cell">
-                    <span>Chủ Trì</span>
-                </div>
-                <div class="tb-head-cell">
-                    <span>Thực Hiện</span>
-                </div>
-                <div class="tb-head-cell">
-                    <span>Địa Diểm</span>
-                </div>
-            </div>
-            <div class="ae-tb-body border-left border-top border-right" style="padding: 5px">
-                <div class="tb-head-cell"><span></span></div>
-                <div class="tb-head-cell">
-                    <span>Nội Dung Công Việc</span>
-                </div>
-            </div>
 
 
-            <div ng-if="getAll.length>0" class="ae-tb-body border-left border-top border-right" ng-repeat="q in getAll" ng-mouseover="hoverIn()" ng-mouseleave="hoverOut()">
-                {{q.calendarViews}}
-                <div class="tb-head-cell" style="width: 50px !important">
-                    <div class="ae-flex-tb style-time">
-                        <span class="ae-fl-grow style-time d-sm-ae-none">{{$index}}</span>
-                    </div>
-                </div>
-                <div class="tb-head-cell style-time">
-                    <div class="ae-flex-tb style-time">
-                        <span class="ae-fl-title style-time">Giờ</span>
-                        <span class="ae-fl-grow style-time">{{q.beginDate|date:'hh:mm a'}}({{q.weekend}})</span>
-                    </div>
-                </div>
-                <div class="tb-head-cell">
-                    <div class="ae-flex-tb">
-                        <span class="ae-fl-title">Nội Dung Công Việc</span><span class="ae-fl-grow">{{q.work}}</span>
-                    </div>
-                </div>
-                <div class="tb-head-cell">
-                    <div class="ae-flex-tb">
-                        <span class="ae-fl-title">Chủ Trì</span>
-                        <span class="ae-fl-grow">{{q.admin}}</span>
-                    </div>
-                </div>
-                <div class="tb-head-cell">
-                    <div class="ae-flex-tb">
-                        <span class="ae-fl-title">Thực Hiện</span>
-                        <span class="ae-fl-grow">{{q.users}}</span>
-                    </div>
-                </div>
-                <div class="tb-head-cell">
-                    <div class="ae-flex-tb ">
-                        <div class="d-flex flex-row align-items-center ae-update " ng-class="hoverEdit">
-                            <i class="material-icons item-body-icon delete-calendarview" ng-click="delete_item(q.id)">delete</i>
-                            <i class="material-icons item-body-icon edit-calendarview" data-toggle="modal" data-target="#editCalendarView" data-id="{{q.id}}" ng-click="edit_caladarView(q.id)">edit</i>
-                            <i class="material-icons item-body-icon" data-toggle="modal" data-target="#myModal">add</i>
-                        </div>
-                        <span class="ae-fl-title">Địa Điểm</span>
-                        <span class="ae-fl-grow">{{q.place}}</span>
-                    </div>
-                </div>
-            </div>
-            <div ng-if="getAll.length <= 0" style="margin: auto;text-align: center">
-                Không Có Dữ Liệu Hôm Nay
-            </div>
-
-            <div class="ae-body-main-edit"></div>
-        </div>
-    </div>*@
 <!-- The Modal -->
 <div class="modal fade" id="modalCreate">
     <div class="modal-dialog">
@@ -162,17 +93,16 @@
         </div>
     </div>
 </div>
+
 @section scripts
     {
     <environment names="Development">
         <script src="~/angular/calendar_view_ctrl.js" asp-append-version="true"></script>
+        <script src="~/js/aeDashboard.js" language="javascript" asp-append-version="true"></script>
+        <script type="text/javascript" src="~/js/calendar-view.js" language="javascript" asp-append-version="true"></script>
     </environment>
 
     <environment names="Staging,Production">
         <script src="~/view-resources/Views/CalendarView/calendar_view_ctrl.min.js" asp-append-version="true"></script>
     </environment>
 }
-
-
-<script src="~/js/aeDashboard.js" language="javascript"></script>
-<script type="text/javascript" src="~/js/calendar-view.js" language="javascript"></script>

@@ -1,0 +1,29 @@
+.star {
+    visibility: hidden;
+    font-size: 24px;
+    cursor: pointer;
+    margin-top: 10px;
+    color: rgb(28,2,14);
+    opacity: 1!important;
+    position: inherit!important;
+    left: 0!important;
+    transition: 0.5s
+    /*border-bottom:1px solid red;*/
+}
+
+.star:before {
+  content:"\2605";
+  position:absolute;
+  visibility:visible;
+  margin-top:-16px;
+  margin-left:-5px;
+}
+
+.star:checked:before {
+  content:"\2606";
+  position:absolute;
+  margin-top:-16px;
+  margin-left:-5px;
+  color:var(--primary);
+}
+
