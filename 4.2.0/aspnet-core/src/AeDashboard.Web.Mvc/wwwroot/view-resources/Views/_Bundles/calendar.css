@@ -704,6 +704,51 @@
 .border0 {
     border: 0
 }
+.block-btn-document {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 70px;
+    /*height: 40px;*/
+    background: white;
+    animation: btn-add-animation 1000ms;
+    margin-right: 30px;
+    justify-content: center
+}
+@keyframes btn-add-animation {
+    from {
+        transform: scale(0, 0);
+    }
+    to {
+        transform: scale(1, 1);
+    }
+    }
+@media(max-width: 575px) {
+    .btn-add-document-top {
+        display: none
+    }
+    .block-btn-document {
+        background-color: var(--gray-dark)
+    }
+    .btn-add-circle {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%!important;
+        background-color: var(--primary);
+        position: fixed;
+        bottom: 10px;
+        right: 35px;
+        animation: btn-add-animation 1000ms;
+        cursor: pointer;
+        color: white!important
+    }
+}
+@media(min-width: 576px) {
+    .btn-add-circle {
+        display: none
+    }
+}
 
 @media (min-width: 576px) and (max-width:767px) {
   .table-head {

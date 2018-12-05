@@ -70,20 +70,21 @@ namespace AeDashboard.Document
                 IList<Document> l;
                 if (!string.IsNullOrEmpty(name))
                 {
-                    l = _repository.GetAllList().FindAll(j => j.Author.StartsWith(name) 
-                    || j.Content.StartsWith(name)).OrderByDescending(j => j.CreateDate).Skip(skip).Take(take).ToList();
+                    l = _repository.GetAll().Where(j => j.Author.StartsWith(name)
+                                                        || j.Content.StartsWith(name)).OrderByDescending(j => j.CreateDate).Skip(skip).Take(take).ToList();
                 }
                 else
                 {
-                    l = _repository.GetAllList().OrderByDescending(j => j.CreateDate).Skip(skip).Take(take).ToList();
+                    l = _repository.GetAll().OrderByDescending(j => j.CreateDate).Skip(skip).Take(take).ToList();
                 }
-              
+
                 return l;
             }
             catch (Exception e)
             {
                 return new List<Document>();
             }
+
         }
     }
 }

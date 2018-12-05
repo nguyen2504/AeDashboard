@@ -11,6 +11,19 @@
 <environment names="Staging,Production">
     <link href="~/view-resources/Views/_Bundles/calendar.min.css" type="text/css" rel="stylesheet" asp-append-version="true" />
 </environment>
+<div class="block-btn-document">
+    <button class="btn btn-primary waves-effect btn-add-document-top">THÊM TÀI LIỆU</button> &nbsp;&nbsp;&nbsp;
+    <form class="search-form ">
+        <div class="input-group serch">
+            <div class="input-group-prepend">
+                <span class="input-group-text border0">
+                    <i class="fa fa-search"></i>
+                </span>
+            </div>
+            <input type="text" style="min-width: 250px" ng-model="search" placeholder="Tìm tài liệu, tác giả" autofocus="" class="form-control ng-pristine ng-valid ng-empty ng-touched">
+        </div>
+    </form>
+</div>
 <div style="background-color: white">
     <div class="table-Or-list_doc">
         <div class="table-body doc">
@@ -46,7 +59,9 @@
         </div>
     </div>
 </div>
-
+<button class="btn btn-add-circle waves-effect">
+    <i class="material-icons">add</i>
+</button>
 @section scripts
 {
     <environment names="Development">
@@ -59,3 +74,14 @@
         <script src="~/view-resources/Views/CalendarView/document_ctrl.min.js" asp-append-version="true"></script>
     </environment>
 }
+<script>
+    $(document).ready(function() {
+        if ($(window).width() > 575) {
+            var widthparrent = $('.parrent-body').width()-15;
+            $('.block-btn-document').css('width',widthparrent);
+        } else {
+            var widthparrent1 = $('.parrent-body').width();
+            $('.block-btn-document').css('width',widthparrent1);
+        }
+    })
+</script>

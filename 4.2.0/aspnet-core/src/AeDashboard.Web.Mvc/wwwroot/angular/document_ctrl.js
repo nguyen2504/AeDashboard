@@ -14,11 +14,12 @@
         $scope.$watch('search',
             function() {
                 $scope.data = [];
+                getSearch(0, 32, $scope.search);
             });
         //---------------------------------//
         function activate() {
             $scope.data = [];
-            getSearch(0, 22, "");
+            
             loadScroll();
         }
         // ---------------- get All-------//
@@ -52,20 +53,20 @@
                 var h = (($(document).height() - $(window).height())) - $(window).scrollTop();
                 //console.log('kk ' + h);
                 var check = false;
-                if (h >= 0 && h <= 9) check = true;
-                //if (h >= 400 && h <= 410) check = true;
-                //if (h >= 300 && h <= 310) check = true;
-                //if (h >= 50 && h <= 60) check = true;
-                //if (h >= 100 && h <= 110) check = true;
-                //if (h >= 150 && h <= 160) check = true;
-                //if (h >= 200 && h <= 210) check = true;
+                if (h >= 0 && h <= 1) check = true;
+                if (h >= 400 && h <= 410) check = true;
+                if (h >= 300 && h <= 310) check = true;
+                if (h >= 50 && h <= 60) check = true;
+                if (h >= 100 && h <= 110) check = true;
+                if (h >= 150 && h <= 160) check = true;
+                if (h >= 200 && h <= 210) check = true;
                
                 if (check) {
                     var skip = $('.table-row.doc').length + 1;
-                    var take = 3;
+                    var take = 5;
                     getSearch(skip, take, $scope.search);
 
-                    console.log("skip " + skip);
+                    //console.log("skip " + skip);
                 }
             
             });
