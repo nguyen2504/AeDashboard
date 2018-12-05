@@ -1,30 +1,76 @@
 ﻿using System;
 using System.Threading.Tasks;
+using AeDashboard.Authorization.Users;
 using AeDashboard.Controllers;
 using AeDashboard.Document;
 using AeDashboard.Document.Dto;
+using AeDashboard.Fn;
+using AeDashboard.Web.Models.Loads;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AeDashboard.Web.Controllers
 {
     public class DocumentController : AeDashboardControllerBase
     {
-        //private readonly IDocumentService _documentService;
-
-        //public DocumentController(IDocumentService documentService)
-        //{
-        //    _documentService = documentService;
-        //}
+        private readonly IDocumentService _documentService;
+        private readonly UserManager _userManager;
+        private readonly IFn _fn;
+        public DocumentController(IDocumentService documentService, UserManager userManager,IFn fn)
+        {
+            _documentService = documentService;
+            _userManager = userManager;
+            _fn = fn;
+        }
         public IActionResult Index()
         {
+            //if (_documentService.GetAll().Count < 3)
+            //{
+            //    for (int i = 0; i < 12000; i++)
+            //    {
+            //        var item = new DocumentDto()
+            //        {
+            //            Content = Content(),
+            //            CreateDate = DateTime.Now.AddMinutes(-i),
+            //            Important = false,IsActive = true,
+            //            Notifications = "Thong bao",
+            //            IdUser = (int) _fn.User().Id,
+            //            Author = _fn.User().FullName,
+            //            Url = Content()+"pdf"
+            //        };
+            //        _documentService.CreateOrUpdate(item);
+
+            //    }
+            //}
             return View();
         }
 
+        private string Content()
+        {
+            var contents =
+                @"The problem is that LINQ+Entity Framework has probably been creating a new query for every request because it's been inserting the values for pos and size as literals into the query. Instead of recycling the query (which really hasn't changed from one request to another), LINQ+EF has been re-analyzing the expression tree for your LINQ statement and submitting a new SQL statement on each request.";
+            var s = "";
+            var n = contents.Split(" ").Length;
+             var r = new Random();
+            for (int i = 0; i < r.Next(4,n); i++)
+            {
+                s += contents.Split(" ")[i]+" ";
+            }
+            return s;
+        }
+        [HttpGet]
+        public IActionResult Search(Loads loads)
+        {
+            var take = loads.Take;
+            var skip = loads.Skip;
+            var name = loads.Search;
+            var data = _documentService.Search(skip, take, name);
+            return Json(data);
+        }
         [HttpGet]
         public  JsonResult GetAll()
         {
-            //var dt = _documentService.GetAll();
-            return Json("");
+            var dt = _documentService.GetAll();
+            return Json(dt);
         }
         [HttpPost]
         public IActionResult Create(DocumentFileDto entity)

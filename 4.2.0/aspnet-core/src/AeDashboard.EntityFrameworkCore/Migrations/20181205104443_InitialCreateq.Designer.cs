@@ -4,14 +4,16 @@ using AeDashboard.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AeDashboard.Migrations
 {
     [DbContext(typeof(AeDashboardDbContext))]
-    partial class AeDashboardDbContextModelSnapshot : ModelSnapshot
+    [Migration("20181205104443_InitialCreateq")]
+    partial class InitialCreateq
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -1069,8 +1071,6 @@ namespace AeDashboard.Migrations
                     b.Property<bool>("IsActive");
 
                     b.Property<string>("Notifications");
-
-                    b.Property<string>("Number");
 
                     b.Property<string>("Url")
                         .IsRequired();

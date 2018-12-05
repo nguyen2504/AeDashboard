@@ -14,16 +14,16 @@
 <div style="background-color: white">
     <div class="table-Or-list_doc">
         <div class="table-body doc">
-            <div class="table-row doc">
+            <div class="table-row doc" ng-repeat="q in data">
                 <div class="table-cell doc header">
                     <div class="box-flex_doc_row">
-                        <input type="checkbox" class="star padding5px" />
+                        <input type="checkbox" class="star padding5px" ng-model="q.important" />
                         <div class="marginleft5px">
-                            <span class="content-pdf-doc">Text</span>
+                            <span class="content-pdf-doc">{{q.content}}</span>
                             <div class="box-flex_doc_row">
-                                <a href="#" class="box-flex_a-doc">
+                                <a href="/Upload/{{q.url}}" class="box-flex_a-doc">
                                     <i class="material-icons icon-pdf-upload">picture_as_pdf</i>
-                                    <span class="file-name-upload">Text</span>
+                                    <span class="file-name-upload">{{q.url}}</span>
                                 </a>
                             </div>
                         </div>
@@ -33,88 +33,29 @@
                     <div class="notification-doc">
                         @*<i class="icon ion-android-notifications" style="font-size: 23px;"></i>*@
                         <i class="material-icons" style="font-size:23px;">notifications</i>
-                        <span>Thông báo</span>
+                        <span>{{q.notifications}}</span>
                     </div>
                 </div>
                 <div class="table-cell doc right">
                     <div class="notification-doc">
                         <i class="material-icons">date_range</i>
-                        <span>Cách đây 2 ngày</span>
-                    </div>
-                </div>
-            </div>
-            <!--  -->
-            <div class="table-row doc">
-                <div class="table-cell doc header">
-                    <div class="box-flex_doc_row">
-                        <input type="checkbox" class="star padding5px" />
-                        <div class="marginleft5px">
-                            <span class="content-pdf-doc">Text</span>
-                            <div class="box-flex_doc_row">
-                                <a href="#" class="box-flex_a-doc">
-                                    <i class="material-icons icon-pdf-upload">picture_as_pdf</i>
-                                    <span class="file-name-upload">Text</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-cell doc left" >
-                    <div class="notification-doc">
-                        @*<i class="icon ion-android-notifications" style="font-size: 23px;"></i>*@
-                        <i class="material-icons" style="font-size:23px;">notifications</i>
-                        <span>Thông báo</span>
-                    </div>
-                </div>
-                <div class="table-cell doc right">
-                    <div class="notification-doc">
-                        <i class="material-icons">date_range</i>
-                        <span>Cách đây 2 ngày</span>
-                    </div>
-                </div>
-            </div>
-            <div class="table-row doc">
-                <div class="table-cell doc header">
-                    <div class="box-flex_doc_row">
-                        <input type="checkbox" class="star padding5px" />
-                        <div class="marginleft5px">
-                            <span class="content-pdf-doc">Text</span>
-                            <div class="box-flex_doc_row">
-                                <a href="#" class="box-flex_a-doc">
-                                    <i class="material-icons icon-pdf-upload">picture_as_pdf</i>
-                                    <span class="file-name-upload">Text</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-cell doc left" >
-                    <div class="notification-doc">
-                        @*<i class="icon ion-android-notifications" style="font-size: 23px;"></i>*@
-                        <i class="material-icons" style="font-size:23px;">notifications</i>
-                        <span>Thông báo</span>
-                    </div>
-                </div>
-                <div class="table-cell doc right">
-                    <div class="notification-doc">
-                        <i class="material-icons">date_range</i>
-                        <span>Cách đây 2 ngày</span>
+                        <span>{{q.createDate}}</span>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-{{alls}}
+
 @section scripts
 {
     <environment names="Development">
-        <script src="~/angular/calendar_view_ctrl.js" asp-append-version="true"></script>
+        <script src="~/angular/document_ctrl.js" asp-append-version="true"></script>
         <script src="~/js/aeDashboard.js" language="javascript" asp-append-version="true"></script>
         <script type="text/javascript" src="~/js/calendar-view.js" language="javascript" asp-append-version="true"></script>
     </environment>
 
     <environment names="Staging,Production">
-        <script src="~/view-resources/Views/CalendarView/calendar_view_ctrl.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/CalendarView/document_ctrl.min.js" asp-append-version="true"></script>
     </environment>
 }
