@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Controllers;
@@ -6,6 +9,7 @@ using AeDashboard.Document;
 using AeDashboard.Document.Dto;
 using AeDashboard.Fn;
 using AeDashboard.Web.Models.Loads;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AeDashboard.Web.Controllers
@@ -43,7 +47,84 @@ namespace AeDashboard.Web.Controllers
             //}
             return View();
         }
+        [HttpPost]
+        public async Task<IActionResult> UploadFile(IList<IFormFile> files)
+        {
+            //foreach (IFormFile source in files)
+            //{
+            //    string filename1 = ContentDispositionHeaderValue.Parse(source.ContentDisposition).FileName.Trim('"');
 
+            //    filename1 = this.EnsureCorrectFilename(filename1);
+
+            //    //using (FileStream output = System.IO.File.Create(this.GetPathAndFilename(filename)))
+            //    //    await source.CopyToAsync(output);
+            //}
+            var file = files[0];
+            if (file == null || file.Length == 0)
+                return Content("file not selected");
+            Random r = new Random(999999);
+            var filename = _fn.User().Id+"_"+_fn.User().UserName+"_"+ DateTime.Now.ToString("yyyy-MM-dd")+"_"+r.Next() + "_" + file.FileName;
+            var path = Path.Combine(
+                Directory.GetCurrentDirectory(), "wwwroot/download/",
+                filename);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                await file.CopyToAsync(stream);
+            }
+            var entity = new DocumentDto()
+            {
+                CreateDate = DateTime.Now,
+                IdUser = (int) _fn.User().Id,
+                Author = _fn.User().UserName,
+                Important = false,
+                IsActive = true,
+                Url = filename
+            };
+
+            return Json(entity);
+        }
+        private string GetContentType(string path)
+        {
+            var types = GetMimeTypes();
+            var ext = Path.GetExtension(path).ToLowerInvariant();
+            return types[ext];
+        }
+
+        private Dictionary<string, string> GetMimeTypes()
+        {
+            return new Dictionary<string, string>
+            {
+                {".txt", "text/plain"},
+                {".pdf", "application/pdf"},
+                {".doc", "application/vnd.ms-word"},
+                {".docx", "application/vnd.ms-word"},
+                {".xls", "application/vnd.ms-excel"},
+                {".xlsx", "application/vnd.openxmlformats officedocument.spreadsheetml.sheet"},
+                    {".png", "image/png"},
+                {".jpg", "image/jpeg"},
+                {".jpeg", "image/jpeg"},
+                {".gif", "image/gif"},
+                {".csv", "text/csv"}
+            };
+        }
+        public async Task<IActionResult> Download(string filename)
+        {
+            if (filename == null)
+                return Content("filename not present");
+
+            var path = Path.Combine(
+                Directory.GetCurrentDirectory(),
+                "wwwroot", filename);
+
+            var memory = new MemoryStream();
+            using (var stream = new FileStream(path, FileMode.Open))
+            {
+                await stream.CopyToAsync(memory);
+            }
+            memory.Position = 0;
+            return File(memory, GetContentType(path), Path.GetFileName(path));
+        }
         private string Content()
         {
             var contents =
@@ -73,12 +154,14 @@ namespace AeDashboard.Web.Controllers
             return Json(dt);
         }
         [HttpPost]
-        public IActionResult Create(DocumentFileDto entity)
+        public IActionResult Create(DocumentDto entity)
         {
             try
             {
-                //_documentService.CreateOrUpdate(entity);
-                return Json("1");
+                entity.Author = _fn.User().UserName;
+                entity.IdUser = (int) _fn.User().Id;
+                _documentService.CreateOrUpdate(entity);
+                return View("Index");
             }
             catch (Exception e)
             {
@@ -110,7 +193,7 @@ namespace AeDashboard.Web.Controllers
         {
             try
             {
-                //_documentService.Delete(id);
+                _documentService.Delete(id);
                 return Json(true);
             }
             catch (Exception e)
@@ -118,5 +201,14 @@ namespace AeDashboard.Web.Controllers
                 return Json(false);
             }
         }
+
+        [HttpGet]
+        public JsonResult LoadCatalogue()
+        {
+            return Json(_documentService.LoadCatalogue());
+        }
+        //--------------------------------
+
+
     }
 }

@@ -11,8 +11,10 @@
 <environment names="Staging,Production">
     <link href="~/view-resources/Views/_Bundles/calendar.min.css" type="text/css" rel="stylesheet" asp-append-version="true" />
 </environment>
+@*@await Html.PartialAsync("_Create")*@
+@await Html.PartialAsync("Upload")
 <div class="block-btn-document">
-    <button class="btn btn-primary waves-effect btn-add-document-top"  ng-click="addOrUpdate()">THÊM TÀI LIỆU</button> &nbsp;&nbsp;&nbsp;
+    <button class="btn btn-primary waves-effect btn-add-document-top" ng-click="addOrUpdate()">THÊM TÀI LIỆU</button> &nbsp;&nbsp;&nbsp;
     <form class="search-form ">
         <div class="input-group serch">
             <div class="input-group-prepend">
@@ -34,7 +36,7 @@
                         <div class="marginleft5px">
                             <span class="content-pdf-doc">{{q.content}}</span>
                             <div class="box-flex_doc_row">
-                                <a href="/Upload/{{q.url}}" class="box-flex_a-doc">
+                                <a href="/download/{{q.url}}" class="box-flex_a-doc">
                                     <i class="material-icons icon-pdf-upload">picture_as_pdf</i>
                                     <span class="file-name-upload">{{q.url}}</span>
                                 </a>
@@ -42,7 +44,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="table-cell doc left" >
+                <div class="table-cell doc left">
                     <div class="notification-doc">
                         @*<i class="icon ion-android-notifications" style="font-size: 23px;"></i>*@
                         <i class="material-icons" style="font-size:23px;">notifications</i>
@@ -62,9 +64,29 @@
 <button class="btn btn-add-circle waves-effect">
     <i class="material-icons" ng-click="addOrUpdate()">add</i>
 </button>
-@await Html.PartialAsync("_Create")
+<div class="modal fade" id="modalCreateDocument" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                @await Html.PartialAsync("_Create")
+            </div>
+
+            @*<div class="upload-document hide">
+                    @await Html.PartialAsync("Upload")
+                </div>*@
+        </div>
+    </div>
+</div>
+
+
 @section scripts
-{
+    {
     <environment names="Development">
         <script src="~/angular/document_ctrl.js" asp-append-version="true"></script>
         <script src="~/js/aeDashboard.js" language="javascript" asp-append-version="true"></script>
@@ -76,13 +98,13 @@
     </environment>
 }
 <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
         if ($(window).width() > 575) {
-            var widthparrent = $('.parrent-body').width()-15;
-            $('.block-btn-document').css('width',widthparrent);
+            var widthparrent = $('.parrent-body').width() - 15;
+            $('.block-btn-document').css('width', widthparrent);
         } else {
             var widthparrent1 = $('.parrent-body').width();
-            $('.block-btn-document').css('width',widthparrent1);
+            $('.block-btn-document').css('width', widthparrent1);
         }
     })
 </script>

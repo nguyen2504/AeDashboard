@@ -17,11 +17,16 @@
                 getSearch(0, 32, $scope.search);
             });
         $scope.addOrUpdate = function (id) {
-            $('#modalCreateDocument').modal();
-            var url = "/Document/AddOrUpdate?id=" + id;
-            $http.get(url).then(function(e) {
-                var result = e.data;
-            });
+           
+            $('#modalUpload').modal();
+            //if (id != "undefined") {
+            //    $('#modalUpload').modal();
+            //} else {
+            //    var url = "/Document/AddOrUpdate?id=" + id;
+            //    $http.get(url).then(function (e) {
+            //        var result = e.data;
+            //    });
+            //}
         };
         $scope.onUpload = function() {
             $('.upload-document').removeClass('hide').addClass('show');
@@ -29,21 +34,20 @@
                 //alert($('.upload-document').hasClass('show'));
             }
         };
+        $scope.loadCatalogue = function() {
+            var url = "/Document/LoadCatalogue";
+            $http.get(url).then(function(e) {
+                $scope.catalog = e.data;
+            });
+        };
+        $scope.loadCatalogue();
         //---------------------------------//
         function activate() {
             $scope.data = [];
-            
+           
             loadScroll();
         }
-        // ---------------- get All-------//
-        //function getAll() {
-        //    var url = "/Document/GetAll";
-        //    $http.get(url).then(function(e) {
-        //        $scope.data = e.data.result;
-        //        console.log(JSON.stringify(e));
-        //    });
-        //}
-
+     
         function getSearch(skip, take, name) {
             factory.loading(true);
             var url = "/Document/Search";
@@ -86,3 +90,41 @@
         }
     }
 })();
+function uploadFiles(inputId) {
+    var input = document.getElementById(inputId);
+    var files = input.files;
+    var formData = new FormData();
+
+    for (var i = 0; i != files.length; i++) {
+        formData.append("files", files[i]);
+    }
+    var url = "/Document/UploadFile";
+   
+    $.ajax(
+        {
+            url:url,
+            data: formData,
+            processData: false,
+            contentType: false,
+            type: "POST",
+            success: function (e) {
+             
+                var t = e.result;
+                $("#Url").val(t.url);
+               
+                if (t.url != "") {
+                    var file = t.url.split('_')[t.url.split('_').length - 1];
+                    $('#modalCreateDocument').modal();
+                    $('#modalUpload').modal('hide');
+                    $('.progress-bar').addClass('show');
+                    $('.complete').text("upload 100% "+file);
+                } else {
+                    $('.showinfor').addClass('show');
+                    $('#modalUpload').modal('show');
+                }
+                
+
+            }
+        }
+    );
+}

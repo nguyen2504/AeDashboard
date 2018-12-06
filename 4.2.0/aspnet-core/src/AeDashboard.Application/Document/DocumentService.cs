@@ -86,5 +86,11 @@ namespace AeDashboard.Document
             }
 
         }
+
+        public List<string> LoadCatalogue()
+        {
+            var data = _repository.GetAll().Select(j => j.Notifications).Distinct();
+            return data.ToList();
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-   app.directive('directive', directive);
+    app.directive('returnFiles', directive);
 
     directive.$inject = ['$window'];
 
@@ -11,12 +11,19 @@
         // Creates:
         // 
         var directive = {
+            require: "ngModel",
             link: link,
             restrict: 'EA'
         };
         return directive;
 
-        function link(scope, element, attrs) {
+        function link(scope, elem, attrs, ngModel) {
+            elem.on("change",
+                function(e) {
+                    var files = elem[0].files;
+                    ngModel.$setViewValue(files);
+                    console.log(JSON.stringify(scope.fileList));
+                });
         }
     }
 

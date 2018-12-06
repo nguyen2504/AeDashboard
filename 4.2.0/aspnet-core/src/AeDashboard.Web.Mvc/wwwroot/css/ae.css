@@ -28,3 +28,33 @@
     display: block;
     position: relative
 }
+.progress-bar.show {
+    animation-name: showper;
+    animation-duration: 1s;
+    width: 100%
+}
+@keyframes showper {
+0% {
+    width: 0;
+    background: var(--cyan)
+}    
+35% {
+    width: 25%;
+    background: var(--danger)
+}
+65% {
+    width: 75%;
+   background: var(--yellow)
+}
+100% {
+    width: 100%;
+    background: var(--primary)
+}
+}
+.showinfor {
+    display: none
+}
+.showinfor.show {
+    display: block;
+    background-color: var(--danger)
+}

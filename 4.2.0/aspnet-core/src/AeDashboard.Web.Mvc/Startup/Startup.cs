@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
@@ -13,6 +14,7 @@ using AeDashboard.Configuration;
 using AeDashboard.Identity;
 using AeDashboard.Web.Resources;
 using Abp.AspNetCore.SignalR.Hubs;
+using Microsoft.Extensions.FileProviders;
 
 
 namespace AeDashboard.Web.Startup
@@ -32,7 +34,11 @@ namespace AeDashboard.Web.Startup
             services.AddMvc(
                 options => options.Filters.Add(new AutoValidateAntiforgeryTokenAttribute())
             );
-
+            // download 
+            services.AddSingleton<IFileProvider>(
+                new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+            //-----------end----------
             IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 
