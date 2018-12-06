@@ -173,5 +173,13 @@
       "wwwroot/js/calendar-view.js",
       "wwwroot/js/aeDashboard.js"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Document/document_ctrl.min.js",
+    "inputFiles": [
+      "wwwroot/angular/document_ctrl.js",
+      "wwwroot/js/calendar-view.js",
+      "wwwroot/js/aeDashboard.js"
+    ]
   }
 ]

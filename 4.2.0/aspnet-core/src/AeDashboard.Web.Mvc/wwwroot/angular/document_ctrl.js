@@ -28,6 +28,13 @@
             //    });
             //}
         };
+        $scope.editOrDelete = function(id) {
+                var url = "/Document/Edit?id=" + id;
+                $http.get(url).then(function (e) {
+                    
+                    $('#editDocument div.modal-body').html(e.data);
+                });
+        }
         $scope.onUpload = function() {
             $('.upload-document').removeClass('hide').addClass('show');
             if ($('.upload-document').hasClass('show')) {

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.IO;
 using System.Linq;
 using System.Text;
 using Abp.Domain.Services;
 using AeDashboard.Authorization.Users;
+using Microsoft.AspNetCore.Http;
 
 namespace AeDashboard.Fn
 {
@@ -30,6 +32,24 @@ namespace AeDashboard.Fn
         {
             var iduser = _userManager.AbpSession.UserId;
             return _userManager.Users.FirstOrDefault(j => j.Id.Equals(iduser));
+        }
+
+        public string UploadFile(IList<IFormFile> files)
+        {
+            var file = files[0];
+            if (file == null || file.Length == 0)
+                return "file not selected";
+            Random r = new Random(999999);
+            var filename = User().Id + "_" + User().UserName + "_" + DateTime.Now.ToString("yyyy-MM-dd") + "_" + r.Next() + "_" + file.FileName;
+            var path = Path.Combine(
+                Directory.GetCurrentDirectory(), "wwwroot/download/",
+                filename);
+
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                 file.CopyTo(stream);
+            }
+            return filename;
         }
     }
 }

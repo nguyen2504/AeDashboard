@@ -38,9 +38,9 @@ namespace AeDashboard.Document
             }
         }
 
-        public async Task<Document> GetId(int id)
+        public  Document GetId(int id)
         {
-            return await _repository.FirstOrDefaultAsync(j => j.Id.Equals(id));
+            return  _repository.FirstOrDefault(j => j.Id.Equals(id));
         }
 
         public async Task<bool> CreateOrUpdate(DocumentDto entity)

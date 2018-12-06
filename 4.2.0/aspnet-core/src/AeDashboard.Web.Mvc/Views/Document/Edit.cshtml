@@ -1,0 +1,71 @@
+﻿@{
+    Layout = null;
+}
+@model AeDashboard.Document.Document
+<form asp-action="Create" asp-controller="Document" target="Post">
+    <div class=" add-edit_doc">
+        @*@await Html.PartialAsync("Upload")*@
+        <div class="add-edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <label asp-for="Content" class="form-label"></label>
+                    <textarea asp-for="Content" required class="form-control"></textarea>
+                    <span asp-validation-for="Content" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <label asp-for="Notifications" class="form-label"></label>
+                    <input asp-for="Notifications" required class="form-control" list="notifications" />
+                    <datalist>
+                        <option value="{{x}}" ng-repeat="x in catalog">{{x}}</option>
+                    </datalist>
+                    <!--catalog catalogue-->
+                    <span asp-validation-for="Notifications" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <label asp-for="Url" class="form-label"></label>
+                    <input asp-for="Url" class="form-control" type="text" />
+
+                    <span asp-validation-for="Url" class="text-danger"></span>
+
+                </div>
+            </div>
+            <div class="form-group form-float">
+                <div class="form-line">
+                    <label asp-for="Important" class="form-label"></label>
+                    <input asp-for="Important" required class="form-control" type="text" value="true" />
+
+                    <span asp-validation-for="Important" class="text-danger"></span>
+                </div>
+            </div>
+            <div style="display: none">
+                
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <label asp-for="CreateDate" class="form-label"></label>
+                        <input asp-for="CreateDate" value="@DateTime.Now.ToString("s")" required class="form-control" type="datetime-local" />
+                        <span asp-validation-for="CreateDate" class="text-danger"></span>
+                    </div>
+                </div>
+              
+                <div class="form-group form-float">
+                    <div class="form-line">
+                        <label asp-for="IsActive" class="form-label"></label>
+                        <input asp-for="IsActive" required class="form-control" type="text" value="true" />
+
+                        <span asp-validation-for="IsActive" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <input type="submit" value="Create" class="btn btn-default waves-ripple" />
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+    </div>
+
+</form>

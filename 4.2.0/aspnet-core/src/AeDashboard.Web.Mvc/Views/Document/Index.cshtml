@@ -1,4 +1,4 @@
-﻿
+﻿@using Abp.Extensions
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,6 +11,7 @@
 <environment names="Staging,Production">
     <link href="~/view-resources/Views/_Bundles/calendar.min.css" type="text/css" rel="stylesheet" asp-append-version="true" />
 </environment>
+<link href="~/css/style.css" rel="stylesheet">
 @*@await Html.PartialAsync("_Create")*@
 @await Html.PartialAsync("Upload")
 <div class="block-btn-document">
@@ -29,7 +30,7 @@
 <div style="background-color: white">
     <div class="table-Or-list_doc">
         <div class="table-body doc">
-            <div class="table-row doc" ng-repeat="q in data">
+            <div class="table-row doc" ng-repeat="q in data" ng-click="editOrDelete(q.id)" data-toggle="modal" data-target="#editDocument">
                 <div class="table-cell doc header">
                     <div class="box-flex_doc_row">
                         <input type="checkbox" class="star padding5px" ng-model="q.important" />
@@ -84,6 +85,24 @@
     </div>
 </div>
 
+<div class="modal fade" id="editDocument">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Modal Heading</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                @*@await Html.PartialAsync("Edit")*@
+            </div>
+
+        </div>
+    </div>
+</div>
 
 @section scripts
     {
@@ -94,17 +113,6 @@
     </environment>
 
     <environment names="Staging,Production">
-        <script src="~/view-resources/Views/CalendarView/document_ctrl.min.js" asp-append-version="true"></script>
+        <script src="~/view-resources/Views/Document/document_ctrl.min.js" asp-append-version="true"></script>
     </environment>
 }
-<script>
-    $(document).ready(function () {
-        if ($(window).width() > 575) {
-            var widthparrent = $('.parrent-body').width() - 15;
-            $('.block-btn-document').css('width', widthparrent);
-        } else {
-            var widthparrent1 = $('.parrent-body').width();
-            $('.block-btn-document').css('width', widthparrent1);
-        }
-    })
-</script>

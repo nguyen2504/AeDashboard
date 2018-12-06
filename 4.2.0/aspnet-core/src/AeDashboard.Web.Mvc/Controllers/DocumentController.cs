@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Abp.AutoMapper;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Controllers;
 using AeDashboard.Document;
@@ -48,30 +49,10 @@ namespace AeDashboard.Web.Controllers
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> UploadFile(IList<IFormFile> files)
+        public  IActionResult UploadFile(IList<IFormFile> files)
         {
-            //foreach (IFormFile source in files)
-            //{
-            //    string filename1 = ContentDispositionHeaderValue.Parse(source.ContentDisposition).FileName.Trim('"');
-
-            //    filename1 = this.EnsureCorrectFilename(filename1);
-
-            //    //using (FileStream output = System.IO.File.Create(this.GetPathAndFilename(filename)))
-            //    //    await source.CopyToAsync(output);
-            //}
-            var file = files[0];
-            if (file == null || file.Length == 0)
-                return Content("file not selected");
-            Random r = new Random(999999);
-            var filename = _fn.User().Id+"_"+_fn.User().UserName+"_"+ DateTime.Now.ToString("yyyy-MM-dd")+"_"+r.Next() + "_" + file.FileName;
-            var path = Path.Combine(
-                Directory.GetCurrentDirectory(), "wwwroot/download/",
-                filename);
-
-            using (var stream = new FileStream(path, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
+          
+           
             var entity = new DocumentDto()
             {
                 CreateDate = DateTime.Now,
@@ -79,10 +60,18 @@ namespace AeDashboard.Web.Controllers
                 Author = _fn.User().UserName,
                 Important = false,
                 IsActive = true,
-                Url = filename
+                Url = _fn.UploadFile(files)
             };
 
             return Json(entity);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var dt = _documentService.GetId(id);
+            var k = dt.MapTo<DocumentDto>();
+            return View("Edit",dt);
         }
         private string GetContentType(string path)
         {
