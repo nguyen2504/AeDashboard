@@ -17,24 +17,20 @@
                 getSearch(0, 32, $scope.search);
             });
         $scope.addOrUpdate = function (id) {
-           
+            console.log('id ' + id);
             $('#modalUpload').modal();
-            //if (id != "undefined") {
-            //    $('#modalUpload').modal();
-            //} else {
-            //    var url = "/Document/AddOrUpdate?id=" + id;
-            //    $http.get(url).then(function (e) {
-            //        var result = e.data;
-            //    });
-            //}
+        };
+        $scope.editUrl = function(id) {
+            console.log('id ' + id);
         };
         $scope.editOrDelete = function(id) {
-                var url = "/Document/Edit?id=" + id;
-                $http.get(url).then(function (e) {
-                    
-                    $('#editDocument div.modal-body').html(e.data);
-                });
-        }
+            var url = "/Document/Edit?id=" + id;
+            $http.get(url).then(function (e) {
+                var dt = e.data.result;
+                $('#editDocument div.modal-body').html(e.data);
+                $('#editDocument').modal();
+            });
+        };
         $scope.onUpload = function() {
             $('.upload-document').removeClass('hide').addClass('show');
             if ($('.upload-document').hasClass('show')) {
@@ -78,6 +74,7 @@
                 //console.log('kk ' + h);
                 var check = false;
                 if (h >= 0 && h <= 1) check = true;
+                if (h >= 500 && h <= 510) check = true;
                 if (h >= 400 && h <= 410) check = true;
                 if (h >= 300 && h <= 310) check = true;
                 if (h >= 50 && h <= 60) check = true;

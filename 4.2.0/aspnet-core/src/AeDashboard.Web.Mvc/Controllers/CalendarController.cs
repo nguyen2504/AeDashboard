@@ -156,7 +156,6 @@ namespace AeDashboard.Web.Controllers
         public IActionResult Delete(int id)
         {
             _calendarViewService.Delete(id);
-            //return Json("Index");
             return RedirectToAction("Index", "Calendar");
         }
     

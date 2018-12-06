@@ -92,5 +92,18 @@ namespace AeDashboard.Document
             var data = _repository.GetAll().Select(j => j.Notifications).Distinct();
             return data.ToList();
         }
+
+        public async Task<bool> Update(Document entity)
+        {
+            try
+            {
+                await _repository.UpdateAsync(entity);
+                return true;
+            }
+            catch (Exception e)
+            {
+                return false;
+            }
+        }
     }
 }

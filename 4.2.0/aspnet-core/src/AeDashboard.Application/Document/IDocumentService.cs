@@ -15,6 +15,7 @@ namespace AeDashboard.Document
         Task<bool> Delete(int id);
         IList<Document> Search(int skip, int take, string name);
         List<string> LoadCatalogue();
+        Task<bool> Update(Document entity);
 
     }
 }

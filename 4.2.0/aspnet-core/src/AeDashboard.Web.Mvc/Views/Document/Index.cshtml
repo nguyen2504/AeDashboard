@@ -27,7 +27,7 @@
         </div>
     </form>
 </div>
-<div style="background-color: white">
+<div >
     <div class="table-Or-list_doc">
         <div class="table-body doc">
             <div class="table-row doc" ng-repeat="q in data" ng-click="editOrDelete(q.id)" data-toggle="modal" data-target="#editDocument">
@@ -37,7 +37,7 @@
                         <div class="marginleft5px">
                             <span class="content-pdf-doc">{{q.content}}</span>
                             <div class="box-flex_doc_row">
-                                <a href="/download/{{q.url}}" class="box-flex_a-doc">
+                                <a ng-href="/download/q.url" class="box-flex_a-doc">
                                     <i class="material-icons icon-pdf-upload">picture_as_pdf</i>
                                     <span class="file-name-upload">{{q.url}}</span>
                                 </a>
