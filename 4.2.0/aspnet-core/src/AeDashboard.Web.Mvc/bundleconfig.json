@@ -8,6 +8,7 @@
   {
     "outputFileName": "wwwroot/view-resources/Views/_Bundles/account-layout.min.css",
     "inputFiles": [
+      "wwwroot/css/root.css",
       "wwwroot/fonts/roboto/roboto.css",
       "wwwroot/fonts/material-icons/materialicons.css",
       "wwwroot/css/bs4/bootstrap.min.css",

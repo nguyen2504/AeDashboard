@@ -54,6 +54,18 @@
     margin-right: 30px;
     justify-content: center
 }
+.block-btns-search {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    position: fixed;
+    top: 70px;
+    /*height: 40px;*/
+    background: white;
+    animation: btn-add-animation 1000ms;
+    margin-right: 30px;
+    justify-content: center
+}
 @keyframes btn-add-animation {
     from {
         transform: scale(0, 0);

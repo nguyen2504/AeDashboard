@@ -1,6 +1,10 @@
 ﻿/*!
     file ae.cs
 */
+body {
+    --bg:#ffffff
+
+}
 .fade.ae {
     -ms-opacity: 1!important;
     opacity: 1!important;

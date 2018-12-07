@@ -3,9 +3,9 @@
 
    app.controller('ctrl', documentCtrl);
 
-    documentCtrl.$inject = ['$location', '$scope', '$http','factory'];
+    documentCtrl.$inject = ['$location', '$scope', '$http', 'factory','$timeout'];
 
-    function documentCtrl($location, $scope, $http, factory) {
+    function documentCtrl($location, $scope, $http, factory, $timeout) {
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'ctrl';
@@ -37,6 +37,15 @@
                 //alert($('.upload-document').hasClass('show'));
             }
         };
+        $scope.hideModal = function () {
+            alert('toi day')
+            $timeout(function() {
+              
+                $('#editDocument').modal('hide');
+            }, 3000);
+        
+            
+        }
         $scope.loadCatalogue = function() {
             var url = "/Document/LoadCatalogue";
             $http.get(url).then(function(e) {
@@ -74,14 +83,15 @@
                 //console.log('kk ' + h);
                 var check = false;
                 if (h >= 0 && h <= 1) check = true;
-                if (h >= 500 && h <= 510) check = true;
-                if (h >= 400 && h <= 410) check = true;
-                if (h >= 300 && h <= 310) check = true;
-                if (h >= 50 && h <= 60) check = true;
-                if (h >= 100 && h <= 110) check = true;
-                if (h >= 150 && h <= 160) check = true;
-                if (h >= 200 && h <= 210) check = true;
-               
+                if (5<= h && h<10) check = true;
+                if (50 <= h && h < 60) check = true;
+                if (80 <= h && h < 90) check = true;
+                if (90 <= h && h < 94) check = true;
+                if (150 <= h && h < 152) check = true;
+                if (200 <= h && h < 205) check = true;
+                if (300 <= h && h < 405) check = true;
+                if (450 <= h && h < 470) check = true;
+                if (500 <= h && h < 506) check = true;
                 if (check) {
                     var skip = $('.table-row.doc').length + 1;
                     var take = 5;

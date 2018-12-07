@@ -77,7 +77,10 @@ namespace AeDashboard.Document
                 {
                     l = _repository.GetAll().OrderByDescending(j => j.CreateDate).Skip(skip).Take(take).ToList();
                 }
-
+                foreach (var q in l)
+                {
+                    q.Number = _fn.ConvertDaysOrHour(q.CreateDate);
+                }
                 return l;
             }
             catch (Exception e)

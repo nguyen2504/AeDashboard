@@ -17,6 +17,7 @@
   visibility:visible;
   margin-top:-16px;
   margin-left:-5px;
+    color:var(--primary);
 }
 
 .star:checked:before {
@@ -24,6 +25,6 @@
   position:absolute;
   margin-top:-16px;
   margin-left:-5px;
-  color:var(--primary);
+  
 }
 

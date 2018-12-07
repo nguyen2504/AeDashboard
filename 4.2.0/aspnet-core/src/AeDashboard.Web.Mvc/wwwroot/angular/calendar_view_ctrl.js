@@ -57,10 +57,13 @@
         $scope.hoverIn = function () {
             this.hoverEdit = 'show';
         };
-        $scope.formatDate = function (a) {
+        $scope.formatDate = function(a) {
             //console.log('f ' + factory.formatDate(a, 1));
             return factory.formatDate(a, 1);
-        }
+        };
+        $scope.onChangeWeek = function() {
+
+        };
         $scope.hoverOut = function () {
             this.hoverEdit = 'hide';
         };

@@ -28,39 +28,7 @@
     </form>
 </div>
 <div >
-    <div class="table-Or-list_doc">
-        <div class="table-body doc">
-            <div class="table-row doc" ng-repeat="q in data" ng-click="editOrDelete(q.id)" data-toggle="modal" data-target="#editDocument">
-                <div class="table-cell doc header">
-                    <div class="box-flex_doc_row">
-                        <input type="checkbox" class="star padding5px" ng-model="q.important" />
-                        <div class="marginleft5px">
-                            <span class="content-pdf-doc">{{q.content}}</span>
-                            <div class="box-flex_doc_row">
-                                <a ng-href="/download/q.url" class="box-flex_a-doc">
-                                    <i class="material-icons icon-pdf-upload">picture_as_pdf</i>
-                                    <span class="file-name-upload">{{q.url}}</span>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="table-cell doc left">
-                    <div class="notification-doc">
-                        @*<i class="icon ion-android-notifications" style="font-size: 23px;"></i>*@
-                        <i class="material-icons" style="font-size:23px;">notifications</i>
-                        <span>{{q.notifications}}</span>
-                    </div>
-                </div>
-                <div class="table-cell doc right">
-                    <div class="notification-doc">
-                        <i class="material-icons">date_range</i>
-                        <span>{{q.createDate}}</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+ @await Html.PartialAsync("_List")
 </div>
 <button class="btn btn-add-circle waves-effect">
     <i class="material-icons" ng-click="addOrUpdate()">add</i>

@@ -87,7 +87,7 @@ namespace AeDashboard.Web.Startup
 
                 routes.MapRoute(
                     name: "default",
-                    template: "{controller=Home}/{action=Index}/{id?}");
+                    template: "{controller=Calendar}/{action=Index}/{id?}");
             });
         }
     }

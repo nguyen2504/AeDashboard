@@ -12,5 +12,6 @@ namespace AeDashboard.Fn
         int GetWeekOrderInYear(DateTime time);
         User User();
         string UploadFile(IList<IFormFile> files);
+        string ConvertDaysOrHour(DateTime dt);
     }
 }

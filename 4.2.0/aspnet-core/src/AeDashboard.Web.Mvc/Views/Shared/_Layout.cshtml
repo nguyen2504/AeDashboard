@@ -36,27 +36,28 @@
     <title>AeDashboard</title>
 
     <environment names="Development">
-        <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/fonts/material-icons/ionicons.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/fonts/material-icons/material-icons.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/root.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/fonts/material-icons/ionicons.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/fonts/material-icons/material-icons.min.css" rel="stylesheet" asp-append-version="true"/>
         @*<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />*@
-        <link href="~/css/bs4/bootstrap.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/bs4/bootstrap.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true"/>
         <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
         <link href="~/css/ae.css" rel="stylesheet">
-        <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/angular-datatables.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/css/theme.css" rel="stylesheet" />
-        <link href="~/css/aedashboard.css" rel="stylesheet" />
+        <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/angular-datatables.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/css/theme.css" rel="stylesheet"/>
+        <link href="~/css/aedashboard.css" rel="stylesheet"/>
     </environment>
 
     <environment names="Staging,Production">
@@ -282,16 +283,38 @@
 <script>
     $(document).ready(function() {
         $(this).click(function() {
-            console.log($('.dropdown-menu').hasClass('show'));
+
             $('.dropdown-menu').removeClass('show');
             $('.dropdown').removeClass('show');
         });
         $('.ae-tb-body').click(function() {
             console.log('ae-tb-body');
-        })
+        });
         $('.page-item-loader-wrapper').css('display', 'none');
-        //$('#BeginDate').val(new Date());
-        //console.log( $('#BeginDate').val())
-       
-    })
+
+        $('.box-search-ae-boottom>.itemae').on('click',
+            function() {
+                $('.box-search-ae-boottom>.itemae').removeClass('active');
+                $(this).addClass('active');
+               
+                var index = $(this).index() ;
+                if ($(this).index() > 0) {
+                    $('.box-flex_item').removeClass('show');
+                    $('.box-search-ae').removeClass('show');
+                    $('.box-flex_item').eq(index).addClass('show');
+                    $('.box-search-ae').addClass('show');
+                } else {
+                    $('.box-search-ae').removeClass('show');
+                    $('#modalCreate').modal('show');
+                }
+               
+                console.log('index ' + index);
+            });
+    });
+    $('.close').click(function() {
+        $('.box-search-ae').removeClass('show');
+    });
+    $(function() {
+        $('[data-toggle="tooltip"]').tooltip();
+    });
 </script>
