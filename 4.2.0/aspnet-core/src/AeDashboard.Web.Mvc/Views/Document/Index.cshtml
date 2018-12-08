@@ -3,63 +3,13 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<environment names="Development">
-    <link href="~/view-resources/Views/_Bundles/calendar.css" type="text/css" rel="stylesheet" asp-append-version="true" />
-</environment>
-
-<environment names="Staging,Production">
-    <link href="~/view-resources/Views/_Bundles/calendar.min.css" type="text/css" rel="stylesheet" asp-append-version="true" />
-</environment>
-<link href="~/css/style.css" rel="stylesheet">
-@*@await Html.PartialAsync("_Create")*@
-@await Html.PartialAsync("Upload")
-<div class="block-btn-document">
-    <button class="btn btn-primary waves-effect btn-add-document-top" ng-click="addOrUpdate()">THÊM TÀI LIỆU</button> &nbsp;&nbsp;&nbsp;
-    <form class="search-form ">
-        <div class="input-group serch">
-            <div class="input-group-prepend">
-                <span class="input-group-text border0">
-                    <i class="fa fa-search"></i>
-                </span>
-            </div>
-            <input type="text" style="min-width: 250px" ng-model="search" placeholder="Tìm tài liệu, tác giả" autofocus="" class="form-control ng-pristine ng-valid ng-empty ng-touched">
-        </div>
-    </form>
-</div>
-<div >
- @await Html.PartialAsync("_List")
-</div>
-<button class="btn btn-add-circle waves-effect">
-    <i class="material-icons" ng-click="addOrUpdate()">add</i>
-</button>
-<div class="modal fade" id="modalCreateDocument" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                @await Html.PartialAsync("_Create")
-            </div>
-
-            @*<div class="upload-document hide">
-                    @await Html.PartialAsync("Upload")
-                </div>*@
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="editDocument">
+<div class="modal fade" id="editDocument" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-
+            @*  *@
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
+                <h4 class="modal-title">Cập Nhật Tài Liệu</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
 
@@ -71,6 +21,76 @@
         </div>
     </div>
 </div>
+
+<environment names="Development">
+    <link href="~/view-resources/Views/_Bundles/calendar.css" type="text/css" rel="stylesheet" asp-append-version="true" />
+</environment>
+
+<environment names="Staging,Production">
+    <link href="~/view-resources/Views/_Bundles/calendar.min.css" type="text/css" rel="stylesheet" asp-append-version="true" />
+</environment>
+<link href="~/css/style.css" rel="stylesheet">
+@*@await Html.PartialAsync("_Create")*@
+<div class="box-search-ae">
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">×</span>
+    </button>
+    <div class="box-flex_ae">
+        <div class="box-flex_item btn-add_ae">
+            <button class="btn btn-primary" type="button" ng-click="addOrUpdate()">Tài Liệu Mới</button>
+        </div>
+        <div class="box-flex_item grow1">
+            <div class="box_search show">
+                <i class="material-icons icon_searchae">search</i>
+                <input type="search" autocomplete="on" pattern="[A-Za-z0-9]" class="form-control-sm form-control input_searchae ng-pristine ng-untouched ng-valid ng-empty ng-valid-pattern" ng-model="search" tabindex="10/">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+@*<div class="block-btn-document">
+        <button class="btn btn-primary waves-effect btn-add-document-top" ng-click="addOrUpdate()">THÊM TÀI LIỆU</button> &nbsp;&nbsp;&nbsp;
+        <form class="search-form ">
+            <div class="input-group serch">
+                <div class="input-group-prepend">
+                    <span class="input-group-text border0">
+                        <i class="fa fa-search"></i>
+                    </span>
+                </div>
+                <input type="text" style="min-width: 250px" ng-model="search" placeholder="Tìm tài liệu, tác giả" autofocus="" class="form-control ng-pristine ng-valid ng-empty ng-touched">
+            </div>
+        </form>
+    </div>*@
+<div>
+    @await Html.PartialAsync("_List")
+</div>
+<button class="btn btn-add-circle waves-effect">
+    <i class="material-icons" ng-click="addOrUpdate()">add</i>
+</button>
+<div class="modal fade" id="modalCreateDocument" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Thêm Tài Liệu</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+              
+                @await Html.PartialAsync("_Create")
+            </div>
+
+            @*<div class="upload-document hide">
+                    @await Html.PartialAsync("Upload")
+                </div>*@
+        </div>
+    </div>
+</div>
+@await Html.PartialAsync("Upload")
+
+
 
 @section scripts
     {

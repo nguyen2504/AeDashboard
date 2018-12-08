@@ -1,9 +1,25 @@
-﻿   <div class="table-Or-list_doc">
+﻿
+
+<div class="table-Or-list_doc">
     <div class="table-body doc">
-        <div class="table-row doc" ng-repeat="q in data" ng-click="editOrDelete(q.id)" data-toggle="modal" data-target="#editDocument">
+        <div class="table-row doc" ng-repeat="q in data">
             <div class="table-cell doc header">
                 <div class="box-flex_doc_row">
-                    <input type="checkbox" class="star padding5px" ng-model="q.important" />
+                    <div style="display: flex;align-items: center">
+                        <input type="checkbox" class="star padding5px" ng-model="q.important" />
+                        <ul class="header-dropdown m-r--5 list-unstyled list_edit-delete1">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-left list-unstyled" style="list-style-type: none;padding: 0">
+                                    <li><a ng-click="edit(q.id)"><i class="material-icons">edit</i>Edit</a></li>
+                                    <li><a ng-click="delete(q.id)"><i class="material-icons">delete</i>Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+
                     <div class="marginleft5px">
                         <span class="content-pdf-doc">{{q.content}}</span>
                         <div class="box-flex_doc_row">
@@ -15,19 +31,19 @@
                     </div>
                 </div>
             </div>
-            <div class="table-cell doc left" style="padding: 0 5px">
+            <div class="table-cell doc left" >
                 <div class="notification-doc">
                     @*<i class="icon ion-android-notifications" style="font-size: 23px;"></i>*@
-                       <i class="material-icons" style="font-size:23px;">notifications</i>
-                       <span>{{q.notifications}}</span>
-                   </div>
-               </div>
-               <div class="table-cell doc right " data-toggle="tooltip" title="{{q.createDate|date:'dd/MM/yyyy'}}" style="padding: 0 5px" ng-click="hideModal()">
-                   <div class="notification-doc text-left">
-                       <i class="material-icons">date_range</i>
-                       <span>{{q.number}}</span>
-                   </div>
-               </div>
-           </div>
-       </div>
-   </div>
+                    <i class="material-icons" style="font-size:23px;">notifications</i>
+                    <span>{{q.notifications}}</span>
+                </div>
+            </div>
+            <div class="table-cell doc right " data-toggle="tooltip" title="{{q.createDate|date:'dd/MM/yyyy'}}" style="padding: 0 5px" ng-click="hideModal()">
+                <div class="notification-doc text-left">
+                    <i class="material-icons">date_range</i>
+                    <span>{{q.number}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

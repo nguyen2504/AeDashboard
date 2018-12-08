@@ -3,9 +3,21 @@
 
    app.controller('ctrl', documentCtrl);
 
-    documentCtrl.$inject = ['$location', '$scope', '$http', 'factory','$timeout'];
+    documentCtrl.$inject = ['$location', '$scope', '$http', 'factory', '$timeout','$compile'];
 
-    function documentCtrl($location, $scope, $http, factory, $timeout) {
+    function documentCtrl($location, $scope, $http, factory, $timeout, $compile) {
+        $('#fileSelected').on('change', function (evt) {
+            var files = $(evt.currentTarget).get(0).files;
+           
+            if (files.length > 0) {
+
+                $('#filePath').text($('#fileSelected').val());
+            }
+        });
+        //$('.form-line').on('click',
+        //    function() {
+        //        $(this).removeClass('focused');
+        //    });
         /* jshint validthis:true */
         var vm = this;
         vm.title = 'ctrl';
@@ -18,16 +30,35 @@
             });
         $scope.addOrUpdate = function (id) {
             console.log('id ' + id);
+            //$('#showinfor').html(id);
+            $('input[name="bookId"]').val(id);
             $('#modalUpload').modal();
         };
+        //$('#modalUpload').on('show.bs.modal', function (e) {
+        //    var bookId = $(e.relatedTarget).data('book-id');
+        //    $(e.currentTarget).find('input[name="bookId"]').val(bookId);
+        //});
         $scope.editUrl = function(id) {
             console.log('id ' + id);
         };
-        $scope.editOrDelete = function(id) {
-            var url = "/Document/Edit?id=" + id;
+        $scope.delete = function(id) {
+            var url = "/Document/Delete?id=" + id;
+            $http.get(url).then(function(e) {
+                $scope.data = jQuery.grep($scope.data, function (value) {
+                    return value.id != id;
+                });
+            });
+        };
+        $scope.edit = function(id) {
+            var url = "/Document/_Edit?id=" + id;
+            //$scope.addOrUpdate(id);
+            var l = $('input[name="bookId"]').val();
+            //alert(l);
             $http.get(url).then(function (e) {
                 var dt = e.data.result;
-                $('#editDocument div.modal-body').html(e.data);
+                var $el =   $('#editDocument div.modal-body').html(e.data);
+                $compile($el)($scope);
+                $scope.loadCatalogue();
                 $('#editDocument').modal();
             });
         };
@@ -37,19 +68,35 @@
                 //alert($('.upload-document').hasClass('show'));
             }
         };
-        $scope.hideModal = function () {
-            alert('toi day')
+        $scope.editDocument = function(id) {
+            $scope.addOrUpdate(id);
+        };
+        $scope.hideModal = function() {
+
+
             $timeout(function() {
-              
-                $('#editDocument').modal('hide');
-            }, 3000);
-        
-            
-        }
+
+                    $('#editDocument').modal('hide');
+                },
+                3000);
+
+
+        };
+        $scope.submitForm = function () {
+            //console.log('data ' + JSON.stringify($scope.document));
+            var payload = new FormData();
+            var url = "/Document/Edit";
+            $http.post(url, { params: JSON.stringify($scope.document) }).then(function(e) {
+
+            });
+        };
+
+      
         $scope.loadCatalogue = function() {
             var url = "/Document/LoadCatalogue";
-            $http.get(url).then(function(e) {
-                $scope.catalog = e.data;
+            $http.get(url).then(function (e) {
+                //console.log(JSON.stringify(e.data));
+                $scope.catalog = e.data.result;
             });
         };
         $scope.loadCatalogue();
@@ -78,26 +125,16 @@
         }
         function loadScroll() {
 
+            var i = 0;
             $(window).scroll(function () {
                 var h = (($(document).height() - $(window).height())) - $(window).scrollTop();
-                //console.log('kk ' + h);
-                var check = false;
-                if (h >= 0 && h <= 1) check = true;
-                if (5<= h && h<10) check = true;
-                if (50 <= h && h < 60) check = true;
-                if (80 <= h && h < 90) check = true;
-                if (90 <= h && h < 94) check = true;
-                if (150 <= h && h < 152) check = true;
-                if (200 <= h && h < 205) check = true;
-                if (300 <= h && h < 405) check = true;
-                if (450 <= h && h < 470) check = true;
-                if (500 <= h && h < 506) check = true;
-                if (check) {
+               
+                i++;
+                if (i%5==0) {
                     var skip = $('.table-row.doc').length + 1;
                     var take = 5;
                     getSearch(skip, take, $scope.search);
-
-                    //console.log("skip " + skip);
+                    i = 0;
                 }
             
             });
@@ -122,16 +159,21 @@ function uploadFiles(inputId) {
             contentType: false,
             type: "POST",
             success: function (e) {
-             
                 var t = e.result;
                 $("#Url").val(t.url);
-               
                 if (t.url != "") {
                     var file = t.url.split('_')[t.url.split('_').length - 1];
-                    $('#modalCreateDocument').modal();
-                    $('#modalUpload').modal('hide');
-                    $('.progress-bar').addClass('show');
-                    $('.complete').text("upload 100% "+file);
+                    var id = $('input[name="bookId"]').val();
+                    if (id > 0) {
+                        $('input[name="bookId1"]').val(id);
+                        localStorage.setItem('item', file);
+                        $('#modalUpload').modal('hide');
+                    } else {
+                        $('#modalCreateDocument').modal();
+                        $('#modalUpload').modal('hide');
+                        $('.progress-bar').addClass('show');
+                        $('.complete').text("upload 100% " + file);
+                    }
                 } else {
                     $('.showinfor').addClass('show');
                     $('#modalUpload').modal('show');

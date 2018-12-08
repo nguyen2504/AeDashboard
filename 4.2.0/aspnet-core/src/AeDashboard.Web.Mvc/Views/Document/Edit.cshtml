@@ -1,68 +1,51 @@
-﻿@{
+﻿@using Abp.Extensions
+
+@{
     Layout = null;
 }
-@model AeDashboard.Document.Document
-<form asp-action="Edit" asp-controller="Document" target="Post">
+
+<form   ng-submit="submitForm()">
     <div class=" add-edit_doc">
-      <input type="hidden" asp-for="Id"/>
+        <input type="hidden" ng-model="document.id" />
         <div class="add-edit">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <label asp-for="Content" class="form-label"></label>
-                    <textarea asp-for="Content" required class="form-control"></textarea>
-                    <span asp-validation-for="Content" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <label asp-for="Notifications" class="form-label"></label>
-                    <input asp-for="Notifications" required class="form-control" list="notifications" />
-                    <datalist>
-                        <option value="{{x}}" ng-repeat="x in catalog">{{x}}</option>
-                    </datalist>
-                    <!--catalog catalogue-->
-                    <span asp-validation-for="Notifications" class="text-danger"></span>
-                </div>
-            </div>
-            <div class="form-group form-float">
-                <div class="form-line">
-                    <label asp-for="Url" class="form-label"></label>
-                    <input asp-for="Url" class="form-control" type="text" disabled="disabled"/>
-                    <span asp-validation-for="Url" class="text-danger"></span>
-                   </div>
-            </div>
           
             <div class="form-group form-float">
-                <div class="focused">
-                    <input id="IsActive" type="checkbox" name="IsActive" value="true" checked="" class="form-control" asp-for="Important" >
-                    <label for="IsActive" class="form-label">Is active</label>
+                <div class="form-line focused">
+                    <label  class="form-label">Content</label>
+                    <textarea ng-model="document.content" required class="form-control"></textarea>
+                    @*<span asp-validation-for="Content" class="text-danger"></span>*@
                 </div>
             </div>
-            <div style="display: none">
-                
-                <div class="form-group form-float">
-                    <div class="form-line">
-                        <label asp-for="CreateDate" class="form-label"></label>
-                        <input asp-for="CreateDate" value="@DateTime.Now.ToString("s")" required class="form-control" type="datetime-local" />
-                        <span asp-validation-for="CreateDate" class="text-danger"></span>
-                    </div>
-                </div>
-              
-                <div class="form-group form-float">
-                    <div class="form-line">
-                        <label asp-for="IsActive" class="form-label"></label>
-                        <input asp-for="IsActive" required class="form-control" type="checkbox" value="true" />
-
-                        <span asp-validation-for="IsActive" class="text-danger"></span>
-                    </div>
-                </div>
+        </div>
+        <div class="form-group form-float">
+            <div class="form-line focused">
+                <label  class="form-label">Notifications</label>
+                <input value="{{document.notifications}}" required class="form-control" list="notifications" type="text" ng-model="document.notifications" />
+                <datalist id="notifications">
+                    <option value="{{x}}" ng-repeat="x in catalog">{{x}}</option>
+                </datalist>
+                <!--catalog catalogue-->
+                @*<span asp-validation-for="Notifications" class="text-danger"></span>*@
             </div>
+        </div>
+       
+        <div class="form-group form-float">
+            <div class="form-line focused">
+                <input type="file"   class="form-control" ng-model="document.url"  value="{{document.url}}">
+                <label class="form-label">Document</label>
+            </div>
+        </div>
+        <p id="filePath"></p>
+        </div>
+    <div class="form-group form-float">
+        <div class="">
+            <input id="IsActive" type="checkbox" ng-model="document.important"  value="{{document.important}}" checked="" class="form-control">
+            <label for="IsActive" class="form-label">Important</label>
         </div>
     </div>
     <div class="modal-footer">
         <input type="submit" value="Update" class="btn btn-done waves-ripple" />
-        <button type="submit" asp-controller="Document" asp-action="Delete" asp-route-id="@Model.Id"  class="btn btn-danger waves-effect" >Delete</button>
+        @*<button type="submit" asp-controller="Document" asp-action="Delete" asp-route-id="@Model.Id" class="btn btn-danger waves-effect">Delete</button>*@
         <button type="button" class="btn waves-ripple" data-dismiss="modal">Close</button>
     </div>
 

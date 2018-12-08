@@ -66,20 +66,35 @@ namespace AeDashboard.Web.Controllers
             return Json(entity);
         }
 
-        [HttpGet]
-        public IActionResult Edit(int id)
+        //[HttpGet]
+        public async Task<ActionResult> Edit(int id)
         {
-            var dt = _documentService.GetId(id);
-            return View("Edit",dt);
+            var dt = await _documentService.GetId(id);
+            //return Json(dt);
+            return View("_Edit", dt);
         }
-
+        public async Task<ActionResult> _Edit(int id)
+        {
+            var dt = await _documentService.GetId(id);
+            //return Json(dt);
+            return View("_Edit", dt);
+        }
+        [HttpPost]
+        public IActionResult _Edit(Document.Document entity)
+        {
+            entity.Author = _fn.User().UserName;
+            entity.IdUser = (int)_fn.User().Id;
+            _documentService.Update(entity);
+            //return View("Index");
+            return RedirectToAction("Index", "Document");
+        }
         [HttpPost]
         public IActionResult Edit(Document.Document entity)
         {
             entity.Author = _fn.User().UserName;
             entity.IdUser = (int)_fn.User().Id;
             _documentService.Update(entity);
-            return View();
+            return Json("");
         }
         private string GetContentType(string path)
         {
@@ -189,7 +204,7 @@ namespace AeDashboard.Web.Controllers
         public IActionResult Delete(int id)
         {
             _documentService.Delete(id);
-            return RedirectToAction("Index", "Document");
+            return  Redirect("/Document");
         }
 
         [HttpGet]

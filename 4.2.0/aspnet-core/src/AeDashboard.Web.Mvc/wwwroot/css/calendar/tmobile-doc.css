@@ -4,7 +4,7 @@
     grid-template-areas:'header header' 'left right';
     padding:5px;
     padding-left:10px;
-    border-bottom:5px solid #24282B;
+    margin-bottom: 15px ;
   }
 }
 

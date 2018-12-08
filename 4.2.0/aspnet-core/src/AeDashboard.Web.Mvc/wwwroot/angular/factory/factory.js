@@ -11,7 +11,8 @@
             formatDate: formatDate,
             setColspan: setColspan,
             getWeek: getWeek,
-            loading: loading
+            loading: loading,
+            getColor: getColor
         };
 
         return service;
@@ -44,7 +45,19 @@ if (a == 0) {
         }
 
     };
-
+    function getColor() {
+        var color = $('.navbar').css('background-color');
+        
+        if ($(window).width < 576) {
+            $('.ae-work-time').css('background-color', color);
+        } else {
+            $('.ae-work-time').css('color', color);
+        }
+        $('.table-cell-or-item.colspan').css('background-color', color);
+        $('.box-search-ae-boottom > .itemae.active, .box-search-ae-boottom > .itemae:hover').css('color', color);
+        //$('.material-icons').css('color', color);
+        //$('.material-icons.menuas').css('color', 'white');
+    }
     function getWeek(a) {
         var day = new Date(a);
         var onejan = new Date(day.getFullYear(), 0, 1);

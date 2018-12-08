@@ -41,8 +41,8 @@
         <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true"/>
         <link href="~/fonts/material-icons/ionicons.min.css" rel="stylesheet" asp-append-version="true"/>
         <link href="~/fonts/material-icons/material-icons.min.css" rel="stylesheet" asp-append-version="true"/>
-        @*<link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />*@
-        <link href="~/css/bs4/bootstrap.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
+        @*<link href="~/css/bs4/bootstrap.min.css" rel="stylesheet" asp-append-version="true"/>*@
         <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true"/>
         <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true"/>
         <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true"/>
@@ -75,8 +75,8 @@
     <environment names="Development">
         <script src="~/lib/json2/json2.js" asp-append-version="true"></script>
         <script src="~/lib/jquery/dist/jquery.js" asp-append-version="true"></script>
-        @*<script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>*@
-        <script src="~/js/bs4/bootstrap.min.js" asp-append-version="true"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.js" asp-append-version="true"></script>
+        @*<script src="~/js/bs4/bootstrap.min.js" asp-append-version="true"></script>*@
         <script src="~/lib/moment/min/moment-with-locales.js" asp-append-version="true"></script>
         <script src="~/lib/jquery-validation/dist/jquery.validate.js" asp-append-version="true"></script>
         <script src="~/lib/blockUI/jquery.blockUI.js" asp-append-version="true"></script>
@@ -169,7 +169,7 @@
 </div>
 <!-- #END# Search Bar -->
 <!-- Top Bar -->
-<nav class="navbar navbar-light navbar-expand-md fixed-top">
+@*<nav class="navbar navbar-light navbar-expand-md fixed-top">
     <div class="container-fluid">
         <a asp-controller="Home" asp-action="Index" class="navbar-brand">
             <img src="https://amazingenglish.vn/wp-content/uploads/2017/11/rsz_ae_logo.png"/>
@@ -192,8 +192,8 @@
             </ul>
         </div>
     </div>
-</nav>
-@*<nav class="navbar">
+</nav>*@
+<nav class="navbar">
     <div class="container-fluid">
         <div class="navbar-header">
             <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
@@ -208,11 +208,11 @@
 
                 @await Component.InvokeAsync(typeof(TopBarLanguageSwitchViewComponent))
 
-                <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons">more_vert</i></a></li>
+                <li class="pull-right"><a href="javascript:void(0);" class="js-right-sidebar" data-close="true"><i class="material-icons menuas" style="color: white">more_vert</i></a></li>
             </ul>
         </div>
     </div>
-</nav>*@
+</nav>
 <!-- #Top Bar -->
 <section>
     <aside id="leftsidebar" class="sidebar">
@@ -282,6 +282,29 @@
 </html>
 <script>
     $(document).ready(function() {
+        $('.demo-choose-skin>li').on('click',
+            function() {
+                getColor();
+            });
+      
+        function getColor() {
+            var color = $('.navbar').css('background-color');
+
+            $('.itemae').css('color', '');
+            $('.itemae.active').css('color', color);
+         //   $('.material-icons').css('color', color);
+          //  $('.material-icons.menuas').css('color', 'white');
+            if ($(window).width < 576) {
+                $('.ae-work-time').css('background-color', color);
+            } else {
+                $('.ae-work-time').css('color', color);
+            }
+            $('.table-cell-or-item.colspan').css('background-color', color);
+            $('.itemae.active').css('color', color);
+           if ($(window).width() < 575) {
+               $('.box-flex_item').css('background-color', color);
+           }
+        }
         $(this).click(function() {
 
             $('.dropdown-menu').removeClass('show');
@@ -296,20 +319,88 @@
             function() {
                 $('.box-search-ae-boottom>.itemae').removeClass('active');
                 $(this).addClass('active');
-               
+                $('.itemae').css('color', '');
+             
                 var index = $(this).index() ;
                 if ($(this).index() > 0) {
+                   
                     $('.box-flex_item').removeClass('show');
                     $('.box-search-ae').removeClass('show');
                     $('.box-flex_item').eq(index).addClass('show');
                     $('.box-search-ae').addClass('show');
+                    var color = $('.navbar').css('background-color');
+                    $('.itemae.active').css('color', color);
+                  
                 } else {
                     $('.box-search-ae').removeClass('show');
                     $('#modalCreate').modal('show');
                 }
                
-                console.log('index ' + index);
+              
             });
+        window.onload = getColor;
+        setTimeout(function () { getColor(); }, 300);
+  
+        function setColspan() {
+            if ($(window).width() > 768) {
+                var rowWidth = $('.table-row:first').width();
+                var colWidth = $('.table-cell-or-item:first').width();
+                //console.log('rowWidth ' + rowWidth + ' colWidth ' + colWidth)
+                var marginRight = colWidth - rowWidth;
+                $('.table-cell-or-item.colspan').css('margin-right', marginRight + 'px').show();
+            }
+
+        };
+
+        setColspan();
+        $(window).resize(function() {
+            setColspan();
+        });
+        $(window).scroll(function () {
+            if ($(window).scrollTop() == ($(document).height() - $(window).height())) {
+                setColspan();
+                getColor(); 
+            }
+        });
+        $('.table-cell-or-item').on('click',
+            function(e) {
+                e.preventDefault;
+                var x = $(this).position();
+                //console.log("Top: " + x.top + " Left: " + x.left);
+                if ($('.ae-list-btn').hasClass('active') == false) {
+
+                }
+                var bt = $(this).height() + x.top - $('.ae-list-btn').height() + 10;
+                if ($(window).width() < 768) {
+                    bt = x.top;
+                }
+                console.log('top' + bt);
+                $('.ae-list-btn').removeClass('active').delay(300);
+                $('.ae-list-btn').addClass('active');
+                $('.ae-list-btn').css({ "top": bt });
+                $('.as-btns').css({ "top": bt });
+
+            });
+        //$('.table-body').on('click',
+        //    function() {
+        //        var x = $(this).position();
+        //        console.log("Top: " + x.top + " Left: " + x.left);
+        //    });
+        //$('body').click(function() {
+        //    var x = $(this).position();
+        //    console.log("Top position: " + x.top + " Left position: " + x.left);
+        //       if($('.ae-list-btn').hasClass('active')){
+        //          $('.ae-list-btn').removeClass('active'); 
+        //     }
+        //});
+        $(window).on('load', function() {
+            setColspan();
+            getColor();
+        });
+        window.onload = function() {
+            setColspan();
+        };
+    
     });
     $('.close').click(function() {
         $('.box-search-ae').removeClass('show');
@@ -317,4 +408,5 @@
     $(function() {
         $('[data-toggle="tooltip"]').tooltip();
     });
+  
 </script>

@@ -4,6 +4,9 @@
     /*table-layout:fixed;*/
     width:100%;
   }
+    .table-Or-list_doc {
+        margin-top: 113px
+    }
 }
 
 @media (min-width: 576px) {

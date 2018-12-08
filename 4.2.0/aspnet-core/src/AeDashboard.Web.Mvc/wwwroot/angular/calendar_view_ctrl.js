@@ -30,6 +30,7 @@
 
                     var week = $filter('date')($scope.week, "yyyy-ww");
                     getWeek(0, 0, week);
+                    factory.getColor();
                 }
                 if ($scope.load != 2) {
                     $scope.load = 2;
@@ -39,8 +40,9 @@
             function () {
              if ($scope.load == 1) {
                     var date = $scope.searchDate;
-                    getDate(0, 0, date);
-                }
+                 getDate(0, 0, date);
+                 factory.getColor();
+             }
                 if ($scope.load !=1) {
                     $scope.load = 1;
                     //alert('toi day' + $scope.load);
@@ -53,6 +55,7 @@
                 var name = $scope.search;
                 $scope.getAll = [];
                 getSearchName($scope.count, name);
+                factory.getColor();
             });
         $scope.hoverIn = function () {
             this.hoverEdit = 'show';
@@ -118,7 +121,7 @@
                 if (check) {
                     $scope.count = $scope.count + 1;
                    getSearchName($scope.count , $scope.search);
-                  
+                    factory.getColor();
                    console.log("$scope.count " + $scope.count);
                }
             });
@@ -156,6 +159,7 @@
                 factory.loading(false);
                 setTimeout(function () {
                     factory.setColspan();
+                    factory.getColor();
                 }, 100);
             }); 
         }
@@ -198,6 +202,7 @@
               
                 setTimeout(function() {
                     factory.setColspan();
+                    factory.getColor();
                 }, 100);
 
             });

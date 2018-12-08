@@ -14,8 +14,9 @@
 
 <link href="~/css/style.css" rel="stylesheet">
 
+
 <div class="box-search-ae">
-    <button type="button" class="close" data-dismiss="modal" aria-label="Close" >
+    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">×</span>
     </button>
     <div class="box-flex_ae">
@@ -25,12 +26,14 @@
         <div class="box-flex_item grow1">
             <div class="box_search show">
                 <i class="material-icons icon_searchae">search</i>
-                <input type="search" autocomplete="on" pattern="[A-Za-z0-9]" class="form-control-sm form-control input_searchae" ng-model="search" tabindex=10/>
+                <input type="search" autocomplete="on" pattern="[A-Za-z0-9]" class="form-control-sm form-control input_searchae" ng-model="search" tabindex=10 />
             </div>
         </div>
-        <div class="box-flex_item dateae"><input type="date" class="box_dateae form-control-sm form-control" ng-model="searchDate"/>
+        <div class="box-flex_item dateae">
+            <input type="date" class="box_dateae form-control-sm form-control" ng-model="searchDate" />
         </div>
-        <div class="box-flex_item weekae"><input type="week" class="box_dateae form-control-sm form-control" value="{{week}}" ng-model="week"/>
+        <div class="box-flex_item weekae">
+            <input type="week" class="box_dateae form-control-sm form-control" value="{{week}}" ng-model="week" />
         </div>
     </div>
 </div>
@@ -57,7 +60,7 @@
     @await Html.PartialAsync("_List")
 </div>
 <div class="btn-add_ae1">
-    <button class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" type="button"  data-toggle="modal" data-target="#modalCreate">
+    <button class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" type="button" data-toggle="modal" data-target="#modalCreate">
         <i class="material-icons">add</i>
     </button>
 </div>
@@ -75,6 +78,7 @@
 
             <!-- Modal body -->
             <div class="modal-body">
+                
                 @await Html.PartialAsync("Create")
                 <div ng-if="getAll.length <= 0" style="margin: auto; display: block">
                     Không Có Dữ Liệu Hôm Nay
@@ -97,13 +101,13 @@
 
             <!-- Modal body -->
             <div class="modal-body">
+                @await Html.PartialAsync("Create")
                 @*@await Html.PartialAsync("Edit")*@
             </div>
 
         </div>
     </div>
 </div>
-
 
 @section scripts
     {
