@@ -26,8 +26,8 @@ namespace AeDashboard.Web.Startup
                         PageNames.Calendar,
                         L("Calendar"),
                         url: "Calendar",
-                        icon: "view_day"
-                        //requiredPermissionName: PermissionNames.Pages_Calendar
+                        icon: "view_day",
+                        requiresAuthentication: true
                     )
                 )
                 .AddItem(
@@ -35,8 +35,8 @@ namespace AeDashboard.Web.Startup
                         PageNames.Document,
                         L("Document"),
                         url: "Document",
-                        icon: "work"
-                        //requiredPermissionName: PermissionNames.Pages_Calendar
+                        icon: "work",
+                         requiresAuthentication: true
                     )
                 ).AddItem(
                     new MenuItemDefinition(
@@ -62,100 +62,100 @@ namespace AeDashboard.Web.Startup
                         icon: "local_offer",
                         requiredPermissionName: PermissionNames.Pages_Roles
                     )
-                )
-                .AddItem(
-                    new MenuItemDefinition(
-                        PageNames.Personal,
-                        L("Personal"),
-                        url: "Personal",
-                        icon: "person"
-                    //requiredPermissionName: PermissionNames.Pages_Calendar
-                    )
                 );
-                //.AddItem(
-                //    new MenuItemDefinition(
-                //        PageNames.About,
-                //        L("About"),
-                //        url: "About",
-                //        icon: "info"
-                //    )
-                //).AddItem( // Menu items below is just for demonstration!
-                    //new MenuItemDefinition(
-                    //    "MultiLevelMenu",
-                    //    L("MultiLevelMenu"),
-                    //    icon: "menu"
-                    //).AddItem(
-                    //    new MenuItemDefinition(
-                    //        "AspNetBoilerplate",
-                    //        new FixedLocalizableString("ASP.NET Boilerplate")
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetBoilerplateHome",
-                    //            new FixedLocalizableString("Home"),
-                    //            url: "https://aspnetboilerplate.com?ref=abptmpl"
-                    //        )
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetBoilerplateTemplates",
-                    //            new FixedLocalizableString("Templates"),
-                    //            url: "https://aspnetboilerplate.com/Templates?ref=abptmpl"
-                    //        )
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetBoilerplateSamples",
-                    //            new FixedLocalizableString("Samples"),
-                    //            url: "https://aspnetboilerplate.com/Samples?ref=abptmpl"
-                    //        )
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetBoilerplateDocuments",
-                    //            new FixedLocalizableString("Documents"),
-                    //            url: "https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl"
-                    //        )
-                    //    )
-                    //).AddItem(
-                    //    new MenuItemDefinition(
-                    //        "AspNetZero",
-                    //        new FixedLocalizableString("ASP.NET Zero")
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetZeroHome",
-                    //            new FixedLocalizableString("Home"),
-                    //            url: "https://aspnetzero.com?ref=abptmpl"
-                    //        )
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetZeroDescription",
-                    //            new FixedLocalizableString("Description"),
-                    //            url: "https://aspnetzero.com/?ref=abptmpl#description"
-                    //        )
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetZeroFeatures",
-                    //            new FixedLocalizableString("Features"),
-                    //            url: "https://aspnetzero.com/?ref=abptmpl#features"
-                    //        )
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetZeroPricing",
-                    //            new FixedLocalizableString("Pricing"),
-                    //            url: "https://aspnetzero.com/?ref=abptmpl#pricing"
-                    //        )
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetZeroFaq",
-                    //            new FixedLocalizableString("Faq"),
-                    //            url: "https://aspnetzero.com/Faq?ref=abptmpl"
-                    //        )
-                    //    ).AddItem(
-                    //        new MenuItemDefinition(
-                    //            "AspNetZeroDocuments",
-                    //            new FixedLocalizableString("Documents"),
-                    //            url: "https://aspnetzero.com/Documents?ref=abptmpl"
-                    //        )
-                    //  )
-                    //)
-                //);
+            //.AddItem(
+            //    new MenuItemDefinition(
+            //        PageNames.Personal,
+            //        L("Personal"),
+            //        url: "Personal",
+            //        icon: "person"
+            //    //requiredPermissionName: PermissionNames.Pages_Calendar
+            //    )
+            //);
+            //.AddItem(
+            //    new MenuItemDefinition(
+            //        PageNames.About,
+            //        L("About"),
+            //        url: "About",
+            //        icon: "info"
+            //    )
+            //).AddItem( // Menu items below is just for demonstration!
+            //new MenuItemDefinition(
+            //    "MultiLevelMenu",
+            //    L("MultiLevelMenu"),
+            //    icon: "menu"
+            //).AddItem(
+            //    new MenuItemDefinition(
+            //        "AspNetBoilerplate",
+            //        new FixedLocalizableString("ASP.NET Boilerplate")
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetBoilerplateHome",
+            //            new FixedLocalizableString("Home"),
+            //            url: "https://aspnetboilerplate.com?ref=abptmpl"
+            //        )
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetBoilerplateTemplates",
+            //            new FixedLocalizableString("Templates"),
+            //            url: "https://aspnetboilerplate.com/Templates?ref=abptmpl"
+            //        )
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetBoilerplateSamples",
+            //            new FixedLocalizableString("Samples"),
+            //            url: "https://aspnetboilerplate.com/Samples?ref=abptmpl"
+            //        )
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetBoilerplateDocuments",
+            //            new FixedLocalizableString("Documents"),
+            //            url: "https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl"
+            //        )
+            //    )
+            //).AddItem(
+            //    new MenuItemDefinition(
+            //        "AspNetZero",
+            //        new FixedLocalizableString("ASP.NET Zero")
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetZeroHome",
+            //            new FixedLocalizableString("Home"),
+            //            url: "https://aspnetzero.com?ref=abptmpl"
+            //        )
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetZeroDescription",
+            //            new FixedLocalizableString("Description"),
+            //            url: "https://aspnetzero.com/?ref=abptmpl#description"
+            //        )
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetZeroFeatures",
+            //            new FixedLocalizableString("Features"),
+            //            url: "https://aspnetzero.com/?ref=abptmpl#features"
+            //        )
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetZeroPricing",
+            //            new FixedLocalizableString("Pricing"),
+            //            url: "https://aspnetzero.com/?ref=abptmpl#pricing"
+            //        )
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetZeroFaq",
+            //            new FixedLocalizableString("Faq"),
+            //            url: "https://aspnetzero.com/Faq?ref=abptmpl"
+            //        )
+            //    ).AddItem(
+            //        new MenuItemDefinition(
+            //            "AspNetZeroDocuments",
+            //            new FixedLocalizableString("Documents"),
+            //            url: "https://aspnetzero.com/Documents?ref=abptmpl"
+            //        )
+            //  )
+            //)
+            //);
         }
 
         private static ILocalizableString L(string name)

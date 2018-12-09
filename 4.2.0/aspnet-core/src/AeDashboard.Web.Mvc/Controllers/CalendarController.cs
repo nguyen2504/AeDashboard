@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Abp.AspNetCore.Mvc.Authorization;
 using Abp.AutoMapper;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Calendar;
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AeDashboard.Web.Controllers
 {
+    [AbpMvcAuthorize]
     public class CalendarController : AeDashboardControllerBase
     {
         private readonly ICalendarViewService _calendarViewService;

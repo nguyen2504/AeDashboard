@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
+using Abp.AspNetCore.Mvc.Authorization;
 using Abp.AutoMapper;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Controllers;
@@ -15,6 +16,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace AeDashboard.Web.Controllers
 {
+    [AbpMvcAuthorize]
     public class DocumentController : AeDashboardControllerBase
     {
         private readonly IDocumentService _documentService;
@@ -180,25 +182,18 @@ namespace AeDashboard.Web.Controllers
                 return Json("0");
             }
         }
-
-        public IActionResult GetId(int id)
-        {
-            //var item = _documentService.GetId(id);
-            return View("_Create");
-        }
         [HttpPost]
-        public IActionResult Update(DocumentFileDto entity)
+        public IActionResult EditIportant(int id)
         {
-            try
+            var item = _documentService.GetId(id).Result;
+            if (ModelState.IsValid)
             {
-                //_documentService.CreateOrUpdate(entity);
-                return Json("1");
+                item.Important = !item.Important;
+                _documentService.Update(item);
             }
-            catch (Exception e)
-            {
-                return Json("0");
-            }
+            return Json(item.Important);
         }
+       
 
         //[HttpDelete]
         public IActionResult Delete(int id)

@@ -34,10 +34,23 @@
             $('input[name="bookId"]').val(id);
             $('#modalUpload').modal();
         };
-        //$('#modalUpload').on('show.bs.modal', function (e) {
-        //    var bookId = $(e.relatedTarget).data('book-id');
-        //    $(e.currentTarget).find('input[name="bookId"]').val(bookId);
-        //});
+        $scope.onChangeImportant = function ($index) {
+            $scope.oldValue = $scope.data[$index].id;
+
+     
+            var url = "/Document/EditIportant?id=" + $scope.data[$index].id;
+            $http.post(url).then(function(e) {
+                //console.log(JSON.stringify(e.data));
+            });
+            if ($scope.data[$index].important) {
+                $scope.data[$index].important = false;
+                $scope.data[$index].colorstar = '';
+            } else {
+                $scope.data[$index].important = true;
+                $scope.data[$index].colorstar = 'red';
+            }
+
+        };
         $scope.editUrl = function(id) {
             console.log('id ' + id);
         };
@@ -128,9 +141,16 @@
             var i = 0;
             $(window).scroll(function () {
                 var h = (($(document).height() - $(window).height())) - $(window).scrollTop();
-               
                 i++;
-                if (i%5==0) {
+                var check = false;
+                if (h >= 0 && h <= 9) check = true;
+                if (h >= 400 && h <= 410) check = true;
+                if (h >= 300 && h <= 310) check = true;
+                if (h >= 50 && h <= 60) check = true;
+                if (h >= 100 && h <= 110) check = true;
+                if (h >= 150 && h <= 160) check = true;
+                if (h >= 200 && h <= 210) check = true;
+                if (check) {
                     var skip = $('.table-row.doc').length + 1;
                     var take = 5;
                     getSearch(skip, take, $scope.search);

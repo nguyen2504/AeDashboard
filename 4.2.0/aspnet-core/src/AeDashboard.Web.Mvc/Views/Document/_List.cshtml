@@ -6,7 +6,8 @@
             <div class="table-cell doc header">
                 <div class="box-flex_doc_row">
                     <div style="display: flex;align-items: center">
-                        <input type="checkbox" class="star padding5px" ng-model="q.important" />
+                        @*<input type="checkbox" class="star padding5px" ng-model="q.important" />*@
+                        <i class="material-icons" style="color: {{q.colorstar}}"  ng-model="q.important" ng-click="onChangeImportant($index)" >star_border</i>
                         <ul class="header-dropdown m-r--5 list-unstyled list_edit-delete1">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">

@@ -11,7 +11,8 @@
       "wwwroot/css/root.css",
       "wwwroot/fonts/roboto/roboto.css",
       "wwwroot/fonts/material-icons/materialicons.css",
-      "wwwroot/css/bs4/bootstrap.min.css",
+      //"wwwroot/css/bs4/bootstrap.min.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
       "wwwroot/lib/toastr/toastr.css",
       "wwwroot/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css",
       "wwwroot/lib/font-awesome/css/font-awesome.css",
@@ -21,6 +22,7 @@
       "wwwroot/css/style.css",
       "wwwroot/css/ae.css",
       "wwwroot/view-resources/Views/Account/_Layout.css"
+
     ]
   },
   {
@@ -50,10 +52,11 @@
   {
     "outputFileName": "wwwroot/view-resources/Views/_Bundles/shared-layout.min.css",
     "inputFiles": [
+      "wwwroot/css/root.css",
       "wwwroot/fonts/roboto/roboto.css",
       "wwwroot/fonts/material-icons/materialicons.css",
-      //"wwwroot/lib/bootstrap/dist/css/bootstrap.css",
-      "wwwroot/css/bs4/bootstrap.min.css",
+      "wwwroot/lib/bootstrap/dist/css/bootstrap.css",
+      //"wwwroot/css/bs4/bootstrap.min.css",
       "wwwroot/lib/bootstrap-select/dist/css/bootstrap-select.css",
       "wwwroot/lib/toastr/toastr.css",
       "wwwroot/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css",
@@ -74,7 +77,8 @@
     "inputFiles": [
       "wwwroot/lib/json2/json2.js",
       "wwwroot/lib/jquery/dist/jquery.js",
-      "wwwroot/js/bs4/bootstrap.min.js",
+      "wwwroot//lib/bootstrap/dist/js/bootstrap.js",
+      //"wwwroot/js/bs4/bootstrap.min.js",
       "wwwroot/lib/moment/min/moment-with-locales.js",
       "wwwroot/lib/jquery-validation/dist/jquery.validate.js",
       "wwwroot/lib/blockUI/jquery.blockUI.js",
@@ -170,17 +174,22 @@
   {
     "outputFileName": "wwwroot/view-resources/Views/CalendarView/calendar_view_ctrl.min.js",
     "inputFiles": [
-      "wwwroot/angular/calendar_view_ctrl.js",
-      "wwwroot/js/calendar-view.js",
-      "wwwroot/js/aeDashboard.js"
+      "wwwroot/angular/calendar_view_ctrl.js"
+      //"wwwroot/js/calendar-view.js",
+      //"wwwroot/js/aeDashboard.js"
     ]
   },
   {
     "outputFileName": "wwwroot/view-resources/Views/Document/document_ctrl.min.js",
     "inputFiles": [
-      "wwwroot/angular/document_ctrl.js",
-      "wwwroot/js/calendar-view.js",
-      "wwwroot/js/aeDashboard.js"
+      "wwwroot/angular/document_ctrl.js"
+     ]
+  },
+  {
+    "outputFileName": "wwwroot/view-resources/Views/Home/layout.min.js",
+    "inputFiles": [
+      "wwwroot/js/layout.js"
+
     ]
   }
 ]
