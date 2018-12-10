@@ -62,3 +62,6 @@ body {
     display: block;
     background-color: var(--danger)
 }
+.red-star {
+    color: red
+}

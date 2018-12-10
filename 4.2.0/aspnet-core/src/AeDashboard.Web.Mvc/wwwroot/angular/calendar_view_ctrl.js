@@ -20,6 +20,7 @@
             loadScroll();
             var w = new Date().getFullYear() + "-W" + factory.getWeek(new Date());
             $scope.week = moment(w).toDate();
+           
         }
       
         //============================
@@ -83,6 +84,7 @@
             $http.get(url).then(function(e) {
                 //alert(e.data);
                 $('#editCalendarView div.modal-body').html(e.data);
+                //getRole();
             });
         };
         $scope.delete_item = function (id) {
@@ -100,11 +102,24 @@
             //var top = angular.element($event.target).prop('offsetTop');
             //$('.ae-btns').css({ "top": top });
         };
-      
+
+        function getRole() {
+            var url = "/Calendar/GetRole";
+            $http.get(url).then(function (e) {
+                //alert(e.data.result);
+                if (e.data.result == 0) {
+                    $(".delete_itemCalendar").hide();
+                }
+                $scope.showdelete = e.data.result;
+            });
+        }
+
 //-------------------------------------------//
         function reloadHome() {
             $window.location.reload();
         }
+
+       
         function loadScroll() {
            
             $(window).scroll(function () {
@@ -122,7 +137,7 @@
                     $scope.count = $scope.count + 1;
                    getSearchName($scope.count , $scope.search);
                     factory.getColor();
-                   console.log("$scope.count " + $scope.count);
+                   //console.log("$scope.count " + $scope.count);
                }
             });
         }

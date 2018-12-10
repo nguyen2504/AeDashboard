@@ -72,5 +72,18 @@ namespace AeDashboard.Fn
                 return (DateTime.Now.Subtract(dt)).Days + "d";
             }
         }
+
+        public bool RoleUser()
+        {
+            var user = _userManager.Users.FirstOrDefault(j => j.Id.Equals(_userManager.AbpSession.UserId));
+            if (user != null && user.Roles.Count.Equals(0))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 }

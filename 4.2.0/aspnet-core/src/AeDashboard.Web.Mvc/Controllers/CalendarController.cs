@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.AutoMapper;
+using Abp.Extensions;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Calendar;
 using AeDashboard.Calendar.Dto;
@@ -31,6 +32,7 @@ namespace AeDashboard.Web.Controllers
         public IActionResult Index()
         {
 
+            //var roles = _userManager.GetRolesAsync(user);
             //if(_calendarViewService.GetAll().Count<5)
             //{
             //    Random r = new Random(12);
@@ -57,9 +59,23 @@ namespace AeDashboard.Web.Controllers
             //        }
             //    }
             //}
+         
+        
             return View();
         }
 
+        public JsonResult GetRole()
+        {
+            var user = _userManager.Users.FirstOrDefault(j => j.Id.Equals(_userManager.AbpSession.UserId));
+            if (user!=null&& user.Roles != null)
+            {
+                return Json(1);
+            }
+            else
+            {
+                return Json(0);
+            }
+        }
         public IActionResult Create()
         {
             var m = new CalendarViewDto() {BeginDate = DateTime.Now};

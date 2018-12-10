@@ -13,5 +13,6 @@ namespace AeDashboard.Fn
         User User();
         string UploadFile(IList<IFormFile> files);
         string ConvertDaysOrHour(DateTime dt);
+        bool RoleUser();
     }
 }

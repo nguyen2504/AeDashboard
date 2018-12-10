@@ -59,7 +59,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="wwwroot\download\" />
-    <Folder Include="wwwroot\logs\" />
     <Folder Include="wwwroot\view-resources\Views\_Bundles\" />
   </ItemGroup>
   <ItemGroup>

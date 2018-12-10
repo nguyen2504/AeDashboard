@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
@@ -30,6 +31,7 @@ namespace AeDashboard.Web.Controllers
         }
         public IActionResult Index()
         {
+            
             //if (_documentService.GetAll().Count < 3)
             //{
             //    for (int i = 0; i < 12000; i++)
@@ -48,7 +50,7 @@ namespace AeDashboard.Web.Controllers
 
             //    }
             //}
-            return View();
+            return View(_fn.RoleUser());
         }
         [HttpPost]
         public  IActionResult UploadFile(IList<IFormFile> files)

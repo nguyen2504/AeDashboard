@@ -1,13 +1,13 @@
 ﻿
-
+@model bool
 <div class="table-Or-list_doc">
     <div class="table-body doc">
         <div class="table-row doc" ng-repeat="q in data">
             <div class="table-cell doc header">
                 <div class="box-flex_doc_row">
                     <div style="display: flex;align-items: center">
-                        @*<input type="checkbox" class="star padding5px" ng-model="q.important" />*@
-                        <i class="material-icons" style="color: {{q.colorstar}}"  ng-model="q.important" ng-click="onChangeImportant($index)" >star_border</i>
+
+                        <i class="material-icons {{q.important==true?'red-star':''}}" style="color: {{q.colorstar}}" ng-model="q.important" value="{{q.important}}" ng-click="onChangeImportant($index)">star_border</i>
                         <ul class="header-dropdown m-r--5 list-unstyled list_edit-delete1">
                             <li class="dropdown">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
@@ -15,7 +15,12 @@
                                 </a>
                                 <ul class="dropdown-menu pull-left list-unstyled" style="list-style-type: none;padding: 0">
                                     <li><a ng-click="edit(q.id)"><i class="material-icons">edit</i>Edit</a></li>
-                                    <li><a ng-click="delete(q.id)"><i class="material-icons">delete</i>Delete</a></li>
+                                  @{
+                                      if (Model)
+                                      {
+                                          <li><a ng-click="delete(q.id)" ><i class="material-icons">delete</i>Delete</a></li>
+                                      }
+                                  }
                                 </ul>
                             </li>
                         </ul>
@@ -32,7 +37,7 @@
                     </div>
                 </div>
             </div>
-            <div class="table-cell doc left" >
+            <div class="table-cell doc left">
                 <div class="notification-doc">
                     @*<i class="icon ion-android-notifications" style="font-size: 23px;"></i>*@
                     <i class="material-icons" style="font-size:23px;">notifications</i>
