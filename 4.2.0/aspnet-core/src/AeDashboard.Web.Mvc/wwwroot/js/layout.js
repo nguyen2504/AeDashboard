@@ -76,7 +76,10 @@
         });
     window.onload = getColor;
     setTimeout(function () { getColor(); }, 300);
-  
+    $('.close').click(function() {
+        $('.box-search-ae').removeClass('show');
+        //alert('ok')
+    });
     function setColspan() {
         if ($(window).width() > 768) {
             var rowWidth = $('.table-row:first').width();

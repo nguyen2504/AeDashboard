@@ -50,7 +50,7 @@ namespace AeDashboard.Web.Controllers
 
             //    }
             //}
-            return View(_fn.RoleUser());
+            return View();
         }
         [HttpPost]
         public  IActionResult UploadFile(IList<IFormFile> files)

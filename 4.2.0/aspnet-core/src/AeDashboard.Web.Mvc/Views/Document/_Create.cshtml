@@ -3,7 +3,7 @@
 }
 @model AeDashboard.Document.Dto.DocumentDto
 
-<form asp-action="Create" asp-controller="Document" target="Post">
+<form asp-action="Create" asp-controller="Document" role="form" novalidate class="form-validation">
     <div class=" add-edit_doc">
         @*@await Html.PartialAsync("Upload")*@
         <div class="add-edit">
