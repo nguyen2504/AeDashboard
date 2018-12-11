@@ -41,12 +41,25 @@
     .box-flex_ae {
         /*background: var(--bg) !important;*/
         /*padding-top: 40%*/
+        display: flex !important;
+        align-items: center;
+        width:100%
+    }
+    .btn-add_ae.show, .box_search.show, .dateae.show, .weekae.show {
+        width: 100%;
+        display:block!important
+    }
+    .box_search.show {
+        margin-bottom:35px
+    }
+    .input_searchae, .icon_searchae {
+        color: white !important
     }
 }
 @media(min-width: 576px) {
     .box-flex_ae {
         background: var(--bg) !important;
-       
+      
     }
 }
 .table-cell-or-item.colspan {

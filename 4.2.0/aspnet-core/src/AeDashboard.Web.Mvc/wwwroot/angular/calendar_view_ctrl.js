@@ -2,9 +2,9 @@
     'use strict';
  app.controller('ctrl', calendarViewCtrl);
 
-    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window','$filter', 'factory'];
+    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window', '$filter', 'factory','$timeout'];
 
-    function calendarViewCtrl($location, $http, $scope, $window, $filter, factory) {
+    function calendarViewCtrl($location, $http, $scope, $window, $filter, factory, $timeout) {
         /* jshint validthis:true */
         var vm = this;
         $scope.getAll = [];
@@ -24,17 +24,25 @@
         }
       
         //============================
+        //$scope.onChangeWeek = function() {
+        //    var week = $filter('date')($scope.week, "yyyy-ww");
+        //    alert('ok')
+        //    getWeek(0, 0, week);
+        //    factory.getColor();
+        //};
+        var dem = 0;
         $scope.$watch('week',
-            function() {
-                console.log('week ' + $scope.week + '  ' + $scope.load);
-                if ($scope.load == 2) {
-
+            function () {
+                dem++;
+                if (dem >= 2) {
                     var week = $filter('date')($scope.week, "yyyy-ww");
+                
                     getWeek(0, 0, week);
-                    factory.getColor();
-                }
-                if ($scope.load != 2) {
-                    $scope.load = 2;
+                    $timeout(function () {
+                        //alert('ok');
+                        factory.getColor();
+                    }, 1000);
+                  
                 }
             });
         $scope.$watch('searchDate',

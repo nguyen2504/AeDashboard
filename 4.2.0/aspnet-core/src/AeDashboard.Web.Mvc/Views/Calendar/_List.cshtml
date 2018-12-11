@@ -12,22 +12,34 @@
         <div class="table-row date">
             <div class="table-cell-or-item colspan"><span class="time-show-mb">{{x["weekdays"]}}&nbsp;&nbsp;({{x.date}})</span></div>
         </div>
-        <div class="table-row content" ng-repeat="q in x.calendarViews" ng-click="edit_caladarView(q.id)"  data-toggle="modal" data-target="#editCalendarView">
+        <div class="table-row content" ng-repeat="q in x.calendarViews"  >
             <div class="table-cell-or-item">
                 <span class="ae-work-time"> {{formatDate(q["beginDate"])}}</span>
             </div>
           
             <div class="table-cell-or-item right1">
                 <div class="box-flex">
-                    @*<div class="basic-item">
-                        <span class="d-none_sm">Công Việc</span>
-                    </div>*@
+                    <div >
+                        <ul class="header-dropdown m-r--5 list-unstyled list_edit-delete1">
+                            <li class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">more_vert</i>
+                                </a>
+                                <ul class="dropdown-menu pull-left list-unstyled" style="list-style-type: none;padding: 0">
+                                    <li><a  ng-click="edit_caladarView(q.id)" data-toggle="modal" data-target="#editCalendarView"><i class="material-icons">edit</i>Edit</a></li>
+                                  
+                                    <li><a ng-click="delete(q.id)" ><i class="material-icons">delete</i>Delete</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="grow-1">
                         <p class="box-flex_row">
                             <i class="material-icons icon-show-mb color-indigo">work</i>
                             <span class="ae-content_a">{{q.work}}</span>
                         </p>
                     </div>
+                  
                 </div>
             </div>
             <div class="table-cell-or-item right2">

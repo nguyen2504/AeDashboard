@@ -47,7 +47,6 @@ if (a == 0) {
     };
     function getColor() {
         var color = $('.navbar').css('background-color');
-        
         if ($(window).width < 576) {
             $('.ae-work-time').css('background-color', color);
         } else {
