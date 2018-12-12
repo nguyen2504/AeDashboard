@@ -152,7 +152,7 @@
         /*height: 100%;*/
         width: 100%;
         position: fixed;
-        z-index: 999999;
+        z-index: 1;
         bottom: 50px;
         left: 0
     }
@@ -174,7 +174,7 @@
         width: 100%;
         background-color: var(--bg);
         text-align: center;
-        z-index: 19999999999999999999;
+        z-index: 100;
         padding: 5px;
         align-items: center;
         /*border-top: 1px solid var(--gray);*/
@@ -185,7 +185,7 @@
         border-right: 1px solid transparent;
         cursor: pointer;
         transition: 0.5s;
-        padding: 2px
+        padding: 4px
     }
         .box-search-ae-boottom > .itemae.active, .box-search-ae-boottom > .itemae:hover {
             color: var(--primary-ae);

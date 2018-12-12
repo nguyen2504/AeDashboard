@@ -19,7 +19,7 @@
       
     function getColor() {
         var color = $('.navbar').css('background-color');
-
+        $('.btn-add-circle').css('background-color', color);
         $('.itemae').css('color', '');
         $('.itemae.active').css('color', color);
         //   $('.material-icons').css('color', color);

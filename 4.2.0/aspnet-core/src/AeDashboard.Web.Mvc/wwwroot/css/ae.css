@@ -1,9 +1,11 @@
 ﻿/*!
     file ae.cs
 */
+.icon-block {
+    display:block
+}
 body {
-    --bg:#ffffff
-
+    --bg: #ffffff
 }
 .fade.ae {
     -ms-opacity: 1!important;

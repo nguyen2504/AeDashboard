@@ -95,11 +95,14 @@
                 //getRole();
             });
         };
-        $scope.delete_item = function (id) {
+        $scope.delete_item = function (id,$index) {
 
            var url = "/Calendar/Delete?id=" + id;
             $http.get(url).then(function (e) {
-                reloadHome();
+                //reloadHome();getAll
+                //var index = $scope.getAll.indexOf($index);
+                //console.log('aa ' + index);
+                $scope.getAll.splice($index, 1);
             });
         };
         $scope.showBtns = function ($event) {

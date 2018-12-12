@@ -89,6 +89,7 @@
 .notification-doc {
   display:flex;
   align-items:center;
+  justify-content: flex-end
 }
 
 .file-name-upload {

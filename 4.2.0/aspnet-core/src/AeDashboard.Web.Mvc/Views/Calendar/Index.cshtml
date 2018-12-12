@@ -40,20 +40,20 @@
 </div>
 <div class="box-search-ae-boottom"  style="display: {{calendarshow}}">
     <div class="itemae">
-        <i class="material-icons">add</i>
+        <i class="material-icons icon-block">add</i>
     </div>
     <div class="itemae">
-        <i class="material-icons">search</i>
+        <i class="material-icons icon-block">search</i>
     </div>
     <div class="itemae">
-        <i class="material-icons">today</i>
+        <i class="material-icons icon-block">today</i>
     </div>
     <div class="itemae">
-        <i class="material-icons">date_range</i>
+        <i class="material-icons icon-block">date_range</i>
     </div>
-    <div class="itemae">
+    @*<div class="itemae">
         <i class="material-icons">pageview</i>
-    </div>
+    </div>*@
 
 </div>
 
@@ -73,8 +73,10 @@
 
             <!-- Modal Header -->
             <div class="modal-header">
-                <h4 class="modal-title">Tạo Mới</h4>
-                <button type="button" class="close" data-dismiss="modal" ng-click="showBoxserch()">&times;</button>
+                <div style="display: flex; flex-direction: row;align-items: center">
+                    <h4 class="modal-title" style="flex-grow: 1">Tạo Mới</h4>
+                    <button type="button" class="close" data-dismiss="modal" ng-click="showBoxserch()">&times;</button>
+                </div>
             </div>
 
             <!-- Modal body -->
