@@ -5,14 +5,20 @@ using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
+using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.AutoMapper;
+using Abp.Zero.Configuration;
+using AeDashboard.Authorization.Roles;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Controllers;
 using AeDashboard.Document;
 using AeDashboard.Document.Dto;
 using AeDashboard.Fn;
+using AeDashboard.Roles;
 using AeDashboard.Web.Models.Loads;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AeDashboard.Web.Controllers
@@ -23,15 +29,21 @@ namespace AeDashboard.Web.Controllers
         private readonly IDocumentService _documentService;
         private readonly UserManager _userManager;
         private readonly IFn _fn;
-        public DocumentController(IDocumentService documentService, UserManager userManager,IFn fn)
+     
+        public DocumentController(IDocumentService documentService, UserManager userManager,IFn fn
+          
+            )
         {
             _documentService = documentService;
             _userManager = userManager;
             _fn = fn;
+        
         }
         public IActionResult Index()
         {
-            
+           
+
+            //var check = _role.GetAllPermissions().Result.Items.;
             //if (_documentService.GetAll().Count < 3)
             //{
             //    for (int i = 0; i < 12000; i++)
@@ -50,6 +62,7 @@ namespace AeDashboard.Web.Controllers
 
             //    }
             //}
+
             return View();
         }
         [HttpPost]

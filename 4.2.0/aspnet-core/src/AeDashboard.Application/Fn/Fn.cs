@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Abp.Domain.Services;
 using AeDashboard.Authorization.Users;
+using AeDashboard.Roles;
 using Microsoft.AspNetCore.Http;
 
 namespace AeDashboard.Fn
@@ -13,10 +14,12 @@ namespace AeDashboard.Fn
   public  class Fn:DomainService,IFn
     {
         private readonly UserManager _userManager;
+        private readonly IRoleAppService _role;
 
-        public Fn(UserManager userManager)
+        public Fn(UserManager userManager, IRoleAppService role)
         {
             _userManager = userManager;
+            _role = role;
         }
         public int GetWeekOrderInYear(DateTime time)
         {
@@ -76,8 +79,10 @@ namespace AeDashboard.Fn
         public bool RoleUser()
         {
             var user = _userManager.Users.FirstOrDefault(j => j.Id.Equals(_userManager.AbpSession.UserId));
+            var role = 0;
             if (user != null && user.Roles.Count.Equals(0))
             {
+                //role = _role.GetAllPermissions().Result.Items.Where(j=>j.)
                 return true;
             }
             else
