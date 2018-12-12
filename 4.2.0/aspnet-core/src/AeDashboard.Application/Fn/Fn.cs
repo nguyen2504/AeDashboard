@@ -4,9 +4,11 @@ using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Text;
+using Abp.Application.Services.Dto;
 using Abp.Domain.Services;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Roles;
+using AeDashboard.Users;
 using Microsoft.AspNetCore.Http;
 
 namespace AeDashboard.Fn
@@ -14,12 +16,12 @@ namespace AeDashboard.Fn
   public  class Fn:DomainService,IFn
     {
         private readonly UserManager _userManager;
-        private readonly IRoleAppService _role;
-
-        public Fn(UserManager userManager, IRoleAppService role)
+      
+        private readonly IUserAppService _userAppService;
+        public Fn(UserManager userManager, IUserAppService userAppService)
         {
             _userManager = userManager;
-            _role = role;
+            _userAppService = userAppService;
         }
         public int GetWeekOrderInYear(DateTime time)
         {
@@ -86,6 +88,26 @@ namespace AeDashboard.Fn
                 return true;
             }
             else
+            {
+                return false;
+            }
+        }
+
+        public bool IsAdmin(long id)
+        {
+            var roles = _userAppService.Get(new EntityDto<long>(id)).Result.RoleNames;
+            try
+            {
+                if (roles.Contains("ADMIN"))
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+            catch (InvalidCastException  e)
             {
                 return false;
             }

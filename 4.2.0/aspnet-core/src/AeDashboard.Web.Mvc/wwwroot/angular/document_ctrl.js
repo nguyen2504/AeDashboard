@@ -97,7 +97,7 @@
         };
         $scope.submitForm = function () {
             //console.log('data ' + JSON.stringify($scope.document));
-            var payload = new FormData();
+            //var payload = new FormData();
             var url = "/Document/Edit";
             $http.post(url, { params: JSON.stringify($scope.document) }).then(function(e) {
 
@@ -116,10 +116,16 @@
         //---------------------------------//
         function activate() {
             $scope.data = [];
-           
+            console.log(factory.getIsAdmin().Promise);
             loadScroll();
+            getIsAdmin();
         }
-     
+        function getIsAdmin() {
+            var url = "/Document/GetIsAdmin";
+            $http.get(url).then(function (e) {
+                $scope.getIsAdmin = e.data.result;
+            });
+        }
         function getSearch(skip, take, name) {
             factory.loading(true);
             var url = "/Document/Search";

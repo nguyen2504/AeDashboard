@@ -65,6 +65,12 @@ namespace AeDashboard.Web.Controllers
 
             return View();
         }
+
+        public JsonResult GetIsAdmin()
+        {
+            var id = _userManager.AbpSession.UserId;
+            return Json(_fn.IsAdmin((long) id));
+        }
         [HttpPost]
         public  IActionResult UploadFile(IList<IFormFile> files)
         {

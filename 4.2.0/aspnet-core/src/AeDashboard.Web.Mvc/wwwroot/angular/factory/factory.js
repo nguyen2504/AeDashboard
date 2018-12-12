@@ -3,20 +3,32 @@
 
     app.factory('factory', factory);
 
-    factory.$inject = ['$http'];
+    factory.$inject = ['$http','$q'];
 
-    function factory($http) {
+    function factory($http,$q) {
         var service = {
             getData: getData,
             formatDate: formatDate,
             setColspan: setColspan,
             getWeek: getWeek,
             loading: loading,
-            getColor: getColor
+            getColor: getColor,
+            getIsAdmin:getIsAdmin
         };
 
         return service;
 
+        function getIsAdmin() {
+            var url = "/Document/GetIsAdmin";
+            var deferred = $q.defer();
+            $http.get(url).then(function (e) {
+                //
+                deferred.resolve(e.data.result);
+
+            });
+            //console.log('Admin ' + JSON.stringify(deferred.promise));
+            return deferred.promise;
+        }
         function getData() { }
 
         function formatDate(time, a) {
@@ -71,4 +83,5 @@ if (a == 0) {
             $('.page-item-loader-wrapper').css('display', 'none');
         }
     }
+
 })();
