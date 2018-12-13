@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AeDashboard.Migrations
 {
     [DbContext(typeof(AeDashboardDbContext))]
-    [Migration("20181205100420_InitialCreateFile566")]
-    partial class InitialCreateFile566
+    [Migration("20181213011900_InitialCreate12")]
+    partial class InitialCreate12
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1049,6 +1049,37 @@ namespace AeDashboard.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("CalendarView");
+                });
+
+            modelBuilder.Entity("AeDashboard.Document.Document", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Author");
+
+                    b.Property<string>("Content")
+                        .IsRequired();
+
+                    b.Property<DateTime>("CreateDate");
+
+                    b.Property<int>("IdUser");
+
+                    b.Property<bool>("Important");
+
+                    b.Property<bool>("IsActive");
+
+                    b.Property<string>("Notifications");
+
+                    b.Property<string>("Number");
+
+                    b.Property<string>("Url")
+                        .IsRequired();
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Documents");
                 });
 
             modelBuilder.Entity("AeDashboard.MultiTenancy.Tenant", b =>

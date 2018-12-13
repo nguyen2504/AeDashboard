@@ -20,16 +20,16 @@
             loadScroll();
             var w = new Date().getFullYear() + "-W" + factory.getWeek(new Date());
             $scope.week = moment(w).toDate();
-           
+            getIsAdmin();
         }
       
         //============================
-        //$scope.onChangeWeek = function() {
-        //    var week = $filter('date')($scope.week, "yyyy-ww");
-        //    alert('ok')
-        //    getWeek(0, 0, week);
-        //    factory.getColor();
-        //};
+        function getIsAdmin() {
+            var url = "/Document/GetIsAdmin";
+            $http.get(url).then(function (e) {
+                $scope.getIsAdmin = e.data.result;
+            });
+        }
         var dem = 0;
         $scope.$watch('week',
             function () {

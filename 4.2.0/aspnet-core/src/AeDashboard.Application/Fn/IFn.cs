@@ -15,5 +15,6 @@ namespace AeDashboard.Fn
         string ConvertDaysOrHour(DateTime dt);
         bool RoleUser();
         bool IsAdmin(long id);
+        string GetSetitng(string key);
     }
 }

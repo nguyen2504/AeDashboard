@@ -10,6 +10,7 @@ using AeDashboard.Authorization.Users;
 using AeDashboard.Roles;
 using AeDashboard.Users;
 using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Configuration;
 
 namespace AeDashboard.Fn
 {
@@ -95,22 +96,39 @@ namespace AeDashboard.Fn
 
         public bool IsAdmin(long id)
         {
-            var roles = _userAppService.Get(new EntityDto<long>(id)).Result.RoleNames;
+           
             try
             {
-                if (roles.Contains("ADMIN"))
+                var admin = GetSetitng("Admin").ToUpper(CultureInfo.CurrentCulture);
+                var roles = _userAppService.Get(new EntityDto<long>(id)).Result.RoleNames;
+                var check = false;
+                foreach (var q in admin.Split(","))
                 {
-                    return true;
+                    if (roles.Contains(q))
+                    {
+                        check = true;
+                        break;
+                    }
+                    else
+                    {
+                        check = false;
+                    }
                 }
-                else
-                {
-                    return false;
-                }
+                return check;
+
             }
             catch (InvalidCastException  e)
             {
                 return false;
             }
+        }
+
+        public string GetSetitng(string key)
+        {
+            var config = new ConfigurationBuilder()
+                .SetBasePath(Directory.GetCurrentDirectory())
+                .AddJsonFile("appsettings.json").Build();
+            return config[key];
         }
     }
 }

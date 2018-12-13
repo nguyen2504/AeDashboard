@@ -17,6 +17,7 @@
     <Compile Remove="Migrations\20181205095527_InitialCreateFile1.cs" />
     <Compile Remove="Migrations\20181205095832_InitialCreateFile1.cs" />
     <Compile Remove="Migrations\20181205104413_InitialCreate13.cs" />
+    <Compile Remove="Migrations\20181213010340_InitialCreate_update.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
