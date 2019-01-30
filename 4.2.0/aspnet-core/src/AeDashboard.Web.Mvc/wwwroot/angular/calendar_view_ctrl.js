@@ -87,7 +87,6 @@
             //$(this).find('.ae-update').addClass('show');
         };
         $scope.edit_caladarView = function (id) {
-            
             var url = "/Calendar/EditCalendarViewModal?id=" + id;
             $http.get(url).then(function(e) {
                 //alert(e.data);
@@ -108,7 +107,7 @@
 	                { id: 9, firstName: 'Tony', lastName: 'Well' },
 	                { id: 10, firstName: 'Bruce', lastName: 'Wayne' },
                 ];
-                $('input').magicsearch({
+                $('.name-admin').magicsearch({
 	                dataSource: dataSource,
 	                fields: ['firstName', 'lastName'],
 	                id: 'id',
@@ -118,6 +117,8 @@
 	                multiStyle: {
 		                space: 5,
 		                width: 80
+	                }, success: function ($input, data) {
+		                alert('你刚选择的数据为：' + JSON.stringify(data) + '，当前data-id值为：' + $input.attr('data-id'));
 	                }
                 });
                 $('#set-btn').click(function () {
