@@ -3,9 +3,9 @@
 
    app.controller('ctrl', documentCtrl);
 
-    documentCtrl.$inject = ['$location', '$scope', '$http', 'factory', '$timeout','$compile'];
+    documentCtrl.$inject = ['$location', '$scope', '$http', 'factory', '$timeout', '$compile','$sce'];
 
-    function documentCtrl($location, $scope, $http, factory, $timeout, $compile) {
+    function documentCtrl($location, $scope, $http, factory, $timeout, $compile, $sce) {
         $('#fileSelected').on('change', function (evt) {
             var files = $(evt.currentTarget).get(0).files;
            
@@ -28,12 +28,22 @@
                 $scope.data = [];
                 getSearch(0, 32, $scope.search);
             });
+        $scope.uCanTrust = function (string) {
+	        return $sce.trustAsHtml(string);
+        };
         $scope.addOrUpdate = function (id) {
             console.log('id ' + id);
             //$('#showinfor').html(id);
             $('input[name="bookId"]').val(id);
             $('#modalUpload').modal();
+            $("textarea").froalaEditor({
+	            heightMin: 250
+
+            });
         };
+        $scope.uCanTrust = function (string) {
+	        return $sce.trustAsHtml(string);
+        }
         $scope.onChangeImportant = function ($index) {
             $scope.oldValue = $scope.data[$index].id;
 
@@ -73,6 +83,10 @@
                 $compile($el)($scope);
                 $scope.loadCatalogue();
                 $('#editDocument').modal();
+                $("textarea").froalaEditor({
+	                heightMin: 250
+
+                });
             });
         };
         $scope.onUpload = function() {

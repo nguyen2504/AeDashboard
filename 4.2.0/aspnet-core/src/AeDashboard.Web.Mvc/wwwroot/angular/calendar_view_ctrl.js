@@ -2,9 +2,9 @@
     'use strict';
  app.controller('ctrl', calendarViewCtrl);
 
-    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window', '$filter', 'factory','$timeout'];
+    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window', '$filter', 'factory', '$timeout', '$sce'];
 
-    function calendarViewCtrl($location, $http, $scope, $window, $filter, factory, $timeout) {
+    function calendarViewCtrl($location, $http, $scope, $window, $filter, factory, $timeout, $sce) {
         /* jshint validthis:true */
         var vm = this;
         $scope.getAll = [];
@@ -92,8 +92,41 @@
             $http.get(url).then(function(e) {
                 //alert(e.data);
                 $('#editCalendarView div.modal-body').html(e.data);
-                //getRole();
+                $("textarea").froalaEditor({
+	                heightMin: 250
+
+                });
+                var dataSource = [
+	                { id: 1, firstName: 'Tim', lastName: 'Cook' },
+	                { id: 2, firstName: 'Eric', lastName: 'Baker' },
+	                { id: 3, firstName: 'Victor', lastName: 'Brown' },
+	                { id: 4, firstName: 'Lisa', lastName: 'White' },
+	                { id: 5, firstName: 'Oliver', lastName: 'Bull' },
+	                { id: 6, firstName: 'Zade', lastName: 'Stock' },
+	                { id: 7, firstName: 'David', lastName: 'Reed' },
+	                { id: 8, firstName: 'George', lastName: 'Hand' },
+	                { id: 9, firstName: 'Tony', lastName: 'Well' },
+	                { id: 10, firstName: 'Bruce', lastName: 'Wayne' },
+                ];
+                $('input').magicsearch({
+	                dataSource: dataSource,
+	                fields: ['firstName', 'lastName'],
+	                id: 'id',
+	                format: '%firstName% · %lastName%',
+	                multiple: true,
+	                multiField: 'firstName',
+	                multiStyle: {
+		                space: 5,
+		                width: 80
+	                }
+                });
+                $('#set-btn').click(function () {
+	                $('#basic').trigger('set', { id: '3,4' });
+                });
             });
+        };
+        $scope.uCanTrust = function(string) {
+	        return $sce.trustAsHtml(string);
         };
         $scope.delete_item = function (id,$index) {
 

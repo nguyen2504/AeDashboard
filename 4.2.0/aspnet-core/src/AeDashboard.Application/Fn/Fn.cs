@@ -45,8 +45,8 @@ namespace AeDashboard.Fn
             var file = files[0];
             if (file == null || file.Length == 0)
                 return "file not selected";
-            Random r = new Random(999999);
-            var filename = User().Id + "_" + User().UserName + "_" + DateTime.Now.ToString("yyyy-MM-dd") + "_" + r.Next() + "_" + file.FileName;
+            Random r = new Random(99999);
+            var filename = User().Id + "" + User().UserName + "" + DateTime.Now.ToString("yyyy-MM-dd") + "" + r.Next() + "" + file.FileName;
             var path = Path.Combine(
                 Directory.GetCurrentDirectory(), "wwwroot/download/",
                 filename);

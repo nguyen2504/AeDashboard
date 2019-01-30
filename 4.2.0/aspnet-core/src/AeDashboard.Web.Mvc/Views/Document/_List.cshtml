@@ -1,5 +1,6 @@
 ﻿
 @model bool
+
 <div class="table-Or-list_doc">
     <div class="table-body doc">
         <div class="table-row doc" ng-repeat="q in data">
@@ -22,7 +23,7 @@
                     </div>
 
                     <div class="marginleft5px">
-                        <span class="content-pdf-doc">{{q.content}}</span>
+                        <div class="content-pdf-doc"  ng-bind-html="uCanTrust(q.content)"></div>
                         <div class="box-flex_doc_row">
                             <a href="/download/{{q.url}}" class="box-flex_a-doc" target="_blank">
                                 <i class="material-icons icon-pdf-upload">picture_as_pdf</i>
@@ -48,3 +49,13 @@
         </div>
     </div>
 </div>
+<!-- Include Editor style. -->
+<link href="~/css/froala-editor/froala_editor.pkgd.css" rel="stylesheet" type="text/css" />
+<link href="~/css/froala-editor/froala_style.css" rel="stylesheet" type="text/css" />
+<!-- Include Editor JS files. -->
+<script type="text/javascript" src="~/css/froala-editor/froala_editor.pkgd.min.js"></script>
+<script type="text/javascript" src="~/css/froala-editor/codemirror.js"></script>
+<script type="text/javascript" src="~/css/froala-editor/xml.js"></script>
+
+
+

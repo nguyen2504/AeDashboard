@@ -37,33 +37,34 @@
 
     <environment names="Development">
         <link href="~/css/root.css" rel="stylesheet" asp-append-version="true" />
-        <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/fonts/material-icons/ionicons.min.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/fonts/material-icons/material-icons.min.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/fonts/roboto/roboto.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/fonts/material-icons/materialicons.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/fonts/material-icons/ionicons.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/fonts/material-icons/material-icons.min.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" asp-append-version="true" />
         @*<link href="~/css/bs4/bootstrap.min.css" rel="stylesheet" asp-append-version="true"/>*@
-        <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true"/>
+        <link href="~/lib/bootstrap-select/dist/css/bootstrap-select.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/toastr/toastr.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/famfamfam-flags/dist/sprite/famfamfam-flags.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/font-awesome/css/font-awesome.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/Waves/dist/waves.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/lib/animate.css/animate.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/materialize.css" rel="stylesheet" asp-append-version="true" />
         <link href="~/css/style.css" rel="stylesheet" asp-append-version="true">
-        <link href="~/css/ae.css" rel="stylesheet">
-        <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/css/angular-datatables.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true"/>
-        <link href="~/css/theme.css" rel="stylesheet"/>
-        <link href="~/css/aedashboard.css" rel="stylesheet"/>
+        <link href="~/css/ae.css" rel="stylesheet" asp-append-version="true">
+        <link href="~/css/jquery.dataTables.min.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/angular-datatables.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/themes/all-themes.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/view-resources/Views/Shared/_Layout.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/theme.css" rel="stylesheet" asp-append-version="true" />
+        <link href="~/css/aedashboard.css" rel="stylesheet" asp-append-version="true" />
+
     </environment>
 
     <environment names="Staging,Production">
         <link href="~/view-resources/Views/_Bundles/shared-layout.min.css" rel="stylesheet" asp-append-version="true" />
     </environment>
-
+   
     <!-- View specific styles -->
     @RenderSection("styles", required: false)
 
@@ -110,12 +111,12 @@
         <script src="~/js/lib/jquery.dataTables.min.js" asp-append-version="true"></script>
         <script src="~/js/lib/angular-datatables.js" asp-append-version="true"></script>
         <script src="~/js/js.cookie.js" asp-append-version="true"></script>
-        
+
         @if (CultureInfo.CurrentUICulture.Name != "en")
         {
             <script src="~/lib/jquery-validation/src/localization/messages_@Html.Raw(CultureInfo.CurrentUICulture.Name.Replace("-", "_") + ".js")" asp-append-version="true"></script>
         }
-        
+
         <script src="~/js/layout.js" asp-append-version="true"></script>
     </environment>
 
@@ -123,7 +124,7 @@
         <script src="~/view-resources/Views/_Bundles/shared-layout.min.js" asp-append-version="true"></script>
         <script src="~/view-resources/Views/Home/layout.min.js" asp-append-version="true"></script>
     </environment>
-
+    <script type="text/javascript" src="~/css/tag/jquery.magicsearch.js"></script>
 </head>
 <body class="@("theme-" + uiTheme)">
     <div class="page-item-loader-wrapper">
@@ -267,8 +268,8 @@
 
 
     <script>
-    // Localizing momentjs
-    moment.locale('@CultureInfo.CurrentUICulture.Name');
+        // Localizing momentjs
+        moment.locale('@CultureInfo.CurrentUICulture.Name');
     </script>
 
     <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
@@ -282,6 +283,15 @@
 
     <!-- View specific scripts -->
     @RenderSection("scripts", required: false)
+<script>
+    $(document).ready(function() {
+        $("textarea").froalaEditor({
+            heightMin: 250
+
+        });
+    })
+</script>
+
 </body>
 </html>
 
