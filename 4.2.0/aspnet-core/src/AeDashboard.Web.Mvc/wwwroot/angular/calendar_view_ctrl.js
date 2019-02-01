@@ -8,6 +8,7 @@
         /* jshint validthis:true */
         var vm = this;
         $scope.getAll = [];
+        $scope.users = [];
         vm.title = 'calendar_view_ctrl';
         $scope.count = 15;
         activate();
@@ -15,12 +16,15 @@
         function activate() {
             $scope.load = 0;
             localStorage.removeItem('count');
-            moment().locale("vi");
+       
             //getAll(0,32);
             loadScroll();
             var w = new Date().getFullYear() + "-W" + factory.getWeek(new Date());
             $scope.week = moment(w).toDate();
             getIsAdmin();
+            getUsers('1');
+            //console.log('data '+$scope.users);
+          
         }
       
         //============================
@@ -86,48 +90,167 @@
             //$('.ae-update').removeClass('show');
             //$(this).find('.ae-update').addClass('show');
         };
+        $scope.createCalendar = function() {
+	        var t = "";
+	        $('.name-admin-create').magicsearch({
+		        dataSource: $scope.users,
+		        fields: ['name', 'emailAddress'],
+		        id: 'id',
+		        format: '%name% · %emailAddress%',
+		        multiple: true,
+		        multiField: 'name',
+		        multiStyle: {
+			        space: 5,
+			        width: 80
+		        },
+		        success: function($input, data) {
+			        var id = $input.attr('data-id');
+                    $('#IdAdmins').val(id);
+                    if (id.split(',').length == 1) {
+	                    t += data.name;
+                    } else {
+	                    t +=','+ data.name ;
+                    }
+			      
+			        $('#Admin').val(t);
+			    },
+		        afterDelete: function($input, data) {
+			        var id = $input.attr('data-id');
+                    $('#IdAdmins').val(id);
+                    //alert(JSON.stringify(data));
+                    t = t.replace(data.name + ',', '');
+                    if (id.split(',').length == 1) {
+	                    t = t.replace(data.name , '');
+                    }
+			        $('#Admin').val(t);
+		        }
+            });
+            //--------------------------------------
+            var user = "";
+            $('.name-admin-user').magicsearch({
+	            dataSource: $scope.users,
+	            fields: ['name', 'emailAddress'],
+	            id: 'id',
+	            format: '%name% · %emailAddress%',
+	            multiple: true,
+	            multiField: 'name',
+	            multiStyle: {
+		            space: 5,
+		            width: 80
+	            },
+	            success: function ($input, data) {
+                    var id = $input.attr('data-id');
+                 
+                    $('#IdUsers').val(id);
+		            if (id.split(',').length == 1) {
+			            user += data.name;
+		            } else {
+			            user += ',' + data.name;
+		            }
+
+                    $('#Users').val(user);
+	            },
+	            afterDelete: function ($input, data) {
+		            var id = $input.attr('data-id');
+                    $('#IdUsers').val(id);
+		            //alert(JSON.stringify(data));
+                    user = user.replace(data.name + ',', '');
+                    if (id.split(',').length == 1) {
+	                    user = user.replace(data.name , '');
+                    }
+                    $('#Users').val(user);
+	            }
+            });
+            //--------
+
+        };
         $scope.edit_caladarView = function (id) {
             var url = "/Calendar/EditCalendarViewModal?id=" + id;
             $http.get(url).then(function(e) {
-                //alert(e.data);
                 $('#editCalendarView div.modal-body').html(e.data);
                 $("textarea").froalaEditor({
 	                heightMin: 250
 
                 });
-                var dataSource = [
-	                { id: 1, firstName: 'Tim', lastName: 'Cook' },
-	                { id: 2, firstName: 'Eric', lastName: 'Baker' },
-	                { id: 3, firstName: 'Victor', lastName: 'Brown' },
-	                { id: 4, firstName: 'Lisa', lastName: 'White' },
-	                { id: 5, firstName: 'Oliver', lastName: 'Bull' },
-	                { id: 6, firstName: 'Zade', lastName: 'Stock' },
-	                { id: 7, firstName: 'David', lastName: 'Reed' },
-	                { id: 8, firstName: 'George', lastName: 'Hand' },
-	                { id: 9, firstName: 'Tony', lastName: 'Well' },
-	                { id: 10, firstName: 'Bruce', lastName: 'Wayne' },
-                ];
-                $('.name-admin').magicsearch({
+                var t1 = "";
+                var dataSource = [];
+                dataSource = $scope.users;
+                $('.name-admin1').magicsearch({
 	                dataSource: dataSource,
-	                fields: ['firstName', 'lastName'],
+                    fields: ['name', 'emailAddress'],
 	                id: 'id',
-	                format: '%firstName% · %lastName%',
+                    format: '%name% - %emailAddress%',
 	                multiple: true,
-	                multiField: 'firstName',
+                    multiField: 'name',
 	                multiStyle: {
 		                space: 5,
 		                width: 80
-	                }, success: function ($input, data) {
-		                alert('你刚选择的数据为：' + JSON.stringify(data) + '，当前data-id值为：' + $input.attr('data-id'));
+                    },
+                    success: function ($input, data) {
+	                  var id = $input.attr('data-id');
+                        $('.id-admin1').val(id);
+		                if (id.split(',').length == 1) {
+			                t1 += data.name;
+		                } else {
+			                t1 += ',' + data.name;
+		                }
+                        $('.admin1').val(t1);
+	                },
+	                afterDelete: function ($input, data) {
+		                var id = $input.attr('data-id');
+                        $('.id-admin1').val(id);
+		                //alert(JSON.stringify(data));
+		                t1 = t1.replace(data.name + ',', '');
+                        $('.admin1').val(t1);
 	                }
                 });
-                $('#set-btn').click(function () {
-	                $('#basic').trigger('set', { id: '3,4' });
+
+                var t2 = "";
+                $('.name-admin2').magicsearch({
+	                dataSource: dataSource,
+	                fields: ['name', 'emailAddress'],
+	                id: 'id',
+	                format: '%name% - %emailAddress%',
+	                multiple: true,
+	                multiField: 'name',
+	                multiStyle: {
+		                space: 5,
+		                width: 80
+	                },
+	                success: function ($input, data) {
+		                var id = $input.attr('data-id');
+                        $('.edit-user1').val(id);
+		                if (id.split(',').length == 1) {
+			                t2 += data.name;
+		                } else {
+			                t2 += ',' + data.name;
+		                }
+
+                        $('.id-edit-user1').val(t2);
+	                },
+	                afterDelete: function ($input, data) {
+		                var id = $input.attr('data-id');
+                        $('.edit-user1').val(id);
+		                t2 = t2.replace(data.name + ',', '');
+                        $('.id-edit-user1').val(t2);
+	                }
                 });
+                //$('.name-admin').eq(0).trigger('set', { id: '1' });
+                //$('.name-admin').eq(1).trigger('set', { id: '3,4,5,7,8' });
+                //$('#set-btn').click(function () {
+	               // $('#basic').trigger('set', { id: '3,4' });
+                //});
             });
         };
         $scope.uCanTrust = function(string) {
 	        return $sce.trustAsHtml(string);
+        };
+        function   getUsers(ids) {
+            var url = '/Calendar/GetUsers?ids=' + ids;
+            $http.get(url).then(function(e) {
+                $scope.users = e.data.result;
+          
+            });
         };
         $scope.delete_item = function (id,$index) {
 

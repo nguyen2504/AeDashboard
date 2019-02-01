@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AeDashboard.Migrations
 {
     [DbContext(typeof(AeDashboardDbContext))]
-    [Migration("20181213011900_InitialCreate12")]
-    partial class InitialCreate12
+    [Migration("20190131050513_AddCalendarvieww")]
+    partial class AddCalendarvieww
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -1027,6 +1027,10 @@ namespace AeDashboard.Migrations
                     b.Property<int>("Day");
 
                     b.Property<DateTime>("EndDate");
+
+                    b.Property<string>("IdAdmins");
+
+                    b.Property<string>("IdUsers");
 
                     b.Property<bool>("IsAcive");
 

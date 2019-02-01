@@ -16,8 +16,10 @@ namespace AeDashboard.Calendar.Dto
         [Required]
         public string Work { get; set; }
         public  string Admin { get; set; }
+        public string IdAdmins { get; set; }
         [Required]
         public string Users { get; set; }
+        public string IdUsers { get; set; }
         public  string Place { get; set; }
         public  int Day { get; set; }
         public int Weekend { get; set; }

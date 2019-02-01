@@ -93,37 +93,3 @@
 <script type="text/javascript" src="~/css/froala-editor/froala_editor.pkgd.min.js"></script>
 <script type="text/javascript" src="~/css/froala-editor/codemirror.js"></script>
 <script type="text/javascript" src="~/css/froala-editor/xml.js"></script>
-<script>
-    $(function () {
-        var dataSource = [
-            { id: 1, firstName: 'Tim', lastName: 'Cook' },
-            { id: 2, firstName: 'Eric', lastName: 'Baker' },
-            { id: 3, firstName: 'Victor', lastName: 'Brown' },
-            { id: 4, firstName: 'Lisa', lastName: 'White' },
-            { id: 5, firstName: 'Oliver', lastName: 'Bull' },
-            { id: 6, firstName: 'Zade', lastName: 'Stock' },
-            { id: 7, firstName: 'David', lastName: 'Reed' },
-            { id: 8, firstName: 'George', lastName: 'Hand' },
-            { id: 9, firstName: 'Tony', lastName: 'Well' },
-            { id: 10, firstName: 'Bruce', lastName: 'Wayne' },
-        ];
-        $('.name-admin').magicsearch({
-            dataSource: dataSource,
-            fields: ['firstName', 'lastName'],
-            id: 'id',
-            format: '%firstName% · %lastName%',
-            multiple: true,
-            multiField: 'firstName',
-            multiStyle: {
-                space: 5,
-                width: 80
-            },success: function($input, data) {
-                alert('你刚选择的数据为：' + JSON.stringify(data) + '，当前data-id值为：' + $input.attr('data-id'));
-            }
-        });
-       
-        $('#set-btn').click(function () {
-            $('#basic').trigger('set', { id: '3,4' });
-        });
-    });
-</script>

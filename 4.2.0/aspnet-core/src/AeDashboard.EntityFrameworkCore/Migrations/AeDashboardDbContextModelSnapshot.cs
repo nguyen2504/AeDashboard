@@ -1026,6 +1026,10 @@ namespace AeDashboard.Migrations
 
                     b.Property<DateTime>("EndDate");
 
+                    b.Property<string>("IdAdmins");
+
+                    b.Property<string>("IdUsers");
+
                     b.Property<bool>("IsAcive");
 
                     b.Property<string>("Place");

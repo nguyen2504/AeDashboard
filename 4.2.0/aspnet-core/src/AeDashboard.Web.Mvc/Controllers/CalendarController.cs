@@ -12,6 +12,7 @@ using AeDashboard.Controllers;
 using AeDashboard.Web.Models.Calendar;
 using AeDashboard.Web.Models.Loads;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -59,11 +60,16 @@ namespace AeDashboard.Web.Controllers
             //        }
             //    }
             //}
-         
+          
         
             return View();
         }
 
+        public IActionResult GetUsers(string ids)
+        {
+            var users = _userManager.Users.Include(u => u.Roles).ToList();
+            return Json(users);
+        }
         public JsonResult GetRole()
         {
             var user = _userManager.Users.FirstOrDefault(j => j.Id.Equals(_userManager.AbpSession.UserId));

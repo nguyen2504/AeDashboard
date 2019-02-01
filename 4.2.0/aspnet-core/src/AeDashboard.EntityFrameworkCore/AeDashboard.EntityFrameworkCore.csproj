@@ -34,4 +34,9 @@
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Update="Migrations\20190131050513_AddCalendarvieww.Designer.cs">
+      <DependentUpon>20190131050513_AddCalendarvieww.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
 </Project>

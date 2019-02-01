@@ -5,8 +5,12 @@
     <div class="form-group form-float">
         <div class="form-line">
             <label asp-for="Admin" class="form-label"></label>
-            <input   class="form-control magicsearch name-admin" />
-            <input asp-for="Admin" required class="form-control " style="display: none"/>
+            <input   class="form-control magicsearch name-admin-create" />
+            <div  >
+                <input asp-for="Admin"  class="form-control "/>
+                <input asp-for="IdAdmins"  class="form-control "/>
+            </div>
+          
             <span asp-validation-for="Admin" class="text-danger"></span>
         </div>
     </div>
@@ -21,8 +25,12 @@
     <div class="form-group form-float">
         <div class="form-line">
             <label asp-for="Users" class="form-label"></label>
-            <input  class="form-control name-admin" />
-            <input asp-for="Users" required class="form-control " style="display: none"/>
+            <input  class="form-control name-admin-user" />
+            <div >
+                <input asp-for="Users"  class="form-control " />
+                <input asp-for="IdUsers"  class="form-control " />
+            </div>
+           
             <span asp-validation-for="Users" class="text-danger"></span>
         </div>
     </div>
@@ -56,17 +64,4 @@
     </div>
 
 </form>
-<script>
-    $(document).ready(function () {
-        $('[type="submit"]').on('click',function() {
-            var data = $('.name-admin').data(id);
-            alert('id ' + data);
-        });
-    
-    })
-</script>
-
-@*<div>
-        <a asp-action="Index">Back to List</a>
-    </div>*@
 

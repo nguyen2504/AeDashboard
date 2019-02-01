@@ -5130,7 +5130,7 @@ section.content {
     -webkit-transform: scaleX(1);
     transform: scaleX(1); }
   .form-group .form-line.focused .form-label {
-    top: -10px;
+    top: -15px;
     left: 0;
     font-size: 12px; }
 
