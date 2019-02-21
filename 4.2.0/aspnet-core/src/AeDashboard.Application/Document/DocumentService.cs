@@ -92,7 +92,15 @@ namespace AeDashboard.Document
 
         public List<string> LoadCatalogue()
         {
-            var data = _repository.GetAll().Select(j => j.Notifications).Distinct();
+            List<string> data = _repository.GetAll().Select(j => j.Notifications).Distinct().ToList();
+            try
+            {
+
+            }
+            catch (Exception e)
+            {
+               data = new List<string>();
+            }
             return data.ToList();
         }
 

@@ -18,6 +18,8 @@
     <Compile Remove="Migrations\20181205095832_InitialCreateFile1.cs" />
     <Compile Remove="Migrations\20181205104413_InitialCreate13.cs" />
     <Compile Remove="Migrations\20181213010340_InitialCreate_update.cs" />
+    <Compile Remove="Migrations\20190221092941_InitialCreate.cs" />
+    <Compile Remove="Migrations\20190221092941_InitialCreate.Designer.cs" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="2.1.4" />
@@ -35,8 +37,8 @@
     <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Update="Migrations\20190131050513_AddCalendarvieww.Designer.cs">
-      <DependentUpon>20190131050513_AddCalendarvieww.cs</DependentUpon>
+    <Compile Update="Migrations\20190221094713_InitialCreate1.Designer.cs">
+      <DependentUpon>20190221094713_InitialCreate1.cs</DependentUpon>
     </Compile>
   </ItemGroup>
 </Project>

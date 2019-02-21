@@ -100,7 +100,15 @@ namespace AeDashboard.Fn
             try
             {
                 var admin = GetSetitng("Admin").ToUpper(CultureInfo.CurrentCulture);
-                var roles = _userAppService.Get(new EntityDto<long>(id)).Result.RoleNames;
+                string[] roles;
+                try
+                {
+                    roles = _userAppService.Get(new EntityDto<long>(id)).Result.RoleNames;
+                }
+                catch (Exception e)
+                {
+                    roles = new string[]{};
+                }
                 var check = false;
                 foreach (var q in admin.Split(","))
                 {

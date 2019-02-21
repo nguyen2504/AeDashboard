@@ -138,7 +138,14 @@ namespace AeDashboard.Calendar
             var l = new List<CalendarView>();
             if (take.Equals(0))
             {
-                l = _repository.GetAllListAsync().Result.Where(j => j.BeginDate.Date.Equals(date.Date)&& j.IsAcive).OrderByDescending(j => j.BeginDate).ToList();
+                try
+                {
+                    l = _repository.GetAllListAsync().Result.Where(j => j.BeginDate.Date.Equals(date.Date)&& j.IsAcive).OrderByDescending(j => j.BeginDate).ToList();
+                }
+                catch (Exception e)
+                {
+                    l = new List<CalendarView>();
+                }
             }
             else
             {
@@ -161,7 +168,15 @@ namespace AeDashboard.Calendar
 
         public List<GroupByDate> GetGroupByDates(int skip, int take, int week,int year)
         {
-            var l = take.Equals(0) ? _repository.GetAllList().Where(j => j.Weekend.Equals(week) && j.BeginDate.Date.Year.Equals(year) && j.IsAcive).OrderByDescending(j => j.BeginDate).ToList() : _repository.GetAllList().Where(j => j.Weekend.Equals(week) && j.BeginDate.Date.Year.Equals(year)).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
+            var l = new List<CalendarView>();
+            try
+            {
+                l = take.Equals(0) ? _repository.GetAllList().Where(j => j.Weekend.Equals(week) && j.BeginDate.Date.Year.Equals(year) && j.IsAcive).OrderByDescending(j => j.BeginDate).ToList() : _repository.GetAllList().Where(j => j.Weekend.Equals(week) && j.BeginDate.Date.Year.Equals(year)).OrderByDescending(j => j.BeginDate).Skip(skip).Take(take).ToList();
+            }
+            catch (Exception e)
+            {
+                l = new List<CalendarView>();
+            }
             var dates = l.Select(j => j.BeginDate.Date).OrderByDescending(j=>j.Date).Distinct();
             return dates.Select(q => new GroupByDate()
                 {
@@ -211,7 +226,14 @@ namespace AeDashboard.Calendar
               List<CalendarView> l;
               if (number.Equals(count))
               {
-                l=  _repository.GetAll().OrderByDescending(j => j.BeginDate).Where(j => j.BeginDate.Date>= DateTime.Today.AddDays(-count).Date && j.IsAcive).ToList();
+                  try
+                  {
+                      l=  _repository.GetAll().OrderByDescending(j => j.BeginDate).Where(j => j.BeginDate.Date>= DateTime.Today.AddDays(-count).Date && j.IsAcive).ToList();
+                  }
+                  catch (Exception e)
+                  {
+                    l= new List<CalendarView>();
+                  }
                   result = GroupDyDates(l);
                 }
               else
@@ -226,14 +248,22 @@ namespace AeDashboard.Calendar
               
                 if (number.Equals(count))
                 {
-                    l = _repository.GetAll().OrderByDescending(j => j.CreateDate)
-                  .Where(j => j.CreateDate.Date >= DateTime.Today.AddDays(-count).Date && j.IsAcive
-                  && (j.Admin.StartsWith(name)
-                  ||
-                  j.Work.StartsWith(name)
-                  ||
-                  j.Users.StartsWith(name))).ToList();
-                    result = GroupDyDates(l);
+                    try
+                    {
+                        l = _repository.GetAll().OrderByDescending(j => j.CreateDate)
+                            .Where(j => j.CreateDate.Date >= DateTime.Today.AddDays(-count).Date && j.IsAcive
+                                                                                                 && (j.Admin.StartsWith(name)
+                                                                                                     ||
+                                                                                                     j.Work.StartsWith(name)
+                                                                                                     ||
+                                                                                                     j.Users.StartsWith(name))).ToList();
+                        result = GroupDyDates(l);
+                    }
+                    catch (Exception e)
+                    {
+                      l= new List<CalendarView>();
+                      result = GroupDyDates(l);
+                    }
                 }
                 else
                 {
