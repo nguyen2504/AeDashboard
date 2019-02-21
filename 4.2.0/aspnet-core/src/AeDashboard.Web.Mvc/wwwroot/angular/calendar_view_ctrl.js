@@ -167,7 +167,8 @@
         $scope.edit_caladarView = function (id) {
             var url = "/Calendar/EditCalendarViewModal?id=" + id;
             $http.get(url).then(function(e) {
-                $('#editCalendarView div.modal-body').html(e.data);
+               $('#editCalendarView div.modal-body').html(e.data);
+              //console.log(e.data);  
                 $("textarea").froalaEditor({
 	                heightMin: 250
 
@@ -219,29 +220,42 @@
 	                },
 	                success: function ($input, data) {
 		                var id = $input.attr('data-id');
-                        $('.edit-user1').val(id);
+                       
 		                if (id.split(',').length == 1) {
 			                t2 += data.name;
 		                } else {
 			                t2 += ',' + data.name;
 		                }
-
-                        $('.id-edit-user1').val(t2);
+                        $('.edit-user1').val(t2);
+                        $('.id-edit-user1').val(id);
 	                },
 	                afterDelete: function ($input, data) {
 		                var id = $input.attr('data-id');
-                        $('.edit-user1').val(id);
-		                t2 = t2.replace(data.name + ',', '');
-                        $('.id-edit-user1').val(t2);
+						t2 = t2.replace(data.name + ',', '');
+		                $('.edit-user1').val(t2);
+		                $('.id-edit-user1').val(id);
 	                }
                 });
-                //$('.name-admin').eq(0).trigger('set', { id: '1' });
+                //var t = html.html(e.data).find('#Users').val();
+                //console.log(t);
+              
                 //$('.name-admin').eq(1).trigger('set', { id: '3,4,5,7,8' });
                 //$('#set-btn').click(function () {
-	               // $('#basic').trigger('set', { id: '3,4' });
+                // $('#basic').trigger('set', { id: '3,4' });
                 //});
+                showAdminUser(id);
             });
         };
+
+        function showAdminUser(id) {
+            var url = "/Calendar/EditCalendarViewModal1?id=" + id;
+            $http.get(url).then(function(e) {
+                $('.name-admin1').trigger('set', { id: e.data.result.idAdmins });
+                $('.name-admin2').trigger('set', { id: e.data.result.idUsers });
+                console.log(e.data.result.idUsers);
+                console.log(e.data.result.idAdmins);
+            });
+        }
         $scope.uCanTrust = function(string) {
 	        return $sce.trustAsHtml(string);
         };

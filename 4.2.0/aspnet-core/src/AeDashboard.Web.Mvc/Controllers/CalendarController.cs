@@ -190,7 +190,13 @@ namespace AeDashboard.Web.Controllers
             return View("Edit", model);
 
         }
-        
+        public async Task<ActionResult> EditCalendarViewModal1(long id)
+        {
+            var model = await _calendarViewService.GetCalendarView(id);
+            //  model.MapTo<CalendarViewModel>()
+            return Json( model);
+
+        }
         //public async Task<ActionResult> EditUserModal(long userId)
         //{
         //    var user = await _userAppService.Get(new EntityDto<long>(userId));
