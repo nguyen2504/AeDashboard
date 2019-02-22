@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Abp.AspNetCore.Mvc.Authorization;
 using Abp.AutoMapper;
+using Abp.Domain.Uow;
 using Abp.Extensions;
 using AeDashboard.Authorization.Users;
 using AeDashboard.Calendar;
@@ -88,6 +89,7 @@ namespace AeDashboard.Web.Controllers
             return View(m);
         }
         [HttpPost]
+        [UnitOfWork]
         public IActionResult Create(CalendarViewDto model)
         {
             //if(model.BeginDate== new DateTime())

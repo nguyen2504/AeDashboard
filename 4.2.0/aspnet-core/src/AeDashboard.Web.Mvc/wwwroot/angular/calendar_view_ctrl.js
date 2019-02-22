@@ -2,18 +2,22 @@
     'use strict';
  app.controller('ctrl', calendarViewCtrl);
 
-    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window', '$filter', 'factory', '$timeout', '$sce'];
+    calendarViewCtrl.$inject = ['$location', '$http', '$scope', '$window', '$filter', 'factory', '$timeout', '$sce','$compile'];
 
-    function calendarViewCtrl($location, $http, $scope, $window, $filter, factory, $timeout, $sce) {
+    function calendarViewCtrl($location, $http, $scope, $window, $filter, factory, $timeout, $sce, $compile) {
         /* jshint validthis:true */
         var vm = this;
         $scope.getAll = [];
         $scope.users = [];
         vm.title = 'calendar_view_ctrl';
         $scope.count = 15;
+        var connection = new signalR.HubConnectionBuilder().withUrl("/mesHub").build();
+
         activate();
 
         function activate() {
+
+	        initSignal();
             $scope.load = 0;
             localStorage.removeItem('count');
        
@@ -26,7 +30,54 @@
             //console.log('data '+$scope.users);
           
         }
-      
+
+        function initSignal(parameters) {
+
+	        
+
+	        //Disable send button until connection is established
+	        $('[value=Create]').disabled = true;
+	        $('[value=Save]').disabled = true;
+
+	        connection.on("ReceiveMessage", function (a, b, c) {
+		      
+		        console.log('ok '+a+"  "+b+" "+c);
+	        });
+
+	        connection.start().then(function () {
+		        $('[value=Create]').disabled = false;
+		        $('[value=Save]').disabled = false;
+	        }).catch(function (err) {
+		        return console.error(err.toString());
+	        });
+
+	        //document.getElementById("sendButton").addEventListener("click", function (event) {
+	        //	var id = document.getElementById("userInput").value;
+	        //    var table = document.getElementById("messageInput").value;
+	        //    var action = document.getElementById("messageInpu1").value;
+	        //	connection.invoke("SendMessage", id, table,action).catch(function (err) {
+	        //		return console.error(err.toString());
+	        //	});
+	        //	event.preventDefault();
+	        //});
+            $('[value=Create]').on('click', function (event) {
+		        //var id = $('#id').val('add');
+		        //var table = $('#table').val('ok');
+		        //var action = $('#action').val('op');
+                connection.invoke("SendMessage",'1','table','create').catch(function (err) {
+
+			        return console.error(err.toString());
+		        });
+		     
+            });
+         
+        }
+        $scope.edit_cc = function(id) {
+	        connection.invoke("SendMessage", '1', 'table', 'edit '+id).catch(function (err) {
+
+		        return console.error(err.toString());
+	        });
+        }
         //============================
         function getIsAdmin() {
             var url = "/Document/GetIsAdmin";
@@ -91,7 +142,8 @@
             //$(this).find('.ae-update').addClass('show');
         };
         $scope.createCalendar = function () {
-          
+	  
+
 	        var t = "";
 	        $('.name-admin-create').magicsearch({
 		        dataSource: $scope.users,
@@ -168,7 +220,9 @@
         $scope.edit_caladarView = function (id) {
             var url = "/Calendar/EditCalendarViewModal?id=" + id;
             $http.get(url).then(function(e) {
-               $('#editCalendarView div.modal-body').html(e.data);
+            
+                var $el = $('#editCalendarView div.modal-body').html(e.data);
+                $compile($el)($scope);
               //console.log(e.data);  
                 $("textarea").froalaEditor({
 	                heightMin: 250

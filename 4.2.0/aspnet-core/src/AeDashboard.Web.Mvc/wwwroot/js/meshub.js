@@ -5,12 +5,12 @@ var connection = new signalR.HubConnectionBuilder().withUrl("/mesHub").build();
 //Disable send button until connection is established
 $("#sendButton").disabled = true;
 
-connection.on("ReceiveMessage", function (id, table,action) {
-	var msg = table.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+connection.on("ReceiveMessage", function (id,table,action) {
+	
 	var encodedMsg = id + " says " + table+" "+action;
 	var li = document.createElement("li");
 	li.textContent = encodedMsg;
-	$("#messagesList").append(li);
+    $("#messagesList").append(li);
 });
 
 connection.start().then(function(){
@@ -29,11 +29,12 @@ connection.start().then(function(){
 //	event.preventDefault();
 //});
 $('#sendButton').on('click', function (event) {
-    var id = $('#id').val();
+    var id = $('#user').val();
     var table = $('#table').val();
     var action = $('#action').val();
+    console.log('id ' + id);
     connection.invoke("SendMessage", id, table, action).catch(function (err) {
 	    return console.error(err.toString());
     });
-    event.preventDefault();
+    //event.preventDefault();
 });

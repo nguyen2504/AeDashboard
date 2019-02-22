@@ -1,14 +1,14 @@
 ﻿@model AeDashboard.Calendar.Dto.CalendarViewDto
 
-<form asp-action="Create" asp-controller="Calendar" role="form" novalidate class="form-validation">
+<form asp-action="Create" asp-controller="Calendar" role="form"  class="form-validation" autocomplete="on" method="post">
     <div asp-validation-summary="ModelOnly" class="text-danger"></div>
     <div class="form-group form-float">
         <div class="form-line">
             <label asp-for="Admin" class="form-label" style="top: -15px" ></label>
-            <input   class="form-control magicsearch name-admin-create" required />
+            <input   class="form-control magicsearch name-admin-create validate"   />
             <div  style="display: none">
                 <input asp-for="Admin"  class="form-control " required/>
-                <input asp-for="IdAdmins"  class="form-control "/>
+                <input asp-for="IdAdmins"  class="form-control " />
             </div>
           
             <span asp-validation-for="Admin" class="text-danger"></span>
@@ -18,7 +18,7 @@
     <div class="form-group form-float">
         <div class="form-line">
             <label asp-for="Work" class="form-label"></label>
-            <textarea rows="3" cols="50" asp-for="Work" required class="form-control"></textarea>
+            <textarea rows="3" cols="50" asp-for="Work"  class="form-control validate"></textarea>
             <span asp-validation-for="Work" class="text-danger"></span>
         </div>
     </div>
@@ -27,7 +27,7 @@
             <label asp-for="Users" class="form-label"  style="top: -15px"></label>
             <input  class="form-control name-admin-user" required/>
             <div style="display: none">
-                <input asp-for="Users"  class="form-control " />
+                <input asp-for="Users"  class="form-control " required/>
                 <input asp-for="IdUsers"  class="form-control " />
             </div>
            
@@ -58,7 +58,7 @@
 
     <!-- Modal footer -->
     <div class="modal-footer">
-        <input type="submit" value="Create" class="btn btn-default "  />
+        <input type="submit" value="Create" class="btn btn-default"  />
         <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
     </div>
 
