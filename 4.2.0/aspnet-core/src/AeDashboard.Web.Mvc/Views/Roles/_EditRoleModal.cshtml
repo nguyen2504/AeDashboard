@@ -6,7 +6,7 @@
 @Html.Partial("~/Views/Shared/Modals/_ModalHeader.cshtml", new ModalHeaderViewModel(L("EditRole")))
 
 <div class="modal-body">
-    <form name="RoleEditForm" role="form" novalidate class="form-validation">
+    <form name="RoleEditForm" role="form" novalidate class="form-validation" autocomplete="on">
         <input type="hidden" name="Id" value="@Model.Role.Id" />
         <input type="hidden" name="IsStatic" value="@(Model.Role.IsStatic.ToString())" />
         <div class="row clearfix">

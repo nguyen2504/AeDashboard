@@ -11,7 +11,17 @@ namespace AeDashboard.Web.Controllers
         //[AllowAnonymous]
         public ActionResult Index()
         {
-            return RedirectToAction("Index", "Calendar");
+            //return RedirectToAction("Index", "Calendar
+            return View();
         }
-	}
+
+        public ActionResult SignalR()
+        {
+            return View();
+        }
+        public ActionResult Test()
+        {
+            return View();
+        }
+    }
 }

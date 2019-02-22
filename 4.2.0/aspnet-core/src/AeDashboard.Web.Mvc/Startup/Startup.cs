@@ -14,6 +14,8 @@ using AeDashboard.Configuration;
 using AeDashboard.Identity;
 using AeDashboard.Web.Resources;
 using Abp.AspNetCore.SignalR.Hubs;
+using AeDashboard.Calendar;
+using AeDashboard.Web.Signalr;
 using Microsoft.Extensions.FileProviders;
 
 
@@ -45,7 +47,7 @@ namespace AeDashboard.Web.Startup
             services.AddScoped<IWebResourceManager, WebResourceManager>();
 
             services.AddSignalR();
-
+            services.AddTransient<CalendarView>();
             // Configure Abp and Dependency Injection
             return services.AddAbp<AeDashboardWebMvcModule>(
                 // Configure Log4Net logging
@@ -78,7 +80,10 @@ namespace AeDashboard.Web.Startup
             {
                 routes.MapHub<AbpCommonHub>("/signalr");
             });
-
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<MesHub>("/mesHub");
+            });
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

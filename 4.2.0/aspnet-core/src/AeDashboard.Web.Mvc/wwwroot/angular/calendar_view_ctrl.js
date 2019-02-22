@@ -90,13 +90,14 @@
             //$('.ae-update').removeClass('show');
             //$(this).find('.ae-update').addClass('show');
         };
-        $scope.createCalendar = function() {
+        $scope.createCalendar = function () {
+          
 	        var t = "";
 	        $('.name-admin-create').magicsearch({
 		        dataSource: $scope.users,
 		        fields: ['name', 'emailAddress'],
 		        id: 'id',
-		        format: '%name% · %emailAddress%',
+		        format: '%name% - %emailAddress%',
 		        multiple: true,
 		        multiField: 'name',
 		        multiStyle: {
@@ -131,7 +132,7 @@
 	            dataSource: $scope.users,
 	            fields: ['name', 'emailAddress'],
 	            id: 'id',
-	            format: '%name% · %emailAddress%',
+	            format: '%name% - %emailAddress%',
 	            multiple: true,
 	            multiField: 'name',
 	            multiStyle: {
@@ -284,6 +285,10 @@
             //var top = angular.element($event.target).prop('offsetTop');
             //$('.ae-btns').css({ "top": top });
         };
+
+        $scope.createcalendar = function() {
+	        alert('ok');
+        }
 
         function getRole() {
             var url = "/Calendar/GetRole";

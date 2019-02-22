@@ -40,7 +40,7 @@
 </div>
 <div class="box-search-ae-boottom"  style="display: {{calendarshow}}">
     <div class="itemae">
-        <i class="material-icons icon-block">add</i>
+        <i class="material-icons icon-block" ng-click="createCalendar()">add</i>
     </div>
     <div class="itemae">
         <i class="material-icons icon-block">search</i>
@@ -60,11 +60,11 @@
 <div class="main-calendar">
     @await Html.PartialAsync("_List")
 </div>
-@*<div class="btn-add_ae1">
-    <button class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" type="button" data-toggle="modal" data-target="#modalCreate">
+<div class="btn-add_ae1">
+    <button class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" type="button" data-toggle="modal" data-target="#modalCreate" ng-click="createCalendar()">
         <i class="material-icons">add</i>
     </button>
-</div>*@
+</div>
 
 <!-- The Modal -->
 <div class="modal fade" id="modalCreate">
@@ -83,9 +83,9 @@
             <div class="modal-body">
                 
                 @await Html.PartialAsync("Create")
-                <div ng-if="getAll.length <= 0" style="margin: auto; display: block">
+                @*<div ng-if="getAll.length <= 0" style="margin: auto; display: block">
                     Không Có Dữ Liệu Hôm Nay
-                </div>
+                </div>*@
             </div>
 
 
@@ -126,9 +126,8 @@
         <script src="~/view-resources/Views/CalendarView/calendar_view_ctrl.min.js" asp-append-version="true"></script>
     </environment>
 }
-<script>
+@*<script>
     $("textarea").froalaEditor({
         heightMin: 250
-
     });
-</script>
+</script>*@
