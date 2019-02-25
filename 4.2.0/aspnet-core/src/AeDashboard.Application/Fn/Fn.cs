@@ -60,23 +60,25 @@ namespace AeDashboard.Fn
 
         public string ConvertDaysOrHour(DateTime dt)
         {
-            var days = (DateTime.Now.Subtract(dt)).Hours;
-            if (days<24)
-            {
-                if (days < 10)
-                {
-                    return "0" + days + "h";
-                }
-                else
-                {
-                    return days + "h";
-                }
+            //var days = (DateTime.Now.Subtract(dt)).Hours;
+            //if (days<24)
+            //{
+            //    if (days < 10)
+            //    {
+            //        return "0" + days + "h";
+            //    }
+            //    else
+            //    {
+            //        return days + "h";
+            //    }
               
-            }
-            else
-            {
-                return (DateTime.Now.Subtract(dt)).Days + "d";
-            }
+            //}
+            //else
+            //{
+            //    return (DateTime.Now.Subtract(dt)).Days + "d";
+            //}
+
+            return dt.ToShortDateString();
         }
 
         public bool RoleUser()

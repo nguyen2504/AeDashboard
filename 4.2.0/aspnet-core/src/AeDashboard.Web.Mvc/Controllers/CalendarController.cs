@@ -104,13 +104,12 @@ namespace AeDashboard.Web.Controllers
                 entity.Weekdays = DateTime.Now.DayOfWeek.ToString();
                 _calendarViewService.Create(entity);
                 ViewBag.mes = "Thanh cong";
-                return RedirectToAction("Index", "Calendar");
+              
+              
             }
-            else
-            {
-                return RedirectToAction("Index", "Calendar");
-            }
-           
+            //Alerts.Success("Success alert message!", "Test Alert");
+            return View("Index");
+
         }
         [HttpGet]
         public JsonResult GetAll()
